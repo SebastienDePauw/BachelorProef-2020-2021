@@ -1,6 +1,5 @@
 package com.example.thesis_app.ui.splash
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

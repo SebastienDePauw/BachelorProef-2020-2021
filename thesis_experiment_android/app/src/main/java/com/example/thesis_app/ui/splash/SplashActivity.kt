@@ -33,7 +33,6 @@ class SplashActivity: AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val viewModelFactory = SplashViewModel.Factory()
-
         viewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
 
         viewModel.navigationLiveData.observe(this, { onNavigationRequested(it) })

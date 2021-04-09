@@ -3,15 +3,18 @@ package com.example.thesis_app.ui.main.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thesis_app.R
 import com.example.thesis_app.ui.main.list.MainAdapter
 import com.example.thesis_app.ui.main.model.CardData
+import com.example.thesis_app.ui.main.model.CardEnum
 import com.example.thesis_app.ui.main.viewmodel.MainViewModel
 import com.example.thesis_app.util.ListDecorationHelper
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
 
     private lateinit var adapter: MainAdapter
     private lateinit var viewModel: MainViewModel
@@ -30,17 +33,20 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        adapter = MainAdapter()
+        val viewModelFactory = MainViewModel.Factory()
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+        viewModel.homeLiveData.observe(this){ onDataChanged(it) }
+
+        adapter = MainAdapter(this)
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
         recyclerview.adapter = adapter
         recyclerview.addItemDecoration(ListDecorationHelper.createHomeDecoration(application.baseContext))
         initDataManagers()
-
-        setData()
     }
 
-    private fun setData(){
-        adapter.data = listOf(CardData("test"), CardData("test"), CardData("test"))
+    private fun onDataChanged(card: List<CardData>){
+        adapter.data = card
     }
 
     private fun initDataManagers() {
@@ -48,5 +54,19 @@ class MainActivity : AppCompatActivity() {
         PreferencesHelper.init(this)
         DatabaseManager.init(this)
         DataManager.init(this)*/
+    }
+
+    override fun cardClickListener(cardData: CardData) {
+        when(cardData.cardEnum){
+            CardEnum.HOOFDSTUK1 -> {}
+            CardEnum.HOOFDSTUK2 -> {}
+            CardEnum.HOOFDSTUK3 -> {}
+            CardEnum.HOOFDSTUK4 -> {}
+            CardEnum.HOOFDSTUK5 -> {}
+            CardEnum.HOOFDSTUK6 -> {}
+            CardEnum.HOOFDSTUK7 -> {}
+            CardEnum.HOOFDSTUK8 -> {}
+            CardEnum.HOOFDSTUK9 -> {}
+        }
     }
 }

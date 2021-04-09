@@ -9,6 +9,11 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="AppTheme.Accent">
+        <item name="android:statusBarColor">@color/accent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
     <style name="AppTheme.Splash">
         <item name="android:windowBackground">@drawable/ic_android</item>
         <item name="android:windowAnimationStyle">@style/ModalAnimation</item>
