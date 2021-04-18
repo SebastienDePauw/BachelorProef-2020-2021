@@ -3,21 +3,20 @@ package com.example.thesis_app.ui.main.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.navigateUp
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.example.thesis_app.R
-import com.example.thesis_app.ui.main.list.MainAdapter
-import com.example.thesis_app.ui.main.model.CardData
-import com.example.thesis_app.ui.main.model.CardEnum
-import com.example.thesis_app.ui.main.viewmodel.MainViewModel
-import com.example.thesis_app.util.ListDecorationHelper
+import com.example.thesis_app.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var adapter: MainAdapter
-    private lateinit var viewModel: MainViewModel
+    lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration : AppBarConfiguration
 
     companion object {
         fun getIntent(context: Context): Intent {
@@ -29,44 +28,23 @@ class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        setSupportActionBar(findViewById(R.id.toolbar))
-
-        val viewModelFactory = MainViewModel.Factory()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-
-        viewModel.homeLiveData.observe(this){ onDataChanged(it) }
-
-        adapter = MainAdapter(this)
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewHome)
-        recyclerview.adapter = adapter
-        recyclerview.addItemDecoration(ListDecorationHelper.createHomeDecoration(application.baseContext))
-        initDataManagers()
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        setupNavigation()
     }
 
-    private fun onDataChanged(card: List<CardData>){
-        adapter.data = card
-    }
+    override fun onSupportNavigateUp() = navigateUp(findNavController(R.id.myNavHostFragment), appBarConfiguration)
 
-    private fun initDataManagers() {
-        /*ResourceProvider.init(this)
-        PreferencesHelper.init(this)
-        DatabaseManager.init(this)
-        DataManager.init(this)*/
-    }
+    private fun setupNavigation() {
+        val navController = findNavController(R.id.myNavHostFragment)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
-    override fun cardClickListener(cardData: CardData) {
-        when(cardData.cardEnum){
-            CardEnum.HOOFDSTUK1 -> {}
-            CardEnum.HOOFDSTUK2 -> {}
-            CardEnum.HOOFDSTUK3 -> {}
-            CardEnum.HOOFDSTUK4 -> {}
-            CardEnum.HOOFDSTUK5 -> {}
-            CardEnum.HOOFDSTUK6 -> {}
-            CardEnum.HOOFDSTUK7 -> {}
-            CardEnum.HOOFDSTUK8 -> {}
-            CardEnum.HOOFDSTUK9 -> {}
+        setSupportActionBar(binding.toolbar)
+        setupActionBarWithNavController(this, navController)
+
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
+            toolBar.setDisplayShowTitleEnabled(true)
+            toolBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_left))
         }
     }
 }

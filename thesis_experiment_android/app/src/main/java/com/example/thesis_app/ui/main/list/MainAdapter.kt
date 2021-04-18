@@ -45,11 +45,11 @@ class MainAdapter(private val listener: CardListener): RecyclerView.Adapter<Main
         fun bind(cardData: CardData) {
             this.cardData = cardData
             itemView.findViewById<MaterialTextView>(R.id.title).text = itemView.resources.getString(cardData.titleRes)
-            itemView.findViewById<ConstraintLayout>(R.id.cardLayout).setOnClickListener { listener.cardClickListener(cardData) }
+            itemView.findViewById<ConstraintLayout>(R.id.cardLayout).setOnClickListener { listener.cardClickListener(cardData, it) }
         }
     }
 
     interface CardListener{
-        fun cardClickListener(cardData: CardData)
+        fun cardClickListener(cardData: CardData, view: View)
     }
 }

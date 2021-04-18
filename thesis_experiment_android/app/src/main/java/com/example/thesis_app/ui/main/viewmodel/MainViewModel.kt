@@ -17,6 +17,14 @@ class MainViewModel: ViewModel() {
 
     init {
         getData()
+        /*ResourceProvider.init(this)
+        PreferencesHelper.init(this)
+        DatabaseManager.init(this)
+        DataManager.init(this)*/
+    }
+
+    private fun initDataManagers() {
+
     }
 
     fun getData(){

@@ -2,13 +2,11 @@ package com.example.thesis_app.ui.splash
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.thesis_app.R
 import com.example.thesis_app.ui.main.activity.MainActivity
@@ -41,7 +39,7 @@ class SplashActivity: AppCompatActivity() {
 
    fun onLoadingChanged(isLoading: Boolean) {
        val progressBar = findViewById<ProgressBar>(R.id.progressLoading)
-       progressBar.isVisible = isLoading
+       progressBar.visibility = if(isLoading) View.VISIBLE else View.GONE
     }
 
     private fun onNavigationRequested(navigation: SplashViewModel.Navigation) {
