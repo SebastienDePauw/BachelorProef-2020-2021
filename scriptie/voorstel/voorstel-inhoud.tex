@@ -3,24 +3,21 @@
 \section{Introductie} % The \section*{} command stops section numbering
 \label{sec:introductie}
 
-Hier introduceer je werk. Je hoeft hier nog niet te technisch te gaan.
+De alom bekende smartphones zijn de dag van vandaag niet meer weg te denken en hoewel de markt verzadigd is, kunnen verschillende gelijkenissen getrokken worden tussen de toestellen. Allereerst maakt elk toestel gebruik van een besturingssysteem; voor Apple is dit iOS, terwijl Samsung het Android besturingssysteem gebruikt. Een ander aspect dat ze delen, is het gebruik van mobiele apps. Alvorens een ontwikkelaar begint met het schrijven van een app zal hij eerst moeten kiezen op welk(e) besturingssysteem/besturingssystemen deze app zal draaien. Uit deze keuze komen twee mogelijkheden voort.\newline
 
-Je beschrijft zeker:
+Enerzijds native app ontwikkeling, dit zijn apps die rechtstreeks ontwikkeld worden voor een bepaald besturingssysteem. Anderzijds cross-platform app ontwikkeling, dit zijn apps die ontwikkeld en vervolgens gecompileerd kunnen worden voor meerdere besturingssystemen. Een aantal jaar geleden was dit een voor de hand liggende keuze, aangezien cross-platform ontwikkeling nog in zijn jonge schoentjes stond. Tegenwoordig wordt het aanzien als een kost besparend alternatief door het hergebruik van resources. Onder cross-platform ontwikkeling vinden we verschillende frameworks terug die kunnen gebruikt worden. De grootste zijn: Flutter, Xamarin, React Native en Ionic. Dit onderzoek zal zich toespitsen op Flutter, een jong ontwikkelingsplatform waar momenteel relatief weinig onderzoek naar verricht werd. Desondanks heeft het platform veel potentieel en een snelgroeiende gebruikersbasis. Dit onderzoek zal een beeld schetsen van de voor- en nadelen van beide platformen. Het softwareontwikkelingsbedrijf NextApps, wil met behulp van de resultaten van dit onderzoek een beter inzicht krijgen in de werking van cross-platform development met het Flutter framework. Dit onderzoek zal een antwoord proberen vormen op de volgende onderzoeksvragen: ‘Wat zijn de voor- en nadelen van app ontwikkeling in Flutter in vergelijking met native Android?’, ‘Is Flutter al matuur genoeg om te aanschouwen als volwaardig alternatief op native app ontwikkeling?’, ‘Is Flutter toegankelijker voor nieuwe ontwikkelaars?’.
 
-\begin{itemize}
-  \item de probleemstelling en context
-  \item de motivatie en relevantie voor het onderzoek
-  \item de doelstelling en onderzoeksvraag/-vragen
-\end{itemize}
+
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{State-of-the-art}
 \label{sec:state-of-the-art}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
+Flutter, ontwikkeld door Google, is een relatief jong framework waarin, volgens de site\footnote{\url{https://flutter.dev}}, mooie, native gecompileerde mobiele-, web- en desktopapplicaties kunnen ontwikkeld worden. Het platform werd aangekondigd door Google in 2015, maar was pas echt gangbaar in december 2018 toen de eerste stabiele versie uitkwam. Flutter is opensource, wat wil zeggen dat er vrije toegang is tot de bronmaterialen. Dit zorgt voor een verdere ontwikkeling van het framework en bevordert een hoog niveau van innovatie. De jonge aard van Flutter betekent anderzijds dat nog niet veel research over het framework verschenen is. De meeste papers en artikels vergelijken de verschillende cross-platform frameworks onderling om zo een beeld te schetsen van alle voor- en nadelen van elk platform. Dit helpt bij het kiezen van een cross-platform framework maar beantwoordt niet de vraag: zou het beter zou zijn om een app native te ontwikkelen?\newline
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Doll1954}! Denk zeker goed na welke werken je refereert en waarom.
+Het onderzoek zal gebruik maken van drie recente papers die soortgelijke onderzoeksvragen hadden. De eerst paper, van onderzoeker \textcite{Bracke2020}; vertoont verscheidene gelijkenissen met de onderzoeksvragen van deze paper en onderzocht Flutter tegenover native Android ontwikkeling. De tweede paper van \textcite{Olsson2020}; onderzoekt het Flutter framework tegenover native app ontwikkeling, wat betekend dat het onderzoek ook rekening houdt met iOS, wat deze paper niet zal doen. De laatste paper van \textcite{Cheon2020}; is een paper over de creatie van een Flutter app uit een reeds bestaande Android app. Voor de ontwikkeling van de Flutter app, zal de gids van \textcite{Payne2019} gebruik worden. Verder biedt de Flutter site\footnote{\url{https://flutter.dev/docs}} duidelijke en overzichtelijke documentatie aan.
+
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -29,23 +26,33 @@ Verwijs bij elke introductie van een term of bewering over het domein naar de va
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag gerust gebruik maken van subsecties in dit onderdeel.
-
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
+De uitvoering van het experiment van dit onderzoek omvat het schrijven van twee applicaties. De eerste app zal geschreven worden in het Flutter framework, gebruikmakend van de Dart programmeertaal. De andere app zal geschreven worden in native Android, gebruikmakend van Kotlin\footnote{\url{https://kotlinlang.org}}. Als onderdeel van het uit te voeren experiment, zal het schrijven van beide applicaties gedocumenteerd worden. Het onderzoek zal een finale conclusie vormen op de onderzoeksvragen, gebaseerd op de analyse van de onderzoeksresultaten. Op basis van deze resultaten kan het Flutter platform worden beoordeeld. Ten slotte zal het onderzoek de voor- en nadelen van elk systeem oplijsten.\newline
 
-%---------- Verwachte resultaten ----------------------------------------------
-\section{Verwachte resultaten}
+Beide apps zullen ontwikkeld worden met de Android SDK. De twee apps zullen ook op een gelijkaardige manier ontworpen worden om de user experience tussen de twee apps zo gelijk mogelijk te houden. Als maatstaaf voor de ontwikkelde applicaties worden een aantal minimumvereiste opgelegd zoals een goede performantie en een mooie visuele samenhang. Bij het schrijven van de applicaties zullen verscheidene aspecten bekeken en vergeleken worden. Het onderzoek zal gebruik maken van een lijst met richtlijnen. Deze zullen vermelden wat de vooropgestelde functionaliteiten van de apps zullen zijn.\newline
+
+De te vergelijken aspecten:
+\begin{itemize}
+	\item Grootte van de uitvoeringsbestanden en opstartsnelheid van de app
+	\item CPU gebruik van de app
+	\item Gebruik van online API’s
+	\item Security
+	\item Beschikbare libraries en code complexiteit
+	\item Creatie van views
+	\item Asynchroon werken
+	\item Beschikbare tools
+\end{itemize}
+
+\section{Verwachte Resultaten}
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
+Uit eerdere onderzoeken blijkt Native app ontwikkeling een beter alternatief te bieden op vlak van performantie en opstartsnelheid. Een Flutter APK moet volgende zaken bevatten: de core engine, Java-, app- en framework code, het licentie bestand en ICU data. Een Flutter APK heeft een minimale grote van 4.7MB omdat het zijn eigen resources nodig heeft. Ook zal rekening gehouden worden met de leeftijd van het Flutter platform, hier worden nog wat imperfecties verwacht. Door het grote potentieel en de vele steun die Flutter heeft, zal dit naar de toekomst toe, hoogstwaarschijnlijk worden opgelost. Van Flutter wordt verwacht dat het toegankelijker is voor nieuwe applicatieontwikkelaars. Ook wordt verwacht dat Flutter de bovenhand zal nemen op vlak van code complexiteit en creatie van views.
 
-%---------- Verwachte conclusies ----------------------------------------------
 \section{Verwachte conclusies}
 \label{sec:verwachte_conclusies}
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+Op basis van de resultaten van het onderzoek zal een conclusie op de onderzoeksvragen gevormd worden. In essentie zal deze conclusie antwoorden op de vraag, is Flutter al ver genoeg ontwikkeld om aanschouwd te worden als volwaardige tegenhanger van native development? Gebruikmakend van de lijst met richtlijnen en de behaalde scores, zal hier hopelijk een duidelijk antwoord gegeven worden.
 
