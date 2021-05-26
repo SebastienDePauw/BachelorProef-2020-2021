@@ -1,0 +1,48 @@
+%%=============================================================================
+%% Asynchroon
+%%=============================================================================
+
+
+\chapter{\IfLanguageName{dutch}{Asynchroon Werken}{Asynchronous Tasks}}
+\label{ch:asynchroon}
+Bij elk stuk code maakt de ontwikkelaar een keuze over het achterliggende uitvoeringsproces, moet het stuk code parallel of sequentieel verlopen met de andere stukken code. Deze keuze is vaak onbewust maar wel belangrijk voor de UX van een applicatie. 
+
+Wanneer gekozen wordt om synchroon of sequentieel te werken, wordt gewacht op de uitkomst van een proces vooraleer een nieuw proces kan gestart worden. Hierbij wordt elk proces afgewerkt en enkel wanneer een bepaald proces afgewerkt is, kan een ander proces gestart worden. 
+
+Wanneer gekozen wordt om asynchroon of parallel te werken, wacht men niet op de uitkomst van het andere proces maar start het nieuwe proces ongeacht. Hierbij zijn dus meerdere processen op hetzelfde moment actief. Dit heeft als gevolg dat meerdere verschillende problemen aangepakt kunnen worden. Hier worden verschillende processen afgehandeld op verschillende threads. Een thread kan beschouwd worden als een rijstrook op de autosnelweg, er zijn verschillende threads waarop verschillende processen tegelijkertijd kunnen uitgevoerd worden, net zoals op de verschillende rijstroken meerdere auto’s tegelijkertijd kunnen rijden. 
+
+Voor bepaalde taken zoals het ophalen en persisteren van data wordt vaak gekozen voor asynchrone taken. Een scherm moet elke 16 milliseconden worden geüpdatet om de user een vlotte ervaring te geven. Dit kan alleen gebeuren als de UI thread niet geblokkeerd wordt door zware en langdurige taken. In Android is de main thread gelijk aan de UI thread.
+
+Op zowel Android als Flutter zijn verschillende manieren aanwezig om taken asynchroon uit te voeren. In dit hoofdstuk worden de meest gebruikte manieren aangehaald. 
+
+
+\section{Opzet}
+\subsection{Android}
+\underline{Coroutines}\\
+Een coroutine is iets dat in Android kan gebruikt worden om het schrijven van asynchrone code te vereenvoudigen. Op Android helpen coroutines om langdurige taken af te handelen die anders de main thread zouden blokkeren. Coroutines zorgen er in dit geval voor dat de app niet blokkeert of niet meer reageert. Een use case waarvoor coroutines vaak gebruikt worden is bijvoorbeeld wanneer er een API call uitgevoerd wordt. Op deze manier kan deze call in de achtergrond afgehandelt worden zonder dat de rest van de applicatie er op dient te wachten alvorens andere taken te kunnen vervullen. 
+
+\underline{Java Thread}\\
+De Java Virtual Machine (JVM) maakt het mogelijk dat verschillende threads tegelijkertijd lopen. Elk van deze threads heeft een prioriteit en op basis daarvan wordt een thread al dan niet uitgevoerd voor een andere thread. Wanneer een JVM opstart, is er gebruikelijk één thread aanwezig die de main method aanroept. De JVM blijft threads uitvoeren tot bijvoorbeeld de exit methode van de Runtime class aangeroepen wordt en de security manager groen licht gegeven heeft om de exit methode uit te voeren. 
+
+\underline{AsyncTasks}\\
+Deprecated 
+
+\underline{Android services}\\
+Android service is een component dat gebruikt wordt om processen uit te voeren in de achtergrond zoals muziek afspelen, netwerk transacties behandelen,.. Het proces blijft oneindig in de achtergrond lopen zelfs als de applicatie afgesloten wordt.
+De keuze tussen een thread of een service is afhankelijk van de use case van de applicatie. Als er processen moeten gebeuren buiten de main thread, maar enkel wanneer de applicatie actief is en de gebruiker er dus met interageert, is het aangeraden om een nieuwe thread te maken en dus geen service te gebruiken. Zo kan het bijvoorbeeld nodig zijn dat er muziek afgespeeld moet worden terwijl de applicatie actief is, dit is op te lossen aan de hand van een thread waardoor het een slecht idee zou zijn om hiervoor een service te gebruiken. 
+
+\underline{Callbacks}\\
+
+
+\underline{EventBus}\\
+EventBus is een open source library voor Android en Java die gebruik maakt van een publisher/subscriber patroon. Hierbij is het idee dat een publisher een event (of proces) uitstuur naar een Event Bus via een post() call. Deze Event Bus zal vervolgens dit event naar de subscribers ervan uitsturen waardoor zij kunnen reageren van zodra er iets veranderd is gebruikmakend van de onEvent() call. De voordelen van EventBus zijn bijvorrbeeld de eenvoudige communicatie tussen componenten, de goede performantie bij gebruik van activities, fragments en background threads en het feit dat het reeds bewezen is in de praktijk. 
+
+\underline{Reactive programming (RxJava)}\\
+
+
+\underline{Chanel}\\
+
+
+\subsection{Flutter}
+
+\section{Resultaten}

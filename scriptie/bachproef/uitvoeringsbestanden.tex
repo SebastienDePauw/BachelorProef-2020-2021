@@ -1,0 +1,30 @@
+\section{De grootte van de uitvoeringsbestanden}
+\label{sec:uitvoeringsbestanden}
+Een eerste factor welke invloed heeft op de performantie van een applicatie is de grootte van zijn uitvoeringsbestand. Het doel is om dit uitvoeringsbestand zo klein mogelijk te houden, zodat de gebruiker geheugen kan besparen op zijn toestel. Het is immers zo dat de prijs van high-end smartphones vandaag de dag vrij steil is. De consument kan bij het aanschaffen van een nieuw toestel vaak kiezen voor een bepaalde hoeveelheid opslag. Wanneer voor een toestel gekozen wordt met een vrij beperkte opslagcapaciteit en de gebruiker een aantal grote apps installeert, zal de opslagcapaciteit van het toestel vrij snel volledig ingenomen zijn. Dit heeft als gevolg dat een gebruiker bepaalde applicaties zal gaan verwijderen zodat hij terug ruimte kan creëren. Uit onderzoek bleek namelijk dat 1/2 van de applicaties verwijderd wordt wegens de grootte ervan. Dit is één van de redenen waarom het dus in de eerste plaats sowieso al een goed idee is om de app zo klein mogelijk te houden, maar de hoogste performantie te garanderen. 
+
+Een andere reden is de maximale toegestane grote van de uitvoeringsbestanden opgelegd door de verschillende app stores. Om een applicatie om de Google Play Store te kunnen beschikbaar stellen, moet deze voldoen aan meerdere eisen. Een van deze eisen is dat het uitvoeringsbestand van de app maximaal 100 MegaByte bedraagt. Het doel van een applicatie beschikbaar te stellen op de Play Store is immers om een zo groot mogelijk doelpubliek aan te spreken, wanneer echter niet aan de eisen van de Play Store voldaan wordt, zal dit doelpubliek niet bereikt worden. In dit hoofdstuk zal gekeken worden naar de grootte van de uitvoeringsbestanden van respectievelijk de Flutter applicatie alsook de Android applicatie.
+
+
+\subsection{Opzet}
+Een uitvoeringsbestand, ook wel gekend als een executable, van een Android app kan verschillende bestandsformaten zijn. De twee meest gebruikte formaten zijn Android Package (APK) en App Bundle. Deze bestanden worden gebruikt om een Android applicatie uit te voeren. Voor dit onderzoek werd gefocust op het APK bestandsformaat.
+
+Voor dit onderzoek werden vier applicaties ontwikkeld en dus konden vier APK's gemaakt worden. Twee in native Android en twee in Flutter. Het eerste paar te vergelijken APK's waren van de Hello world applicaties en het tweede paar van de onderzoeksapplicaties. Om de verschillen tussen beide platformen te testen, werden tot tweemaal toe de verschillende tegenhangers tegenover elkaar geplaatst. De Flutter APK's werden met andere woorden vergeleken met hun native tegenhanger. 
+
+Om de resultaten zo realistisch mogelijk te maken werd gekozen om voor de apps een release build te maken. Deze build zorgt ervoor dat de app zo compact mogelijk wordt gemaakt. Dit gebeurt door het opruimen en optimaliseren van code.
+
+Als laatste werd een opsomming gemaakt van de grootte van uitvoeringsbestanden over tijd. Dit beeld moet een inzicht geven in de evolutie van de frameworks.
+
+
+\subsection{Resultaten}
+%TODO
+\begin{center}
+    \begin{tabular}{ |c|c|c| }
+        \hline
+        & \textbf{Android} & \textbf{Flutter}\\
+        \hline
+        \textbf{Hello world} & Mb & Mb \\ 
+        \hline
+        \textbf{Onderzoeksapplicatie} & Mb & Mb \\ 
+        \hline
+    \end{tabular}
+\end{center}

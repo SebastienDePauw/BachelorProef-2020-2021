@@ -1,3 +1,8 @@
+%%=============================================================================
+%% Stand van zaken
+%%=============================================================================
+
+
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}
 \label{ch:stand-van-zaken}
 
@@ -7,42 +12,59 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Zoek onderzoekartikels op.
-Selecteer relevante onderzoeksartikels.
-Breng de bevindingen uit de onderzoeksartikels in kaart.
-Vat de bevindingen uit de onderzoeksartikels samen.
+Dit hoofdstuk is equivalent aan een literatuurstudie. 
+De eerste stap was het zoeken naar voorgaande studies over Flutter en Android. Elke studie die voldeed aan de eisen en als interessant werd beschouwd, werd opgeslagen en gebundeld. Hiervan werd de inhoud diagonaal gelezen om zo alleen de meest relevante onderzoeken over te houden.
 
-Dit hoofdstuk is equivalent aan een literatuurstudie. Eerst werd 
+Vervolgens werd een opsomming gemaakt en een kort beeld geschetst van een aantal van deze studies en hun bijdrage in het vakgebied. In de volgende sectie zullen dus alleen de meest relevante studies, die dicht aansluiten bij dit onderzoek, worden aangehaald. De ondervindingen uit deze studies werden gebruikt als voorbereiding op het onderzoek en kunnen in volgende hoofdstukken gebruikt worden als steunpunten. Door de ondervindingen van verschillende studies te bundelen, kon gezocht worden naar een rode draad.
 
-Vervolgens wordt een opsomming gemaakt en een kort beeld geschetst van een aantal van deze studies en hun bijdrage in het vakgebied. In de volgende sectie zullen alleen de meest relevante studies, die dicht aansluiten bij dit onderzoek, worden aangehaald. De ondervindingen uit deze studies werden gebruikt als voorbereiding op het onderzoek en kunnen in volgende hoofdstukken gebruikt worden als steunpunten. Door de ondervindingen van verschillende studies te bundelen, kan gezocht worden naar een rode draad. 
-
-De te onderzoeken criteria van deze studie werden vastgelegd op basis van de reeds voorgaande onderzoeken. Het is de bedoeling dat deze studie bijdraagt aan het vakgebied. Hierdoor wordt weerhouden van reeds onderzochte criteria opnieuw te gaan onderzoeken. Toch zal blijken dat sommige reeds onderzochte criteria opnieuw worden bekeken. Deze herhaling komt voort uit de Flutter 2.0 release. Deze zorgde voor veranderingen in de prestaties van het framework, waardoor bevindingen van voorgaande studies verouderd zijn.
+De te onderzoeken criteria van deze studie werden vastgelegd op basis van de reeds voorgaande onderzoeken. Het is de bedoeling dat deze studie bijdraagt aan het vakgebied. Hierdoor wordt weerhouden van reeds onderzochte criteria opnieuw te gaan onderzoeken. Toch zal blijken dat sommige onderzochte criteria opnieuw worden bekeken. Deze herhaling komt voort uit de Flutter 2.0 release, deze zorgde voor veranderingen in de prestatiemogelijkheden van het framework.
 
 \newpage
 \section{Voorgaande onderzoeken}
 \label{sec:voorgaande-onderzoeken}
-\textbf{Navaron Bracke – Android Native Development in Kotlin versus het Flutter Framework, een vergelijkende studie (2020)}\\
-Navaron Bracke, onderzocht in 2020 de verschillen en gelijkenissen tussen Android en Flutter. De scriptie vormde een beeld over de toenmalige stand van het Flutter framework door het te toetsen tegen het ontwikkelde Android. Het onderzoek was afgebakend door een vooraf vastgelegd aantal criterium. Zo kon de onderzoeker een zekerheid bieden over de grondigheid van de studie. Het onderzochte criterium waren: Internationalisering, navigatie, persisteren van gegevens, user Interfaces, asynchroon werk, permissies, software testing, opstarttijd van de applicatie, grootte van de applicatie. Uit deze studie bleek dat Flutter een gemakkelijkere implementatie biedt voor de meeste onderzochte criteria.
+%TODO er zijn een paar hoofdstukken die herschreven moeten worden, ook eens kijken voor commentaar Akin
+\textbf{Android Native Development in Kotlin versus het Flutter Framework, een vergelijkende studie} 
+\autocite{Bracke2020}\\
+ Navaron Bracke, onderzocht in 2020 de verschillen en gelijkenissen tussen Android en Flutter. De scriptie vormde een beeld over de toenmalige stand van het Flutter framework door het te toetsen tegen het ontwikkelde Android. Het onderzoek was afgebakend door een vooraf vastgelegd aantal criteria. Zo kon de onderzoeker zekerheid bieden over de grondigheid van de studie. De onderzochte criteria waren: Internationalisering, navigatie, persisteren van gegevens, user Interfaces, asynchroon werk, permissies, software testing, opstarttijd van de applicatie, grootte van de applicatie.
+
+De opzet en het doel van het onderzoek liep in grootte mate gelijk met het onderzoek gevoerd voor deze scriptie. Daarom was het onderzoek van Bracke uitermate interessant, bevindingen werden bijgehouden, genoteerd en getoetst tegen de bevindingen van dit onderzoek. De hoofdstukken die performantie onderzochten werden gebruikt om een beeld te schetsen van de Flutter evolutie over tijd. De andere twee hoofdstukken (User Interfaces en Asynchroon werk) werden opnieuw onderzocht met conclusies van Bracke in het achterhoofd. Hiervoor werd, in de mate van het mogelijke, zoveel mogelijk gefocust op de onderwerpen die Bracke niet aanhaalde.
+
+De onderzoeker constateerde dat, ondanks de jonge aard van het Flutter platform, het een goed alternatief biedt op elk onderzocht criterium. Bij elk van deze criteria werd een platform van voorkeur gekozen. Hieruit bleek Flutter op 4 van de 7 criteria naar voor te komen. Al werd wel meegedeeld dat niet alle features in Flutter even gebruiksvriendelijk zijn maar door de jonge aard werd verwacht dat dit in de toekomst zou verbeteren.
 
 
-\textbf{Austen Latture – Backdrop- an exploration of Flutter (2020)}\\
-Latture, een student aan Grand Valley State Universiteit, schreef in 2020 een studie over het ontwikkelen van een Flutter app. Hij stelde vast dat het een zeer toegankelijk framework is met een taal die voor iedereen met een achtergrond in C gemakkelijk op te pakken is. Hier waren geen vooropgestelde criteria aanwezig, deze studie omschreef de uitwerking van de Backdrop app. In zijn conclusie vergeleek hij Flutter met React Native en prees hierbij de werking van Flutter en het grote aantal voorziene functionaliteit. Echter concludeerde hij wel dat het kiezen van bepaalde libraries niet altijd gemakkelijk is. De jonge aard van het platform zorgt ervoor dat nog geen duidelijke standaarden zijn in termen van libraries. 
+\textbf{Teaching mobile app development: choosing the best development tools in practical labs} 
+\autocite{Dang2019}\\
+Daniel Dang en David Skelton, twee professors aan de Insitutue of Technology, schreven in 2019 een wetenschappelijk artikel over mobile app development in het onderwijs. Het doel van het onderzoek was het bepalen van het ideale framework voor het aanleren van mobiele applicatieontwikkeling in het onderwijs. Het onderzoek werd gevoerd aan de hand van verschillende native- en cross-platform frameworks. Zo werden native Android, native iOS, Flutter, React Native, Ionic, Xamarin, Cordova en Appcelerator vergeleken. Onderzochte criteria bij dit onderzoek waren: Design App User Interface, User Event Handling, Services \& Multiple threads used in Internet connection, Graphics and Animation, Device hardware and sensor, Wireless connectivity, Internal data storage, Real time database. 
+
+In conclusie bleken Flutter en Native Android de twee beste platformen te zijn voor gebruik tijdens praktijklessen. Ook beval het onderzoek acht ideale onderwerpen aan die in de praktijksessies moeten worden behandeld om studenten voldoende technische vaardigheden bij te brengen om alle soorten mobiele apps te ontwikkelen. Belangrijk hierbij te vermelden is dat de studie gebruik maakte van een oude Flutter release.
+\newpage
 
 
-\textbf{Dang \& Skelton – Teaching mobile app development: choosing the best development tools in practical labs (2019)}\\
-Daniel Dang en David Skelton van de Insitutue of Technology, schreven in 2019 een wetenschappelijk artikel over mobile app development in een educatieve context. Ze onderzochten verschillende native- en cross-platform opties om toe te voegen aan een curriculum.  Onderzochte criteria bij dit onderzoek waren: Design App User Interface, User Event Handling, Services \& Multiple threads used in Internet connection, Graphics and Animation, Device hardware and sensor, Wireless connectivity, Internal data storage, Real time database. Zij concludeerden dat Flutter en Native Android hiervoor de beste opties waren. Belangrijk hierbij te vermelden is dat de studie gebruik maakte van een verouderde Flutter release.
+\textbf{Backdrop- an exploration of Flutter} 
+\autocite{Latture2020}\\
+Austen Latture, een student aan Grand Valley State Universiteit, schreef in 2020 een studie over het ontwikkelen van een app in Flutter. De focus van het onderzoek lag hem op de leercurve van het platform. Hier waren geen vooropgestelde criteria aanwezig, deze studie omschreef de uitwerking van de Backdrop app. 
+
+In conclusie bleek Flutter een toegankelijk platform te zijn voor nieuwe ontwikkelaars met een allesbehalve steile leercurve. Een ander groot voordeel aangeboden door het platform is de talrijke ingebouwde functionaliteit. De Dart taal die wordt geschreven voor het maken van Flutter apps is volgens het onderzoek zeer gemakkelijk aan te leren voor mensen met een achtergrond in de C taal. Aan de andere kant bleek het kiezen van third-party libraries een hinder blok te vormen tijdens de ontwikkelfase. De jonge aard van het platform ging gepaard met jonge libraries. 
+
+Zoals bleek uit andere studies concludeerde dit onderzoek dat Flutter hier een rode draad in mist. De grootte hoeveelheid aangeboden libraries maakt het moeilijk om te weten welke goed ondersteund worden en dan ook vaak gekozen worden. Dit is vooral een struikelblok voor nieuwe developers, onbekend met het platform. Vervolgens werd Flutter ook in het kort vergeleken met React Native. Hieruit kon geconcludeerd worden dat Flutter veel gemakkelijker te installeren is. Dit komt, volgens het onderzoek, voort uit de ingebouwde functionaliteit van Flutter terwijl React meer werkt met verspreide derde partij software die meestal bestaat uit te veel boilerplate code.
 
 
-\textbf{Carlos Chavez \& Yoonsik Cheon – Creating Flutter Apps from Native Android Apps (2020)}\\
-Carlos Chavez, momenteel een student en Yoonsik Cheon, een professor aan de Universiteit van Texas in El Paso onderzochten in 2020 het herschrijven van Native Android Apps naar Flutter apps. Zij stelden de vraag of het best practice is om Native Android apps te herschrijven in Flutter.  In de conclusie van de studie schreven ze dat rekening moet gehouden worden met de leeftijd van het platform maar ook de tools en gebruikersbasis. Zij concludeerden een tekort aan officiële richtlijnen, libraries en interfaces binnen het platform. Het grote aantal derde partij libraries zorgt ook voor onzekerheid bij het zoeken naar een goed ondersteunde library. 
-%Grote lijnen zijn niet duidelijk volgens studie
+\textbf{Creating Flutter Apps from Native Android Apps} 
+\autocite{Cheon2020}\\
+Carlos Chavez, een student en Yoonsik Cheon, een professor aan de Universiteit van Texas in El Paso onderzochten in 2020 het herschrijven van Native Android Apps naar Flutter apps. Het onderzoek bekeek een native Android app ontwikkeld in de Java-taal en probeerde deze zo goed mogelijk om te zetten naar een Flutter app die terug kon gecompileerd worden als een Android app maar ook als iOS app. Het onderzoek werd gevoerd aan de hand van het Flutter ontwikkelproces. De technische-, praktische problemen en uitdagingen die de kop opstaken werden vervolgens besproken.
+
+Het onderzoek deed een paar duidelijke verschillen uitblijken tussen Android en Flutter wanneer gekeken werd naar de taal, programmeerstijl en design. Het grootste werk was het herschrijven van de views terwijl het herschrijven van de achterliggende logica eerder snel gebeurd was. Het onderzoek focuste zich onder andere op het aantal lijnen code geschreven voor beide applicaties. De Flutter code bleek hierbij maar 2/3 van het totaal aantal Android code te zijn. Maar volgens de onderzoekers was dit niet genoeg om apps in Flutter te beginnen ontwikkelen. De leeftijd van het platform bracht nog te veel onzekerheid met zich mee. Ook ontbrak dit onderzoek aan een soort standaard werkwijze of verzameling van richtlijnen. Dit sloeg dan vooral op libraries en API’s binnen het platform. De gebruikersbasis en de beschikbare tools moesten hierbij ook zeker in rekening worden gebracht. Het grote aantal third party libraries, door de grootte aanhang, zorgde voor onzekerheid bij het zoeken naar een goed ondersteunde library. Bij andere grootte platformen wordt dit verholpen doordat na bepaalde duur de beste API’s en libraries naar boven komen en een soort van community standard wordt gezet.
 
 
-\textbf{Matilda Olsson – A Comparison of Looks Between Flutter and Native Applications (2020)}\\
-Mathilda Olsson, een oud student aan de Blekinge hogeschool onderzocht in 2020 hoe flutter applicaties in vergelijking staan met native applicaties. In haar conclusie schreef ze: geen tot weinig verschil in CPU gebruik tussen native en flutter apps. Vervolgens haalde ze de codecomplexiteit en omvang aan. De Flutter app uit het onderzoek bleek 1/5 te zijn van de code nodig om 2 native apps te schrijven. Dit verschil is substantieel en duidt nogmaals op het grote voordeel van cross-platform development. Ze concludeerde dat Flutter veel potentieel heeft indien de steun van de community zo groot blijft.  
+\textbf{A Comparison of Looks Between Flutter and Native Applications} 
+\autocite{Olsson2020}\\
+Mathilda Olsson, student aan de Blekinge hogeschool onderzocht in 2020 hoe Flutter applicaties vergelijken met native applicaties. Voor dit onderzoek werden twee native applicaties ontwikkeld in Kotlin voor Android en Swift voor iOS. Deze applicaties werden vervolgens beoordeelt op vlak van CPU performantie. Het onderzoek bevatte ook een bevraging die zich focuste op de verschillen in gebruikersperceptie. Een aantal gebruikers moesten de app eerst testen waarna ze een vragenlijst konden beantwoorden waaruit verschillen in look en feel moesten duidelijk worden.
+
+Uit onderzoek bleek dat Flutter en Android apps gelijkaardige resultaten halen op vlak van CPU performantie. Vervolgens werd gekeken naar het aantal lijnen code en de complexiteit van de twee code bases. Hieruit bleek dat Flutter aanzienlijk minder lijnen code nodig had maar ook minder complexe code bevatte. De Flutter app bestond uit 125 lijnen code terwijl de twee native apps samen 580 lijnen code bevatte. Dit verschil is substantieel en duidt erop dat Flutter beter blijkt voor kleine tot middelgrote applicaties. Uit de vragenlijst bleek native ontwikkeling, op vlak van UI, de voorkeur te hebben van het grootste deel gebruikers. De verschillen waren vooral te zien bij animaties, fonts, gedrag, lijsten en menu’s. Animaties konden wel gelijkgesteld worden maar dat is extra werk zijn voor de ontwikkelaar. In conclusie, zoals in de andere onderzoeken, werd nogmaals geduid op de leeftijd van het platform. Alle criteria waar Flutter minder op scoorde konden nog volop in ontwikkeling zitten voor een volgende release. Flutter had volgens het onderzoek veel potentieel indien de steun van de gebruikersbasis zo groot bleef.
 
 
-\textbf{Erik Blokland – An Empirical Evaluation of the User Interface Energy Consumption of React Native and Flutter (2019)}\\
+\textbf{An Empirical Evaluation of the User Interface Energy Consumption of React Native and Flutter} 
+\autocite{Blokland2019}\\
 Erik Blokland, in 2019, een student aan de University of Technology in Delft, schreef een vergelijkende Thesis over de energieconsumptie van UI tussen React Native, Flutter en de Android. Hierbij werd Android als standaard genomen en werden de twee andere apps hiermee vergeleken. Drie vragen werden gesteld:
 \begin{itemize}
     \item Bestaat een verschil in energie verbruik tussen de drie apps
@@ -52,29 +74,30 @@ Erik Blokland, in 2019, een student aan de University of Technology in Delft, sc
 In conclusie bleken de verschillen tussen UI acties over de platformen heen zeer stabiel te zijn. De grote verschillen die gevonden werden waren in de verschillende uitgevoerde acties. Het openen van bijvoorbeeld een drawer menu was een veel energie zwaardere taak als het openen van een modal. Als laatste was het niet duidelijk uit onderzoek of er een verschil was tussen de verschillende apps in energieconsumptie. Deze testen waren te inconsistent om conclusies uit te trekken.
 
 
-\textbf{Jakhongir Fayzullaev – Native-like cross-platform mobile development (2018)}\\
-Jakhongir Fayzullaev, schreef in 2018 een Bachelor studie in naam van het Finse Xamk, Universiteit Toegepaste Wetenschappen. Het is een vergelijkende studie tussen drie verschillende cross-platform development frameworks. Kotlin Native, Multi-OS en Flutter werden vergeleken. Drie frameworks die meest bruikbaar zijn voor Android ontwikkelaars omdat ze dicht aansluiten bij de Java en Android ontwikkelingsmanieren. Dit waren in 2018, tijdens het onderzoek, nieuwe platformen met als gevolg geen tot weinig voorgaande studies waarop kon gesteund worden. Wat op zijn beurt leidde tot een oppervlakkige studie die de grote lijnen van elk platform vergeleek. Het Flutter deel van het onderzoek bekeek in grote lijnen: Widgets, het maken van layouts en de bouwstenen van flutter Hij concludeerde dat op vlak van performantie de drie platformen zo goed als identiek waren. Flutter was volgens hem een goed platform in 2018 maar door de jonge aard waren er niet veel bruikbare libraries en tools beschikbaar. Er was op dat moment niet veel built-in functionaliteit. Met als gevolg extra werk voor de programmeurs die meer code moesten schrijven ten opzichte van de andere meer ontwikkelde platformen. Fayzullaev omschrijft deze manier van coderen als ‘het opnieuw uitvinden van het wiel’.
-
-\newpage
-\textbf{Lukas Dagne - Flutter for cross-platform App and SDK development (2019)}\\
-Lukas Dagne, schreef in 2019 zijn Bachelorproef over Flutter in vergelijking met Native- en andere Cross-platform ontwikkelings platformen. De scriptie baseerde zich op een enkele grootte punten binnen App development: de interne specificaties van het framework en de mogelijke architectuur van een app.  De conclusie stelde dat Flutter een goede keuze is voor cross-platform development. De weinige toegevingen die gedaan worden bij het ontwikkelen van een cross platform app in Flutter zorgt voor een duidelijk verschil met de andere frameworks. De grootte aanhang van het platform en de snelle ontwikkelingen duiden volgens Dagne alleen maar op een verbetering naar de toekomst toe. Alhoewel dat de SDK ontwikkeling van het framework nog niet optimaal is het geloof in verbetering groot.
+\textbf{Native-like cross-platform mobile development} 
+\autocite{Fayzullaev2019}\\
+Jakhongir Fayzullaev, een student aan Universiteit Toegepaste Wetenschappen Xamk, schreef in 2018 een vergelijkende studie. Deze studie onderzocht drie verschillende cross-platform development frameworks namelijk Kotlin Native, Multi-OS en Flutter. De frameworks en dus de studie is vooral interessant voor Android ontwikkelaars aangezien de onderzochte frameworks dicht aansluiten bij de Java en Android ontwikkelingsmanieren. In 2018, toen het onderzoek werd uitgevoerd, waren de Flutter en Multi-OS nieuwe spelers op de markt cross-platform markt. Het onderzoek kon zich niet baseren op voorgaande studies en ontbrak aan duidelijke richtlijnen van de frameworks. Hierdoor was het onderzoek oppervlakkig, het vergeleek de grote lijnen van de platformen zonder de details te bekijken. Het Flutter deel van het onderzoek bekeek in grote lijnen: Widgets, het maken van layouts en de bouwstenen van flutter. Hij concludeerde dat op vlak van performantie de drie platformen zo goed als identiek waren. Onderzoek deed blijken dat Flutter een goed platform was in 2018 maar de jonge aard zorgde voor weinig bruikbare libraries en tools. Ook had Flutter in 2018 heel weinig built-in functionaliteit met als gevolg meer werk voor de programmeurs die meer code moesten schrijven ten opzichte van de andere meer ontwikkelde platformen. Fayzullaev omschrijft deze manier van coderen als ‘het opnieuw uitvinden van het wiel’.
 
 
-\textbf{Ly Hong Hoang - State management in Flutter (2019)}\\
+\textbf{State management in Flutter} 
+\autocite{Hoang2019}\\
 Ly Hong Hoang, in 2019, een student aan de Metropolia Universiteit Toegepaste Wetenschappen schreef een Bachelorproef studie over state management in Flutter. Hierbij werd gekeken welk state-management systeem het best past bij Flutter. De drie vergeleken systemen waren Business Logic Component (BloC), Redux en Scoped Model. Dit is geen wetenschappelijke studie, de resultaten van de paper zijn geen feiten maar eerder een discussiepunt met een conclusie getrokken op basis van een klein onderzoek. De conclusie stelde dat BloC het best was voor gebruik in Flutter. BloC is volledig op punt gesteld voor Dart, de taal die wordt geschreven in Flutter. Ergens is dit ook wel de logische keuze aangezien het ontwikkeld is door Google. Redux is hoog performant maar complex. Dit is bijvoorbeeld niet goed om te gebruiken in teamverband. Scoped Model is gemakkelijker om te begrijpen maar minder performant als Redux. Ook is het niet gemakkelijk schaalbaar. BloC Is schaalbaar, performant en simpel te verstaan. Het heeft dus alle goede kwaliteiten. Toen deze paper geschreven werd waren er nog niet veel best practices binnen Flutter. Daarom wou de schrijver met deze studie een soort van benchmark zetten voor het kiezen van een state managementsysteem binnen Flutter.
 
 
-\textbf{Ola Dahl – Exploring End User’s Perception of Flutter Mobile Apps (2019)}\\
+\textbf{Exploring End User’s Perception of Flutter Mobile Apps} 
+\autocite{Dahl2019}\\
 Ola Dahl schreef in 2019 een master thesis in kader van de Zweedse Universiteit Malmö. De thesis ging gebruikers perceptie tussen twee identieke apps vergelijken. De eerste app werd geschreven in Native Android en de tweede in Flutter. Er werd dan een vergelijking opgesteld tussen de twee apps, gebruikers konden aan de hand van een aantal vragen aangeven welke app ze verkozen. Het onderzoek werd gevoerd op een kleine groep gebruikers dus conclusies zijn niet representatief.
 Deze studie concludeerde dat gebruikers de native applicatie verkozen boven de Flutter applicatie op vlak van snelheid. Echter op vlak van uitstraling en design ondervonden de gebruikers geen verschillen. De meerderheid verkoos de Android applicatie, slechts 10\% verkoos de Flutter applicatie. 
 
-\newpage
-\textbf{Sebastian Faust - Using Google’s Flutter Framework for the development of a large-scale reference application (2020)}\\
+
+\textbf{Using Google’s Flutter Framework for the development of a large-scale reference application} 
+\autocite{Faust2020}\\
 Sebastian Faust schreef in 2020 Bachelorproef Thesis in naam van de Universiteit Toegepaste Wetenschappen in Keulen. Het doel van dit onderzoek is andere applicatieontwikkelaars helpen wanneer zij voor dezelfde problemen komen te staan tijdens het schrijven van een Flutter app.
 Voor dit onderzoek schreef hij een app, tijdens dit proces documenteerde hij alle design keuzes en de problemen/obstakels die hieruit voortkwamen. Na het evalueren van elk obstakel kon hij altijd tot een optimale oplossing komen. Na de studie werden ondervindingen gebundeld en een set van richtlijen opgesteld voor het ontwikkelen van grootte Flutter applicaties. Richtlijnen en best practices waar developers zich best aan houden tijdens het ontwikkelingsproces. Deze werden gebundeld in een gids die later werd gepubliceerd en goed ontvangen werd door de Flutter community. Voor verdere ondersteuning is nog een interview afgenomen met een Flutter expert. Dit onderzoek werd toegevoegd aan de literatuurstudie om aan te tonen dat Flutter apps schaalbaar zijn.
 
 
-\textbf{Flutter Engage - Flutter 2.0}\\
+\textbf{Flutter Engage - Flutter 2.0} 
+\autocite{Flutter2021}\\
 Op woensdag 3 maart 2021 werd Flutter Engage georganiseerd, een live event gebracht door het Flutter team. Hier kwamen verschillende grootte namen binnen de Flutter community aan bod om de nieuwe releases aan de wereld te tonen. De developers gaven het de naam Flutter 2.0 door de talrijke upgrades die het platform is ondergaan. Niet alleen het Flutter platform kreeg een upgrade maar ook de taal Dart werd verbeterd voor een vlottere en vertrouwelijke programmeer ervaring.
 
 Grootste Flutter upgrades:
@@ -96,7 +119,6 @@ Grootste Flutter upgrades:
     \item Nieuwe widgets teogevoegd aan het framework.
 \end{itemize}
 
-\newpage
 Grootste Dart upgrades:
 \begin{itemize}
     \item Een van de grootste punten was dat sound null safety is toegevoegd, zonder oude code te breken. Dit is een grootte upgrade voor het schrijven van robuuste code. Dart zal zeggen waar er mogelijkse gevaren zitten op null excepties. Dit zorgt voor minder errors en dus betere code.

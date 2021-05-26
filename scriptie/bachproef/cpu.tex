@@ -1,0 +1,18 @@
+\section{Het CPU gebruik van de applicatie}
+\label{sec:cpu}
+Een Central Processing Unit of kortweg CPU is het als het ware het brein van een computer. Het is een stuk hardware dat aan de hand van een aantal basisoperaties, programma’s uitvoert. Om deze operaties performant uit te voeren heeft de CPU echter nood aan een vaste, degelijke bron van energie. In het geval van mobiele apparaten, zoals een laptop of een smartphone, is deze energiebron de batterij van het toestel. Vandaag de dag moeten, en zijn, smartphones vrij tot zeer compact. Dit heeft echter ook een nadeel. Door de compactheid van de toestellen, is de plek voor de batterij ook eerder beperkt. Om de capaciteit van de batterij zo goed mogelijk te benutten, moeten de processen die op de toestellen draaien dus eerder performant zijn. Hiermee wordt bedoeld dat ze energiezuinig moeten zijn zonder snelheid in te leveren. 
+
+Een app die veel CPU werk vereist zal dus meer energie verbruiken, de batterij sneller doen leeglopen en kan zorgen voor oververhitting van de batterij. Een probleem dat voorkomt wanneer de app meer resources gebruikt als nodig.
+
+Aangezien het beheer van de batterijduur een dagelijkse ervaring is voor velen, wil men zo weinig mogelijk batterij verspelen aan korte app interacties. Gebruikers die merken dat een app te veel vraagt van de CPU zullen deze app dan ook sneller verwijderen. Daarom was het interessant om te onderzoeken of de onderliggende frameworks hier een aandeel in hebben. 
+
+\subsection{Opzet}
+Voor het onderzoek naar CPU gebruik werden de onderzoeksapplicaties vergeleken. Deze applicaties zijn omvangrijk en bevatten meerdere features die CPU intensieve taken uitvoeren. 
+
+Het CPU gebruik wordt uitgedrukt in procent. Hoe hoger dit getal hoe meer CPU de app in gebruik nam. De gehele app werd doorlopen en het gemiddelde CPU gebruik werd vergeleken. Uitschieters werden ook opgenomen in de resultaten voor het maken van vergelijkingen omtrent CPU intensieve components.
+
+Voor het onderzoek naar CPU gebruik werd voor Android gebruik gemaakt van de Android Profiler. Een krachtige monitoring tool die het mogelijk maakt om live CPU, geheugen, netwerk en batterij resources op te volgen. Meer specifiek werd gekeken naar de CPU Profiler. Voor Flutter werd gebruik gemaakt van de Flutter DevTools. Een uitgebreide tool die in Flutter 2.0 een grote update kende. Hiermee kunnen live zaken zoals logging, geheugen gebruik, CPU gebruik, netwerk requests… worden opgevolgd.
+
+
+\subsection{Resultaten}
+%TODO foto van grafiek, kan dit uitgedruk worden in waarden? Bekijk dit eens

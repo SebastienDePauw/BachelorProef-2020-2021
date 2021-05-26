@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">thesis_app</string>
+    <string name="action_settings">Settings</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="main_navigation_title">Home</string>
+    <string name="home_hoofdstuk1_title">H1: Grootte van de uitvoeringsbestanden</string>
+    <string name="home_hoofdstuk2_title">H2: Opstartsnelheid van de app</string>
+    <string name="home_hoofdstuk3_title">H3: CPU gebruik</string>
+    <string name="home_hoofdstuk4_title">H4: Uitvoeren van netwerkcalls</string>
+    <string name="home_hoofdstuk5_title">H5: Security</string>
+    <string name="home_hoofdstuk6_title">H6: Code complexiteit</string>
+    <string name="home_hoofdstuk7_title">H7: Creatie van views</string>
+    <string name="home_hoofdstuk8_title">H8: Asynchroon werken</string>
+    <string name="home_hoofdstuk9_title">H9: Beschikbare tools / tooling</string>
+</resources>

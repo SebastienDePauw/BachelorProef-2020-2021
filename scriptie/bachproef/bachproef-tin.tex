@@ -8,7 +8,6 @@
 \usepackage{hogent-thesis-titlepage} % Titelpagina conform aan HOGENT huisstijl
 
 %%---------- Documenteigenschappen ---------------------------------------------
-% TODO: Vul dit aan met je eigen info:
 
 % De titel van het rapport/bachelorproef
 \title{Titel}
@@ -50,7 +49,7 @@
 
 %\selectlanguage{english}
 
-%---------- Titelblad ----------------------------------------------------------
+%---------- Titelblad ----------------------------------------------------------\cite{Flutter2021}
 \inserttitlepage
 
 %---------- Samenvatting, voorwoord --------------------------------------------
@@ -83,24 +82,17 @@
 
 %---------- Kern ---------------------------------------------------------------
 
-% De eerste hoofdstukken van een bachelorproef zijn meestal een inleiding op
-% het onderwerp, literatuurstudie en verantwoording methodologie.
-% Aarzel niet om een meer beschrijvende titel aan deze hoofstukken te geven of
-% om bijvoorbeeld de inleiding en/of stand van zaken over meerdere hoofdstukken
-% te verspreiden!
-
 \input{inleiding}
 \input{standvanzaken}
 \input{methodologie}
-
-% Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
-% vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
-% elke fase in je onderzoek in een apart hoofdstuk bespreken.
-
-%\input{...}
-%\input{...}
-%...
-
+\input{performantie}
+%\input{views}
+\input{asynchroon}
+\input{apis}
+\input{security}
+\input{complexiteit}
+\input{tooling} 
+\input{appendix}
 \input{conclusie}
 
 %%=============================================================================
@@ -120,7 +112,6 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 \input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
-% TODO: Voeg hier eventuele andere bijlagen toe
 %\input{...}
 
 %%---------- Referentielijst --------------------------------------------------
