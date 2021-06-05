@@ -1,26 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hello, World',
-      home: Hello(),
+void main() =>
+    runApp(
+      const Center(
+        child: Text('Hello, world!'),
+      ),
     );
-  }
-}
-
-class Hello extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('hello_world_flutter')),
-      body: Text('Hello, world!'),
-    );
-  }
-}
 
