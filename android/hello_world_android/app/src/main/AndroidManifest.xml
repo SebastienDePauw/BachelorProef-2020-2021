@@ -3,7 +3,6 @@
     package="com.example.hello_world_android">
 
     <application
-        android:icon="@mipmap/ic_launcher"
         android:label="hello_world_android"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity android:name=".MainActivity">
