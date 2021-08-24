@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_homeFragment_to_hoofdstuk1Fragment"
             app:destination="@id/hoofdstuk1Fragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tyres"
+            app:destination="@id/tyres" />
     </fragment>
     <fragment
         android:id="@+id/hoofdstuk1Fragment"
@@ -52,7 +55,11 @@
     <fragment
         android:id="@+id/hoofdstuk4Fragment"
         android:name="com.example.thesis_app.ui.hoofdstuk4.fragment.Hoofdstuk4Fragment"
-        android:label="Hoofdstuk4Fragment" />
+        android:label="Hoofdstuk4Fragment" >
+        <action
+            android:id="@+id/action_hoofdstuk4Fragment_to_test"
+            app:destination="@id/test" />
+    </fragment>
     <fragment
         android:id="@+id/hoofdstuk5Fragment"
         android:name="com.example.thesis_app.ui.hoofdstuk5.fragment.Hoofdstuk5Fragment"
@@ -73,4 +80,9 @@
         android:id="@+id/hoofdstuk9Fragment"
         android:name="com.example.thesis_app.ui.hoofdstuk9.fragment.Hoofdstuk9Fragment"
         android:label="Hoofdstuk9Fragment" />
+    <activity
+        android:id="@+id/tyres"
+        android:name="com.example.thesis_app.ui.hoofdstuk4.fragment.tyres"
+        android:label="test"
+        tools:layout="@layout/test" />
 </navigation>

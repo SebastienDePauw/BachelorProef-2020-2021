@@ -1,9 +1,12 @@
 package com.example.thesis_app.ui.hoofdstuk4.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.thesis_app.R
@@ -34,6 +37,17 @@ class Hoofdstuk4Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Button>(R.id.button5).setOnClickListener { click -> runnableExample() }
+    }
+
+    fun runnableExample(){
+        val runnable = Runnable {
+            // Long running task
+        }
+
+        Handler().post(runnable)
+
+        Thread(runnable).start()
     }
 
     // region ViewModel observers

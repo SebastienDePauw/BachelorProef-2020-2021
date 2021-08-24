@@ -4,14 +4,14 @@
 
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}
 \label{ch:inleiding}
-De impact van mobiele applicaties (apps) op ons alledaags leven is niet te onderschatten. Ze zijn de dag van vandaag niet meer weg te denken. Dit komt door de grote toename in de verkoop van smartphones. Ongeveer 40\% van de wereldbevolking beschikt over een smartphone en in 2020 gingen 1.38 miljard nieuwe toestellen de deuren uit. De toename in verkochte smartphones leidt tot een grotere markt voor apps. Dit hebben softwarebedrijven niet over het hoofd gezien. Het aantal applicaties aanwezig op de iOS App Store en de Google Play Store, is in de voorbije tien jaar respectievelijk vertwintig- en verdertigvoudigd. Elke smartphone maakt gebruik van een besturingssysteem, dit is de software die de hardware aanstuurt. Tegenwoordig is er een oligopolie van twee spelers op de markt van smartphone besturingssystemen (vanaf nu OS voor Operating System). Apple ontwikkelde hun eigen OS genaamd iOS terwijl de meeste andere merken zoals Samsung en OnePlus gebruik maken van het Android OS. Elk OS heeft een verschillende manier van applicatieontwikkeling. In de meeste gevallen zullen app eigenaars met hun applicatie een zo breed mogelijk publiek willen bereiken. Hierdoor zullen ze apps moeten ontwikkelen voor zowel iOS en Android.
+De impact van mobiele applicaties (apps) op ons alledaags leven is niet te onderschatten. Ze zijn de dag van vandaag niet meer weg te denken. Dit komt door de grote toename in de verkoop van smartphones. Ongeveer 40\% van de wereldbevolking beschikt over een smartphone en in 2020 gingen 1.38 miljard nieuwe toestellen de deuren uit. De toename in verkochte smartphones leidt tot een grotere markt voor apps. Dit hebben softwarebedrijven niet over het hoofd gezien. Het aantal applicaties aanwezig op de iOS App Store en de Google Play Store, is in de voorbije tien jaar respectievelijk vertwintig- en verdertigvoudigd. Elke smartphone maakt gebruik van een besturingssysteem, dit is de software die de hardware aanstuurt. Tegenwoordig is er een oligopolie van twee spelers op de markt van smartphone besturingssystemen (vanaf nu OS voor Operating System). De eerste speler, Apple ontwikkelde hun eigen OS genaamd iOS terwijl de meeste andere merken zoals Samsung en OnePlus gebruik maken van het Android OS. Elk OS heeft een verschillende manier van applicatieontwikkeling. In de meeste gevallen zullen app eigenaars met hun applicatie een zo breed mogelijk publiek willen bereiken. Hierdoor zullen ze apps moeten ontwikkelen voor zowel iOS en Android.
 
 \newpage
 \textbf{Wat is Native Development?}\\
-Als het ontwikkelingsteam kiest om een applicatie native te gaan ontwikkelen dan wil dit zeggen dat een aparte codebase (verklaren) moet ontwikkeld worden voor elk mobiel besturingssysteem waar de app moet op kunnen draaien. Verschillende codebases wil zeggen meer ontwikkelings- en onderhoudswerk maar geeft anderzijds wel een optie tot een native- design en gedrag per codebase.
+Als het ontwikkelingsteam kiest om een applicatie \textit{native} te gaan ontwikkelen dan wil dit zeggen dat een aparte \textit{codebase} (een verzameling broncode die gebruikt wordt om een ​​bepaald softwaresysteem, applicatie of softwarecomponent te bouwen) moet ontwikkeld worden voor elk mobiel besturingssysteem waar de app moet op kunnen draaien. Verschillende codebases wil zeggen meer ontwikkelings- en onderhoudswerk maar geeft anderzijds wel een optie tot een native- design en gedrag per codebase.
 
 \textbf{Wat is Cross-platform Development?}\\
-Een andere aanpak is het ontwikkelen van een cross-platform app. Dit is het schrijven van één codebase die kan gecompileerd (vertaald) worden naar verschillende besturingssystemen. Het is een optie die de laatste jaren meer en meer gekozen wordt. De voor- en nadelen die hiervoor zijn aangehaald, draaien zich om. Een enkele codebase is goedkoper om te bouwen en te onderhouden maar dit moet dan ook afgewogen worden tegen het laten van native- designs en gedrag. Er zijn verschillende ontwikkeltools gemaakt voor het maken van cross-platform apps. Een paar van de grootste zijn React Native, Xamarin, Flutter en Ionic.
+Een andere aanpak is het ontwikkelen van een cross-platform app. Dit is het schrijven van één codebase die kan gecompileerd worden naar verschillende besturingssystemen. Het is een optie die de laatste jaren meer en meer gekozen wordt. De voor- en nadelen die hiervoor zijn aangehaald, draaien zich om. Een enkele codebase is goedkoper om te bouwen en te onderhouden maar dit moet dan ook afgewogen worden tegen het laten van native- designs en gedrag. Er zijn verschillende ontwikkeltools gemaakt voor het maken van cross-platform apps. Een paar van de grootste zijn React Native, Xamarin, Flutter en Ionic.
 
 \textbf{Wat is Flutter}\\
 Flutter is een Google UI toolkit voor het bouwen van mooie, bijna natively gecompileerde apps voor mobiel, web, en desktop en dit alles van één enkele codebase. Flutter kondigde op 3 maart 2021 hun nieuwe update aan die hen weer een stap in de goede richting duwde. Dit is onder andere te danken aan de grote steun en de snelle tractie van het platform in de voorbije jaren. Flutter is opensource wat wil zeggen dat ze hun broncode openstellen voor het publiek, waardoor iedereen het kan bekijken. Zo kunnen verbeteringen worden gedaan door eindgebruikers die het beste voor hebben met het platform. Als Flutter deze verbeteringen goedkeurt worden deze opgenomen in de broncode en beschikbaar gesteld voor iedereen.
@@ -20,25 +20,21 @@ Flutter is een Google UI toolkit voor het bouwen van mooie, bijna natively gecom
 Flutter en Android zijn beiden ontwikkeld door Google. Alhoewel Flutter relatief jong is, kan dit niet gezegd worden van native Android. Het platform kende al veel updates en staat al lang niet meer in zijn jonge schoentjes. Vandaar dat het toetsen van deze twee een interessante kijk kan geven op het jonge flutter platform. De Flutter applicatie zal geschreven worden voor- en alleen gecompileerd worden naar Android. De sterkte van Cross-platform development is natuurlijk één codebase voor verschillende besturingssystemen, maar voor dit onderzoek is alleen Android van belang. Het onderzoek zal rekening houden met het geschreven aantal lijnen code per uitgewerkt hoofdstuk. Als het onderzoek rekening moet houden met iOS brengt dat het evenwicht uit balans.
 
 \textbf{Waarom Kotlin Android en geen Java Android?}\\
-Deze keuze is voor velen persoonlijk alhoewel hier ook onderzoek naar verricht is. In deze studie wordt Kotlin gebruikt omdat de syntax van de taal zal helpen bij het intomen van het aantal lijnen code. Hoe minder lijnen code, hoe eenvoudiger en overzichtelijker de app. Het is voor velen dan ook de voorkeurstaal om Android-applicaties in te ontwikkelen. Dit onderzoek zal geen stap voor stap uitleg inhouden van hoe de code in elkaar zit. Het doel is een vergelijking schetsen tussen Flutter en Android. De code die wordt geschreven zal dus alleen worden aangehaald indien dit relevant is voor de studie.
+Deze keuze is voor velen persoonlijk alhoewel hier ook onderzoek naar verricht is. In deze studie wordt Kotlin gebruikt omdat de syntax van de taal zal helpen bij het intomen van het aantal lijnen code. Hoe minder lijnen code, hoe eenvoudiger en overzichtelijker de app. Het is voor velen dan ook de voorkeurstaal om Android applicaties in te ontwikkelen. Dit onderzoek zal geen stap voor stap uitleg inhouden van hoe de code in elkaar zit. Het doel is een vergelijking schetsen tussen Flutter en Android. De code die wordt geschreven zal dus alleen worden aangehaald indien dit relevant is voor de studie.
 
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}
 \label{sec:probleemstelling}
-
 Het te onderzoeken domein kwam vanuit Next Apps. Een native app ontwikkelingsbedrijf uit Lokeren dat zich specialiseert in Android en iOS watch, phone en tablet apps. Zij merken dat niet alle klanten op de hoogte zijn van het hoge kostenplaatje van een native ontwikkelde app. Om in de toekomst een middenweg te vinden en de kost van een kleine app te dempen, denken zij erover om sommige apps cross-platform te gaan ontwikkelen. Bij het onderzoeken van de cross-platform markt kwamen ze Flutter tegen, het nieuwe platform met veel potentieel. Daarom werd de vraag gesteld om de stand van het Flutter platform te onderzoeken. Met deze scriptie hopen ze een duidelijk beeld te krijgen op de limieten en mogelijkheden van het framework.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}
 \label{sec:onderzoeksvraag}
-
 \subsection{Hoofdonderzoeksvraag}
-
 \textbf{Wat zijn de voor- en nadelen van app ontwikkeling in Flutter in vergelijking met native Android?}\\
-Het onderzoek zal zich vooral richten op het vinden van een antwoord op deze hoofdvraag. Aan de hand van deze kan een duidelijk beeld worden geschetst van de huidige stand van Flutter in vergelijking met Android. Hierbij wordt gelet op de ontwikkelingstijd van de features, de complexiteit van de code, het aantal lijnen geschreven lijnen code…
-Hypothese: de voorkeur van ontwikkelingsplatform zal hoogstwaarschijnlijk afhangen van de soort app die ontwikkeld moet worden. Een grotere app met veel features zal eerder native ontwikkeld worden, terwijl kleinere apps die weinig native gedrag kunnen bevatten waarschijnlijk cross-platform ontwikkeld zullen worden.
+Het onderzoek is gericht op het vinden van een antwoord op de hoofdvraag. Het antwoord op deze vraag schetst een duidelijk beeld van de huidige stand van Flutter in vergelijking met Android. Hierbij wordt gelet op de ontwikkelingstijd van de features, de complexiteit van de code, het aantal lijnen geschreven lijnen code.
+Hypothese: de voorkeur van ontwikkelingsplatform zal hoogstwaarschijnlijk afhangen van het soort app dat ontwikkeld moet worden. Een grotere app met veel features zal eerder native ontwikkeld worden, terwijl kleinere apps die weinig native gedrag kunnen bevatten waarschijnlijk cross-platform ontwikkeld zullen worden.
 
 \subsection{Deelonderzoeksvragen}
-
 \textbf{Is Flutter al matuur genoeg om te aanschouwen als volwaardig alternatief op native app ontwikkeling?}\\
 Deze vraag biedt een antwoord aan alle native app ontwikkelaars die denken om de overstap te maken naar cross-platform development. Het is belangrijk om een overzicht te krijgen in de limieten van een platform alvorens tijd en geld te investeren. 
 Hypothese: Flutter zal geen duidelijke standaard hebben. Best practices, goed ondersteunde libraries en coding principles zijn nog niet gedefinieerd door het platform waardoor het voor beginners onduidelijk zal lijken wat de beste manier van aanpak zal zijn. Ondanks de snelle groei en de grote steun van het platform wordt wel verwacht dat hier snel verandering in gebracht wordt.
@@ -46,17 +42,16 @@ Hypothese: Flutter zal geen duidelijke standaard hebben. Best practices, goed on
 \newpage
 \textbf{Is Flutter toegankelijk voor nieuwe ontwikkelaars?}\\
 Het proces van het ontwikkelen van de Flutter applicatie zal antwoord bieden op deze vraag. Voor velen is het moeilijk om te schakelen naar een nieuw platform met een nieuwe taal. Om deze overgang transparant te maken, wordt een beeld geschetst van de moeilijkheidsgraad van Flutter en Dart. Hierdoor kan de lezer zelf beslissen of hij deze keuze wil maken.
-Hypothese: voor ontwikkelaars met een Java of C++ achtergrond zou de Dart taal geen probleem mogen vormen. Ze hebben een gelijkaardige syntax. Verwachtingen van het Flutter platform liggen hoog. De snelle groei van de gebruikersbasis doet vermoeden dat het een toegankelijk platform is.
+Hypothese: voor ontwikkelaars met een Java of C++ achtergrond zou de Dart taal geen probleem mogen vormen. Ze hebben een gelijkaardige syntax. De verwachtingen van het Flutter platform liggen hoog. De snelle groei van de gebruikersbasis doet vermoeden dat het een toegankelijk platform is.
 
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}
 \label{sec:onderzoeksdoelstelling}
+Zoals hiervoor vermeld zal in deze scriptie onderzoek worden gedaan naar de voor- en nadelen van het Flutter framework. Om dit op een duidelijke manier te doen, zal het framework getoetst worden aan native Android. Door het jonge platform af te wegen tegen het ontwikkelde native tegengestelde, wordt gehoopt op een duidelijk beeld van Flutter. Het zal interessant zijn om te weten of het platform te kort doet aan native Android. Het is interessant om weten of de gevestigde waarde Android zijn troeven kan uitspelen tegenover de nieuwkomers. Het onderzoek wordt gevoerd aan de hand van een vergelijkende studie.
 
-Zoals hiervoor vermeld zal dit onderzoek de voor- en nadelen van het Flutter framework proberen vinden. Om dit op een duidelijke manier te doen, zal het framework getoetst worden aan native Android. Door het jonge platform af te wegen tegen het ontwikkelde native tegengestelde, wordt gehoopt op een duidelijk beeld van Flutter. Het zal interessant zijn om te weten of het platform te kort doet aan native Android, want deze dure tegenhanger moet zo goed mogelijk zijn troeven uitspelen om niet ten onder te gaan aan het goedkope alternatief. Het onderzoek wordt gevoerd aan de hand van een vergelijkende studie.
+Voor het onderzoek werden twee paar identieke applicaties ontwikkeld. Al deze applicaties werden ontwikkeld in Android Studio. Beide paren bevatten één applicatie geschreven in de Kotlin taal voor native Android en één in Dart taal voor Flutter. Door het ontwikkelproces van de Flutter apps af te toetsen tegen dat van de native Android apps zal een beeld worden geschetst van de stand van het Flutter framework. Met dit beeld zal dan een antwoord gevormd worden op de onderzoeksvraag.
 
-Voor het onderzoek worden twee identieke applicaties ontwikkeld. Beide applicaties zullen ontwikkeld worden in Android Studio maar de ene zal geschreven worden in Kotlin terwijl de andere geschreven wordt in Dart. Door het ontwikkelproces van de Flutter app af te toetsen tegen dat van de native Android app zal hopelijk een beeld worden geschetst van de stand van het Flutter framework. Met dit beeld zal dan een antwoord gevormd worden op de onderzoeksvraag.
-
-Dit onderzoek gaat gepaard met een deadline, deze tijdsdruk zorgt ervoor dat een aantal criteria moeten gesteld worden alvorens te starten. Deze criteria zorgen voor een kwaliteitsvol eindresultaat in een haalbaar tijdsbestek. Het eerste aantal criteria gaat over de performantie van de twee apps. Dit criterium wordt verder onderverdeeld in drie verschillende criteria. Allereerst wordt gekeken naar de opstartsnelheid van de apps. Vervolgens wordt de grootte van de uitvoeringsbestanden bekeken. Als laatste wordt gekeken naar het CPU gebruik van beide apps. De volgende criteria is creatie van views, hier wordt gekeken hoe een layout zich vertaalt naar een view. Hoe complexe views gemaakt worden en wat de mogelijkheden en grenzen zijn van cross-platform layouts.
+Dit onderzoek gaat gepaard met een deadline, deze tijdsdruk zorgt ervoor dat een aantal criteria moeten gesteld worden alvorens te starten. Deze criteria zorgen voor een kwaliteitsvol eindresultaat in een haalbaar tijdsbestek. Het eerste aantal criteria gaat over de performantie van de twee apps. Dit criterium wordt verder onderverdeeld in drie verschillende criteria. Allereerst wordt gekeken naar de opstartsnelheid van de apps. Vervolgens wordt de grootte van de uitvoeringsbestanden bekeken. Als laatste wordt gekeken naar het CPU gebruik van beide apps. De volgende worden hieronder kort aangehaald.
 
 Het beoogde resultaat van de studie biedt een antwoord op alle onderzoeksvragen. Indien dit lukt, kan de studie als succesvol worden beschouwd, anders zal een suggestie worden gedaan voor toekomstig bijkomend onderzoek.
 
@@ -72,19 +67,17 @@ Hoofdstuk~\ref{ch:stand-van-zaken} Stand van zaken: bevat een literatuurstudie. 
 
 Hoofdstuk~\ref{ch:methodologie} Methodologie: omschrijft hoe het onderzoek in zijn werk zal gaan. De opzetting van het onderzoek en het onderzoek zelf zullen duidelijk toegelicht worden.
 
-Hoofdstuk~\ref{ch:performantie} Performantie
+Hoofdstuk~\ref{ch:performantie} Performantie: schetst een vergelijking tussen de platformen op basis van performantie criteria. Dit hoofdstuk is verder onderverdeeld in sub-criteria.
 
-Hoofdstuk~\ref{ch:views} Creatie van views:
+Hoofdstuk~\ref{ch:asynchroon} Asynchroon werken: vergelijkt de meest gebruikte manieren van asynchroon werken in beide platformen.
 
-Hoofdstuk~\ref{ch:asynchroon} Asynchroon werken:
+Hoofdstuk~\ref{ch:api} Gebruik van online API’s: bekijkt de werking van http verzoeken voor beide platformen.
 
-Hoofdstuk~\ref{ch:api} Gebruik van API’s:
+Hoofdstuk~\ref{ch:security} App veiligheid: omvat een lijst van best-practices met daarbij kort uitgelegd hoe ze geïmplementeerd dienen te worden in beide platformen.
 
-Hoofdstuk~\ref{ch:security} Security:
+Hoofdstuk~\ref{ch:complexiteit} Code complexiteit: kijkt naar de code complexiteit van beide platformen aan de hand van de geschreven applicaties.
 
-Hoofdstuk~\ref{ch:complexiteit} Beschikbare libraries en code complexiteit:
-
-Hoofdstuk~\ref{ch:tooling} Tooling:
+Hoofdstuk~\ref{ch:tooling} Tooling: omvat een lijst van meest gebruikte command line tools voor elk platform en vergelijkt de tooling opties.
 
 Hoofdstuk~\ref{ch:appendix}Appendix: zal verdere uitleg bieden rond bepaalde onderwerpen voor de geïnteresseerde lezer.
 

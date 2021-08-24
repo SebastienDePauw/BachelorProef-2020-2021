@@ -4,7 +4,7 @@ void main() => runApp(
       const Center(
         child: Text(
           'Hello, world!',
-          key: Key('title'),
+          key: ValueKey('title'),
           textDirection: TextDirection.ltr,
         ),
       ),
