@@ -7,12 +7,11 @@ import 'package:thesis_experiment/src/h5.dart';
 import 'package:thesis_experiment/src/h6.dart';
 import 'package:thesis_experiment/src/h7.dart';
 import 'package:thesis_experiment/src/h8.dart';
-import 'package:thesis_experiment/src/h9.dart';
 
 class Home extends StatelessWidget {
   final List<String> data = <String>[
     "Chapter 1 Executable size",
-    "Chapter 2 Start-up performance ",
+    "Chapter 2 Start-up performance",
     "Chapter 3 CPU usage",
     "Chapter 4 Asynchronous",
     "Chapter 5 API's",

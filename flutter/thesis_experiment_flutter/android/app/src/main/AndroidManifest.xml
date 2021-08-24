@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thesis_experiment">
+    <uses-permission android:name="android.permission.CAMERA"/>
    <application
         android:label="thesis_experiment"
         android:icon="@mipmap/ic_launcher">

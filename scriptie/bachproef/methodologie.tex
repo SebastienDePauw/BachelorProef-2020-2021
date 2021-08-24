@@ -10,53 +10,55 @@
 %% op deze manier te werk gegaan bent. Je moet kunnen aantonen dat je de best
 %% mogelijke manier toegepast hebt om een antwoord te vinden op de
 %% onderzoeksvraag.
-
 Om een antwoord te kunnen bieden op zowel de primaire, als de deelonderzoeksvragen, werd een onderzoek verricht. Dit onderzoek bestaat uit twee grote delen. Het eerste deel is de literatuurstudie die in vorig hoofdstuk beschreven werd. Het tweede deel is een experiment waaruit ondervindingen werden geanalyseerd en samengevat in volgende hoofdstukken. Om inzicht te krijgen in de opzet van het experiment wordt hieronder de opbouw hiervan uitgelegd. Ook wordt elk onderzoekscriterium toegelicht. 
 
 \section{Opzet Experiment}
 \label{sec:opzet-experiment}
-%TODO maak duidelijk dat lijnen code, complexiteit... allemaal onder een hoofdstuk vallen
 Zoals reeds vermeld, valt dit experiment onder het luik vergelijkende studie. Het gaat twee ontwikkeltechnieken met elkaar vergelijken. Om deze technieken op een correcte manier te vergelijken werden verschillende applicaties ontwikkeld.
 
 \textbf{Applicaties}\\
-Voor het experiment werden vier applicaties ontwikkeld. Twee applicaties met de Flutter stack en twee met de Android stack. Het eerste paar applicaties dat vergeleken werd waren de Hello world applicaties (zie appendix). Deze werden gebruikt om twee van de drie performantie criteria te onderzoeken. Voor het criterium CPU gebruik en de andere criteria werd een tweede paar applicaties ontwikkeld, verder onderzoeksapplicatie. Het ontwikkelproces van dit tweede paar applicaties werd aanschouwt als onderzoek.
+Voor het experiment werden vier applicaties ontwikkeld. Twee applicaties met de Flutter stack en twee met de Android stack. Het eerste paar applicaties dat vergeleken werd waren de Hello world applicaties. Deze werden gebruikt om twee van de drie performantie criteria te onderzoeken. Voor het criterium CPU gebruik en de andere criteria werd een tweede paar applicaties ontwikkeld, verder wordt hiernaar gerefereerd als onderzoeksapplicatie. Het ontwikkelproces van deze applicaties werd aanschouwt als onderzoek. De vergelijking van de resultaten vormde het antwoord op de onderzoeksvraag.
 
 \newpage
 \textbf{Omgeving}\\
-De applicaties werden ontwikkeld in de Android Studio Integrated Development Enviroment (IDE). Android Studio biedt de snelste tools voor het bouwen van apps op elk type Android-apparaat. Daarnaast werd tevens voor Android Studio gekozen gezien de uitgebreide mogelijkheden, het beperkt houden van ontwikkeltools alsook het gegeven dat deze applicatie gratis te gebruiken is. Een andere IDE die voor Android ontwikkeling gebruikt kan worden is IntelliJ IDEA. Voor Flutter ontwikkeling wordt de Visual Studio Code IDE ook veel gebruikt. Een vergelijking tussen de drie IDE’s valt echter buiten de scope van dit onderzoek. 
+De applicaties werden ontwikkeld in de Android Studio Integrated Development Enviroment (IDE). Android Studio biedt snelle tools voor het bouwen van apps op elk type Android-apparaat. Daarnaast werd tevens voor Android Studio gekozen gezien de uitgebreide mogelijkheden, het beperkt houden van ontwikkeltools alsook het gegeven dat dit platform gratis te gebruiken is. Andere mogelijke IDE's waren, voor Android IntelliJ IDEA en voor Flutter Visual Studio Code. Een vergelijking tussen deze IDE’s valt echter buiten de scope van dit onderzoek. 
 
 \textbf{Talen}\\
-De Android applicatie werd geschreven in de Kotlin taal. Kotlin is een gratis, open source programmeertaal ontworpen voor Java Virtual Machine en Android. De Flutter applicatie werd ontwikkeld worden in de Dart taal. Dit is een onafhankelijke taal maar ze wordt vooral gebruikt voor de ontwikkeling van Flutter applicaties.
+De Android applicatie werd geschreven in de Kotlin taal. Kotlin is een gratis, open source programmeertaal ontworpen door JetBrains voor Java Virtual Machine en Android. De Flutter applicatie werd ontwikkeld in de Dart taal. Dit is een onafhankelijke taal ontwikkeld door Google maar ze wordt vooral gebruikt voor de ontwikkeling van Flutter applicaties.
 
 \textbf{Lijnen code}\\
 Tijdens de uitwerking van elk onderzoekscriteria werd rekening gehouden met een aantal sub-criteria. Op basis van deze sub-criteria werd een conclusie gevormd over de toegankelijkheid van beide frameworks. Eerst werd gekeken naar het aantal geschreven lijnen code. Het aantal lijnen code staat niet garant voor een betere sensatie van de app. Doch is het interessant om te kijken welke zaken bij het ene platform al dan niet uitgebreider dienen geïmplementeerd te worden om hetzelfde resultaat te bekomen. 
 
-\textbf{Code complexiteit}\\
-Vervolgens werd gekeken naar de complexiteit van de geschreven code. Dit was interessant om een beeld te krijgen van de toegankelijkheid van de taal. Hier wordt een onderscheid gemaakt tussen de syntax van de taal, de gebruikte built-in functionaliteit en de documentatie hiervan. Code complexiteit gaat in vele gevallen gepaard met het aantal lijnen code. Eerst en vooral is het niet altijd beter om alles in één beknopte lijn code te schrijven. Het is zo dat bij het schrijven van applicaties, vaak samengewerkt wordt met anderen aan dezelfde code. Complexe code is moeilijker om lezen en kan soms verkeerd geïnterpreteerd worden. Het is dus niet verkeerd om soms een extra lijn code te schrijven voor de complexiteit te verminderen. Echter moet hier een gezonde middenweg in gezocht worden aangezien veel lijnen code ook voor een complexe codebase kan zorgen.
-
 \textbf{Libraries of packages}\\
-Libraries in Android en packages in Flutter zijn een belangrijk en extreem krachtig aspect van ontwikkeling. Een library of package (verder library), is een verzameling van code die bepaalde functionaliteit reeds uitgewerkt heeft en dus zorgt voor snelle herbruikbare code. Omdat dit de snelheid van ontwikkeling kan beïnvloeden en tevens de robuustheid van de applicatie kan verbeteren, is het belangrijk om hier ook aandacht aan te besteden. Libraries kunnen de robuustheid van een applicatie verbeteren gezien de meeste libraries vaak open source zijn. Op deze manier worden nieuwe functionaliteiten toegevoegd die nodig blijken in verschillende use cases.
-\newpage
-Het gebruik van libraries kan drastisch helpen met de code complexiteit en het aantal geschreven lijnen code. Libraries nemen vaak een deel van de complexe code op zich. Dit leidt tot minder en simpelere code. Echter is het niet altijd gemakkelijk om robuuste en goed ondersteunde libraries te vinden. Bij Android gaat dit al vlotter aangezien tijd heeft doen blijken welke libraries goed ondersteund werden en dus ook veel gekozen werden.
-
+Libraries in Android en packages in Flutter zijn een belangrijk en extreem krachtig aspect van ontwikkeling. Een library of package (verder library), is een verzameling van code die bepaalde functionaliteit reeds uitgewerkt heeft en dus zorgt voor snelle herbruikbare code. Omdat dit de snelheid van ontwikkeling kan beïnvloeden en tevens de robuustheid van de applicatie kan verbeteren, is het belangrijk om hier ook aandacht aan te besteden. Libraries kunnen de robuustheid van een applicatie verbeteren gezien de meeste libraries vaak open source zijn. Op deze manier worden nieuwe functionaliteiten toegevoegd die nodig blijken in verschillende use cases. Het gebruik van libraries kan drastisch helpen met de code complexiteit en het aantal geschreven lijnen code. Libraries nemen vaak een deel van de complexe code op zich. Echter is het niet altijd gemakkelijk om robuuste en goed ondersteunde libraries te vinden.
 
 \section{Onderzoekscriteria}
 \label{sec:onderzoekscriteria}
-%TODO uitleg over werking van hoofdstukken
-In volgende hoofdstukken worden de onderzoekscriteria uitgewerkt. Hieronder wordt uitgelegd hoe elk van deze criteria onderzocht werd.
+In volgende hoofdstukken worden de onderzoekscriteria één voor één onderzocht. De alinea hieronder legt uit hoe deze criteria werden opgebouwd en vergeleken.
 
-Onder het luik performantie vallen drie onderzoekscriteria. Deze worden ook wel de performantie criteria genoemd. Eerst hebben we de grootte van de uitvoeringsbestanden. Dit werd onderzocht aan de hand van de Hello World applicaties. Hierbij werden de groottes van de apk’s van beide apps vergeleken. Vervolgens werd de opstartsnelheid van de twee Hello world apps onderzocht. Hierbij werden beide applicaties x aantal keer geopend en werd telkens de duur van de opstartprocedure genoteerd. Hiervan werd uiteindelijk het gemiddelde genomen en deze bevindingen voor zowel Android als Flutter werden dan met elkaar vergeleken. Daarna werd het CPU gebruik van beide applicaties onderzocht. Hierbij werd gebruik gemaakt van de onderzoeksapplicatie.
+Onder het luik performantie vallen drie onderzoekscriteria. Deze worden ook wel de performantie criteria genoemd. Eerst hebben we de grootte van de uitvoeringsbestanden. Dit werd onderzocht aan de hand van de Hello World applicaties. Hierbij werden de groottes van de apk’s van beide apps vergeleken. Vervolgens werd de opstartsnelheid van de twee Hello world apps onderzocht. Hierbij werden beide applicaties x aantal keer geopend en werd telkens de duur van de opstartprocedure genoteerd. Hiervan werd uiteindelijk het gemiddelde genomen en deze bevindingen voor zowel Android als Flutter werden dan met elkaar vergeleken. Daarna werd het CPU gebruik van beide applicaties onderzocht. Hierbij werd gebruik gemaakt van de onderzoeksapplicatie. Hierbij werden de percentages van CPU gebruik genoteerd wanneer door de app gelopen werd en deze uiteindelijk vergeleken.
 
-Vervolgens werd de creatie van views onderzocht.
+Het volgende onderzochte criterium was het uit voeren van asynchrone taken binnen elk framework. Hierbij werden de verschillende manieren van asynchroon werken aangehaald voor elk framework. De voor- en nadelen van deze asynchrone ontwikkelmanieren werden opgesomd, uitgelegd, onderzocht en vergeleken op basis van hun voor- en nadelen.
 
-Het volgende onderzochte criterium was het uit voeren van asynchroon taken binnen elk framework. Hierbij werden de verschillende manieren van asynchroon werken aangehaald. De voor- en nadelen van deze asynchrone ontwikkelmanieren werden opgesomd en uiteindelijk werden met elkaar vergeleken. 
+Het criterium daarna was gebruik van online API's. In dit hoofdstuk werd gekeken naar de mogelijkheden voor beide frameworks om API calls uit te voeren. Werd op een gelijke manier aangepakt als het hoofdstuk ervoor, asynchrone taken. Deze twee hangen samen aangezien netwerk verzoeken best asynchroon worden uitgevoerd aangezien deze lang duren.
 
-Security
+Daarna werd het criterium app veiligheid onderzocht. Hier werden de best-practices rond app veiligheid opgelijst en onderzocht. Hier werden de verschillende manieren van implementatie van deze best-practices voor beide frameworks ook voorzien.
 
-Daarna werd gekeken naar de beschikbare libraries en code complexiteit
+Daarna werd gekeken naar code complexiteit. Dit hoofdstuk maakte een vergelijking op basis van een algoritme en diende te verduidelijken welk platform en taal toegankelijker is voor nieuwe ontwikkelaars.
 
-Beschikbare tools
+Als laatste werd tooling onderzocht. Dit hoofdstuk houdt een lijst van de belangrijkste CLI commando's in. Daaruit werd een vergelijking gemaakt tussen de frameworks en de mogelijkheden die ze bieden om taken zo wel/ zo niet uit te voeren via de command line.
 
 \section{Gebruikte hardware}
 \label{sec:hardware}
-%TODO hoofdstuk schrijven
+Voor dit onderzoek werd gebruik gemaakt van bepaalde hardware. Sommige resultaten van het onderzoek, zoals performantie, zijn voor een groot deel afhankelijk van de onderliggende hardware. Om hier dus een duidelijke kijk op te krijgen werd de voor dit onderzoek gebruikte hardware hieronder opgesomd. Voor dit onderzoek werd geen gebruik gemaakt van een fysiek toestel maar van een emulator. Een emulator is hardware of software die een computersysteem in staat stelt zich te gedragen als een ander computersysteem.\newpage
+
+\textbf{Computer:}\\
+Toestel: Macbook Pro 2019\\
+Processor: 2.6GHz 6-core Intel Code i7\\
+Geheugen: 6 GB 2667 MHz DDR4\\
+
+
+\textbf{Emulator:}\\
+Toestel: Pixel 4\\
+Android: 11.0, API level 30\\
+CPU: x86\_64\\

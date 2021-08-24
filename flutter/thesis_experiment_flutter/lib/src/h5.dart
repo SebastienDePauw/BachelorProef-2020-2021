@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thesis_experiment/src/APICachedNetworkImage.dart';
+import 'package:thesis_experiment/src/APIDio.dart';
+
+import 'APIHttp.dart';
 
 class H5 extends StatelessWidget {
   @override
@@ -9,53 +13,53 @@ class H5 extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Container(
-              height: 350,
-              width: 320,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.deepPurple,
-                  )),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(0, 50, 0, 30),
-                      child: Text('See console for output')),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    child: OutlinedButton(
-                        child: Text("GET with http"),
-                        onPressed: () => httpCall()),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    child: OutlinedButton(
-                        child: Text("GET with dio"),
-                        onPressed: () => dioCall()),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    child: OutlinedButton(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Container(
+                height: 350,
+                width: 320,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                  color: Colors.deepPurple,
+                )),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: OutlinedButton(
+                          child: Text("GET with http"),
+                          onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => APIHttp())),
+                        )),
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: OutlinedButton(
+                          child: Text("GET with dio"),
+                          onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => APIDio())),
+                        )),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: OutlinedButton(
                         child: Text("GET with cached_network_image"),
-                        onPressed: () => cniCall()),
-                  ),
-                ],
+                        onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => APICachedNetworkImage())),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
       ),
     );
   }
 }
-
-void httpCall(){}
-void dioCall(){}
-void cniCall(){}
