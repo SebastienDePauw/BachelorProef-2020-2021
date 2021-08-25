@@ -13,6 +13,29 @@ Het CPU gebruik wordt uitgedrukt in procent. Hoe hoger dit getal hoe meer CPU de
 
 Voor het onderzoek naar CPU gebruik werd voor Android gebruik gemaakt van de Android Profiler. Een krachtige monitoring tool die het mogelijk maakt om live CPU, geheugen, netwerk en batterij resources op te volgen. Meer specifiek werd gekeken naar de CPU Profiler. Voor Flutter werd gebruik gemaakt van de Flutter DevTools. Een uitgebreide tool die in Flutter 2.0 een grote update kende. Hiermee kunnen live zaken zoals logging, geheugen gebruik, CPU gebruik, netwerk requests… worden opgevolgd.
 
-
 \subsection{Resultaten}
-%TODO foto van grafiek, kan dit uitgedruk worden in waarden? Bekijk dit eens
+Zie tabel \ref{table:cpu}
+\begin{table}
+    \begin{center}
+        \caption{Opstartsnelheid}
+        \label{table:cpu}
+        \begin{tabular}{ | l | l | l |}
+            \hline
+            & \textbf{Android} & \textbf{Flutter}\\
+            \hline
+            \textbf{Hoogst} & \% & \%\\
+            \hline
+            \textbf{Laagst} & \% & \%\\
+            \hline
+            \textbf{Mediaan} & \% & \%\\
+            \hline
+            \textbf{Gemiddeld} & \% & \%\\
+            \hline
+            \textbf{Standaard afwijking} & \% & \%\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+Tabel \ref{table:cpu} laat zien dat Flutter en Android in dit criterium niet veel van elkaar verschillen. De Flutter applicatie had een lager maximaal CPU-gebruik, maar de native Android had een lagere gemiddelde waarde en beide hadden dezelfde laagste waarde. De Android-applicaties hadden over het algemeen in het begin hoge CPU-prestaties.

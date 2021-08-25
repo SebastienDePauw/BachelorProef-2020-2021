@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bap_experiment_android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Bap_experiment_android">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.hoofdstuk3.activity.Hoofdstuk3Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hoofdstuk4.activity.Hoofdstuk4Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hoofdstuk5.activity.Hoofdstuk5Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hoofdstuk6.activity.Hoofdstuk6Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.hoofdstuk7.activity.Hoofdstuk7Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hoofdstuk8.activity.Hoofdstuk8Activity"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

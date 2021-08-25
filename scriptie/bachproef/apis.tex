@@ -7,12 +7,12 @@
 \label{ch:api}
 Het developer vakjargon bevat een aantal veel voorkomende termen, één van deze is API. Een Application Programming Interface, of dus kortweg API, is software die het toelaat om verschillende applicaties of applicatielagen met elkaar te laten communiceren. Een van de primaire use cases waarvoor een API gebruikt wordt in de mobiele applicatie wereld, is die om de zogenaamde API calls uit te voeren. Het doel van deze API calls zijn om vanuit de mobiele applicatie, de API aan te spreken om data op te halen die vervolgens verwerkt en getoond kan worden. Een API zorgt er in dit geval voor dat een mobiele applicatie in connectie staat met de cloud. Naast het ophalen van data kan er vaak ook nieuwe data naar de API gestuurd worden, of kan bestaande data aangepast worden.
 
-Wanneer een app gebruik wilt maken van data die niet door de eindgebruiker is ingegeven moet een netwerkconnectie tot stand worden gebracht. Daarom is het voor elke nieuwe app ontwikkelaar belangrijk om op de hoogte te zijn van de werking hiervan.
+Wanneer een app gebruik wilt maken van data die niet door de eindgebruiker is ingegeven moet een netwerk connectie tot stand worden gebracht. Daarom is het voor elke nieuwe app ontwikkelaar belangrijk om op de hoogte te zijn van de werking hiervan.
 
 \section{Opzet}
 Voor dit deel van het onderzoek werd gebruik gemaakt van een online API en de al dan niet ingebouwde platform specifieke functionaliteiten voor het aanspreken van deze services. In de onderzoeksapplicatie werden verschillende API calls gedaan die later in dit hoofdstuk worden beschreven.
 
-Eén van de bekendere en gebruiksvriendelijkste API’s op het web is de PokéApi. Deze RESTful API, die informatie biedt omtrent allerlei Pokémon, is goed ondersteunt en duidelijk gedocumenteerd. Deze documentatie is te lezen op een overzichtelijke site.
+Eén van de bekendere en meest gebruiksvriendelijke API’s op het web is de PokéApi. Deze RESTful API, die informatie biedt omtrent allerlei Pokémon, is goed ondersteunt en duidelijk gedocumenteerd. Deze documentatie is te lezen op een overzichtelijke site.
 
 Tijdens het uitvoeren van dit experiment, werd gebruik gemaakt van zogenaamde data klassen. Deze klassen worden onder andere gebruikt om de verschillende objecten op te bouwen die terugkomen van de API. 
 
@@ -38,7 +38,7 @@ try {
 \end{lstlisting}
 
 \textbf{OKHttp:}\\
-Google besloot uiteindelijk om de goed ondersteunde OKHttp library op te nemen in Android. Hierdoor konden ze, zoals hiervoor vermeld, de Apache library deprecated maken. Ondertussen heeft de OKHttp library al een heleboel extra features die netwerking zoveel gemakkelijker maken. Zo voorziet de library een goede oplossing voor asynchrone requests die sinds Android 3.0 op een aparte thread moeten worden uitgevoerd. Om vergelijkbare logica met HttpUrlConnection te implementeren, zou een veel omvangrijkere implementatie moeten worden bedacht om AsyncTask-wrapper of afzonderlijke threads te gebruiken. Het wordt nog ingewikkelder als u functies zoals ‘cancelation’ en ‘connection pooling’ moet ondersteunen.
+Google besloot uiteindelijk om de goed ondersteunde OKHttp library op te nemen in Android. Hierdoor konden ze, zoals hiervoor vermeld, de Apache library deprecated maken. Ondertussen heeft de OKHttp library al een heleboel extra features die netwerken zoveel gemakkelijker maken. Zo voorziet de library een goede oplossing voor asynchrone requests die sinds Android 3.0 op een aparte thread moeten worden uitgevoerd. Om vergelijkbare logica met HttpUrlConnection te implementeren, zou een veel omvangrijkere implementatie moeten worden bedacht om AsyncTask-wrapper of afzonderlijke threads te gebruiken. Het wordt nog ingewikkelder als u functies zoals ‘cancelation’ en ‘connection pooling’ moet ondersteunen.
 
 \begin{lstlisting}[language=Kotlin, caption=Android OKHttp example]
 val client = OkHttpClient()
@@ -76,7 +76,8 @@ Response.ErrorListener {
 queue.add(stringRequest)
 \end{lstlisting}
 
-\textbf{Retrofit (square):}\\
+\textbf{Retrofit (square):}
+\\
 Retrofit is een speciale HTTP-client voor Android en Java. De type-safe client maakt verbinding met een REST-webservice door de API te vertalen naar Java-interfaces. Deze krachtige bibliotheek maakt het gemakkelijk om JSON- of XML-gegevens te gebruiken, parsed in Plain Old Java Objects. De open-source Retrofit heeft zijn basis bovenop enkele andere krachtige bibliotheken en tools. Het maakt gebruik van OKHttp om netwerkverzoeken af te handelen.
 
 \begin{lstlisting}[language=Kotlin, caption=Android Retrofit example]
@@ -134,7 +135,8 @@ Glide.with(itemView)
 .into(itemView.ivPhoto)
 \end{lstlisting}
 
-\textbf{Fresco (facebook):}\\
+\textbf{Fresco (facebook):}
+\\
 Fresco is een krachtig systeem voor het weergeven van afbeeldingen in Android-applicaties. Fresco zorgt voor het laden en weergeven van afbeeldingen. Het laadt afbeeldingen van het netwerk, lokale opslag of lokale bronnen en geeft een tijdelijke aanduiding weer totdat de afbeelding is aangekomen. Het heeft twee cacheniveaus; een in het geheugen en een andere in de interne opslag. In Android 4.x en lager plaatst Fresco afbeeldingen in een speciale regio van Android-geheugen. Hierdoor kan uw toepassing sneller werken - en veel minder vaak last hebben van de gevreesde OutOfMemoryError.
 
 \begin{lstlisting}[language=Kotlin, caption=Android Glide example]

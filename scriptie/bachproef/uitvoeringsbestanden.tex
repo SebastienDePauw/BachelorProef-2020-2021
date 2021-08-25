@@ -1,30 +1,146 @@
 \section{De grootte van de uitvoeringsbestanden}
 \label{sec:uitvoeringsbestanden}
-Een eerste factor welke invloed heeft op de performantie van een applicatie is de grootte van zijn uitvoeringsbestand. Het doel is om dit uitvoeringsbestand zo klein mogelijk te houden, zodat de gebruiker geheugen kan besparen op zijn toestel. Het is immers zo dat de prijs van high-end smartphones vandaag de dag vrij steil is. De consument kan bij het aanschaffen van een nieuw toestel vaak kiezen voor een bepaalde hoeveelheid opslag. Wanneer voor een toestel gekozen wordt met een vrij beperkte opslagcapaciteit en de gebruiker een aantal grote apps installeert, zal de opslagcapaciteit van het toestel vrij snel volledig ingenomen zijn. Dit heeft als gevolg dat een gebruiker bepaalde applicaties zal gaan verwijderen zodat hij terug ruimte kan creëren. Uit onderzoek bleek namelijk dat 1/2 van de applicaties verwijderd wordt wegens de grootte ervan. Dit is één van de redenen waarom het dus in de eerste plaats sowieso al een goed idee is om de app zo klein mogelijk te houden, maar de hoogste performantie te garanderen. 
+Het eerste performantie aspect dat onderzocht werd was de grootte van het uitvoeringsbestand. Het doel is om een uitvoeringsbestand zo klein mogelijk te houden, zodat de gebruiker geheugen kan besparen op zijn toestel. Het is immers zo dat de prijs van high-end smartphones vandaag de dag vrij steil is. De consument kan bij het aanschaffen van een nieuw toestel vaak kiezen voor een bepaalde hoeveelheid opslag. Wanneer voor een toestel gekozen wordt met een vrij beperkte opslagcapaciteit en de gebruiker een aantal grote apps installeert, zal de opslagcapaciteit van het toestel snel volledig ingenomen zijn. Dit kan tot gevolg hebben dat de gebruiker bepaalde applicaties zal gaan verwijderen zodat hij terug ruimte kan creëren. Uit onderzoek bleek namelijk dat 1/2 van de applicaties verwijderd wordt wegens de grootte ervan. Dit is één van de redenen waarom het dus in de eerste plaats sowieso al een goed idee is om de app zo klein mogelijk te houden, maar de hoogste performantie te garanderen. 
 
-Een andere reden is de maximale toegestane grote van de uitvoeringsbestanden opgelegd door de verschillende app stores. Om een applicatie om de Google Play Store te kunnen beschikbaar stellen, moet deze voldoen aan meerdere eisen. Een van deze eisen is dat het uitvoeringsbestand van de app maximaal 100 MegaByte bedraagt. Het doel van een applicatie beschikbaar te stellen op de Play Store is immers om een zo groot mogelijk doelpubliek aan te spreken, wanneer echter niet aan de eisen van de Play Store voldaan wordt, zal dit doelpubliek niet bereikt worden. In dit hoofdstuk zal gekeken worden naar de grootte van de uitvoeringsbestanden van respectievelijk de Flutter applicatie alsook de Android applicatie.
-
+Een andere reden is de maximale toegestane grote van de uitvoeringsbestanden opgelegd door de verschillende app stores. Om een applicatie om de Google Play Store te kunnen beschikbaar stellen, moet deze voldoen aan meerdere eisen. Een van deze eisen is dat het uitvoeringsbestand van de app maximaal 100MB bedraagt. Het doel van een applicatie beschikbaar te stellen op de Play Store is immers om een zo groot mogelijk doelpubliek aan te spreken, wanneer echter niet aan de eisen van de Play Store voldaan wordt, zal dit doelpubliek niet bereikt worden. In dit hoofdstuk zal gekeken worden naar de grootte van de uitvoeringsbestanden van respectievelijk de Flutter applicatie alsook de Android applicatie.
 
 \subsection{Opzet}
-Een uitvoeringsbestand, ook wel gekend als een executable, van een Android app kan verschillende bestandsformaten zijn. De twee meest gebruikte formaten zijn Android Package (APK) en App Bundle. Deze bestanden worden gebruikt om een Android applicatie uit te voeren. Voor dit onderzoek werd gefocust op het APK bestandsformaat.
+Een uitvoeringsbestand, ook wel gekend als een executable, van een Android app kan verschillende bestandsformaten zijn. De twee meest gebruikte formaten zijn Android Package (APK) en App Bundle. Deze bestanden worden gebruikt om een Android applicatie uit te voeren. Voor dit onderzoek werd gefocust op het APK bestandsformaat. 
 
-Voor dit onderzoek werden vier applicaties ontwikkeld en dus konden vier APK's gemaakt worden. Twee in native Android en twee in Flutter. Het eerste paar te vergelijken APK's waren van de Hello world applicaties en het tweede paar van de onderzoeksapplicaties. Om de verschillen tussen beide platformen te testen, werden tot tweemaal toe de verschillende tegenhangers tegenover elkaar geplaatst. De Flutter APK's werden met andere woorden vergeleken met hun native tegenhanger. 
+Ook werden voor dit onderzoek twee applicaties ontwikkeld en dus konden twee APK’s gemaakt worden. De eerste in native Android en de tweede in Flutter. Het te vergelijken paar APK’s waren van de Hello world applicaties. Om de verschillen tussen beide platformen te testen, werden de verschillende tegenhangers tegenover elkaar geplaatst. De Flutter APK werden met andere woorden vergeleken met hun native tegenhanger.
 
-Om de resultaten zo realistisch mogelijk te maken werd gekozen om voor de apps een release build te maken. Deze build zorgt ervoor dat de app zo compact mogelijk wordt gemaakt. Dit gebeurt door het opruimen en optimaliseren van code.
+Voor de meest bruikbare resultaten werd gekozen om voor de applicaties een release build te maken. Elke build is een verzameling van een aantal regels die worden toegepast op de code wanneer deze compileert. De release build is een verzameling van regels die de app zo compact mogelijk maakt. Dit gebeurt door het opruimen en optimaliseren van code. 
 
-Als laatste werd een opsomming gemaakt van de grootte van uitvoeringsbestanden over tijd. Dit beeld moet een inzicht geven in de evolutie van de frameworks.
+\textbf{Android}\\
+In Android gebeurt dit aan de hand van volgende lijnen code in het app build.gradle bestand.
+\begin{lstlisting} [language=Kotlin, caption={Android build.gradle (app)},  label={codevoorbeeld:build.gradle}]
+release {
+    minifyEnabled true
+    shrinkResources true
+    proguardFiles getDefaultProguardFile
+    ('proguard-android-optimize.txt'), 'proguard-rules.pro'
+}
+\end{lstlisting} 
 
+\textbf{Flutter}\\
+Voor een ideale Flutter release build wordt best gebruik gemaakt van onderstaande terminal commando’s. Het flutter clean commando zal het project kleiner maken door het verwijderen van de build en .dart-tool mappen. Het commando daarna maakt een release APK per ABI. De APK’s worden gesplitst per ABI omdat dit het uitvoeringsbestand aanzienlijk verkleint.\\
+\textit{flutter clean}\\
+\textit{flutter build apk --split-per-abi}\\
+De resultaten van het onderzoek zijn bekomen gebruik makend van de apkanalyzer, een ingebouwde Android Studio tool. 
+
+Als laatste werd een opsomming gemaakt van de grootte van Flutter uitvoeringsbestanden over tijd. Dit moet een inzicht bieden in de evolutie van Flutter.
 
 \subsection{Resultaten}
-%TODO
-\begin{center}
-    \begin{tabular}{ |c|c|c| }
+Een APK is een map of verzameling van bestanden. Al deze bestanden samen zorgen ervoor dat een applicatie kan worden uitgevoerd. Tabel \ref{table:maatstafUitvoeringsbestand} biedt inzicht in de gebruikte maatstaf.
+
+\begin{table}
+    \begin{center}
+        \caption{Gebruikte maatstaf uitvoeringsbestanden}
+        \label{table:maatstafUitvoeringsbestand}
+        \begin{tabular}{ |l|c|c| }
+            \hline
+            Bit & / & Binair getal, 1 of 0\\
+            \hline
+            Byte & B & 8 Bit \\ 
+            \hline
+            Kilobyte & KB &  \[10^{3}\]B\\ 
+            \hline
+            Megabyte & MB & \[10^{6}\]B \\ 
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\textbf{Android}
+Een Android app heeft geen minimum grootte voor het uitvoeringsbestand. Echter als de app op de Play Store dient gezet te worden moet deze minimum 7KB bedragen. Wanneer een nieuw Native Kotlin Android project wordt opgezet met één activity, zal dit automatisch een Hello World applicatie zijn. Als eerste stap in het onderzoek werd gekeken naar de omvang van deze APK. Volgens apkanalyzer was deze APK 3.2 MB in omvang en 2.6 MB voor de download. Vervolgens werd gekeken naar een verkleinde versie van de codebase waaruit de testing directories verwijderd werden samen met de bijhorende dependencies. Vervolgens werd minifyEnabled als ook shrinkResources op true gezet. Dit leidt tot een APK van 1.6 MB met een downloadgrootte van 1010.1KB.
+Voor een derde en finale versie van de APK werd de codebase nog extra verkleint. Dit betekende ook dat niet meer werd gewerkt volgens Android best practices. Tabel \ref{table:androidUitvoerinsbestanden} bevat de resultaten van dit onderzoek. De code voor deze template kan terug gevonden worden op GitHub repository.
+
+\begin{table}
+    \begin{center}
+        \caption{Grootte van de uitvoeringsbestanden in Android}
+        \label{table:androidUitvoerinsbestanden}
+    \begin{tabular}{ | l | m{3cm} | m{3cm} | }
         \hline
-        & \textbf{Android} & \textbf{Flutter}\\
+        & \textbf{APK size} & \textbf{Download Size}\\
         \hline
-        \textbf{Hello world} & Mb & Mb \\ 
+        META-INF & 3 KB & 3 KB\\ 
         \hline
-        \textbf{Onderzoeksapplicatie} & Mb & Mb \\ 
+        res & 123.7 Kb & 117 KB\\ 
+        \hline
+        AndroidManifest.xml & 721 B & 721 B\\ 
+        \hline
+        classes.dex & 293.9 KB & 293.1 KB\\ 
+        \hline
+        Resources.arsc & 222.6 KB & 51.7 KB\\ 
+        \hline
+        Kotlin & 9.1 KB & 9 KB\\ 
+        \hline
+        \hline
+        \textbf{Total} & \textbf{693.2 KB} & \textbf{476.1 KB} \\ 
         \hline
     \end{tabular}
 \end{center}
+\end{table}
+
+\textbf{Flutter}\\
+Flutter maakt gebruik van de Flutter Engine. (zie appendix \ref{sec:start-procedures}) Deze engine maakt deel uit van de APK en is nodig voor het gebruiken van een Flutter app. Deze engine bevat het gehele framework en is daarom een aantal megabyte groot. Dit maakt de Flutter APK al direct meerdere megabytes in omvang.
+Voor het eerste deel van het onderzoek werd gekeken naar een standaard versie van de Hello world template. Hierbij bevatte de main.dart file 26 lijnen code. Hierbij was de APK niet gesplitst op abi 15.5 MB groot terwijl de gesplitste APK 5.1 MB bedroeg voor de gewone ARM en 5.5 MB voor de ARM64. Vervolgens werd de applicatie herschreven met als doel een zo klein mogelijke APK. Hierbij was het main.dart bestand 12 lijnen code na het uitvoeren van een code format. De APK versie waarbij niet gesplitst werd per abi was 14 MB groot. De resultaten van de APK gesplitst op abi staan vermeld in tabel \ref{table:flutterUitvoeringsbestanden}. De code voor dit onderzoek kan terug gevonden worden op de GitHub repository.
+
+\begin{table}
+    \begin{center}
+        \caption{Grootte van de uitvoeringsbestanden in Flutter}
+        \label{table:flutterUitvoeringsbestanden}
+        \begin{tabular}{ | l | m{2.5cm} | m{2.5cm} | m{2.5cm} | m{2.5cm} | }
+            \hline
+            & \multicolumn{2}{|c|}{\textbf{ARM}} & \multicolumn{2}{|c|}{\textbf{ARM-64}}\\
+            \hline
+            & \textbf{APK Size} & \textbf{Download size} & \textbf{Apk Size} & \textbf{Download Size}\\ 
+            \hline
+            lib & 4.2 MB & 4.2 MB & 4.7 MB & 4.6 MB\\ 
+            \hline
+            assets & 183.4 KB & 183 KB & 183.4 KB & 183 KB\\ 
+            \hline
+            META-INF & 7.9 KB & 7.6 KB & 7.9 KB & 7.6 KB\\ 
+            \hline
+            res & 6.2 KB & 5.9 KB & 6.2 KB & 5.9 KB\\ 
+            \hline
+            AndroidManifest.xml & 1021 B & 1021 B & 1022 B & 1022 B\\ 
+            \hline
+            classes.dex & 121.7 KB & 121.3 KB & 121.7 KB & 121.3 KB\\ 
+            \hline
+            Resources.arsc & 22.6 KB & 3.8 KB & 22.6 KB & 3.8 KB\\ 
+            \hline
+            Kotlin & 9.7 KB & 9.7 KB & 9.7 KB & 9.7 KB\\ 
+            \hline
+            \hline
+            \textbf{Total} &  \textbf{4.6 MB} &  \textbf{4.5 MB} &  \textbf{5 MB} &  \textbf{5 MB}\\ 
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+Op de Flutter site staat een korte omschrijving van de downloadgrootte gemeten van een minimale Flutter-app (geen materiële componenten, slechts een enkele Center-widget, gebouwd met flutter build apk --split-per-abi), gebundeld en gecomprimeerd als een release-APK. Deze minimale downloadgrootte werd in 2018 verschillende malen verkleint en opnieuw gemeten. Tabel \ref{table:flutterUitvoeringsbestandenOverTijd} bundelt de resultaten van deze metingen.
+
+\begin{table}
+    \begin{center}
+        \caption{Grootte van de uitvoeringsbestanden in Flutter over tijd}
+        \label{table:flutterUitvoeringsbestandenOverTijd}
+        \begin{tabular}{ |l|c| }
+            \hline
+            \textbf{Tijd} & \textbf{Download Size}\\
+            \hline
+            Maart 2018 & 4.06 MB\\ 
+            \hline
+            Augustus 2018 & 4.20 MB\\ 
+            \hline
+            Begin Oktober 2018 & 4.28 MB\\ 
+            \hline
+            Eind Oktober 2018 & 4.48 MB\\ 
+            \hline
+            November 2018 & 4.70 MB\\ 
+            \hline
+            December 2018 & 6.70 MB\\ 
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}

@@ -10,78 +10,161 @@ Een CLI opdracht wordt dus uitgevoerd aan de hand van een commando.
 
 Nu is het mogelijk om een aantal extra commando’s te installeren die deel uitmaken van een overkoepelende tool. 
 
-Dit hoofdstuk onderzoek de verschillende commando’s van de Flutter tool en vergelijkt deze met de verschillende Android tools en hun gelijkende commando’s.
+Dit hoofdstuk onderzoek de verschillende commando’s van de Flutter tool en vergelijkt deze met de verschillende Android tools en hun gelijkende commando’s. \newpage
 
 \section{Opzet}
 Een Software Development Kit (SDK) is een verzameling softwareontwikkelingstools in één installeerbaar pakket. Ze vergemakkelijken het maken van applicaties door een compiler, debugger en misschien een softwareframework te bevatten. Ze zijn normaal gesproken specifiek voor een combinatie van hardwareplatform en besturingssysteem. Een SDK voorziet een set tools, bibliotheken, relevante documentatie, codevoorbeelden, processen en/of handleidingen waarmee ontwikkelaars softwaretoepassingen op een specifiek platform kunnen maken. 
 
 
+
 \section{Android}
 De Android SDK bestaat uit meerdere tools die nodig zijn voor app-ontwikkeling. De tools kunnen geinstalleerd en bijgewerkt worden met SDK Manager van Android Studio of de command line tool ‘sdkmanager’. Alle tools worden gedownload naar de Android SDK-map. Aangezien de aard van het onderzoek een vergelijkende studie is werden hier enkel de commando’s aangehaald met een Flutter tegengestelde. Het aanhalen van alle commando’s voor elke tool zou te veel en niet interessant zijn.
 
-\newpage
-
-    \begin{tabular}{ |p{3cm}|p{11cm}|  }
-        \hline
-        \multicolumn{2}{|c|}{\textbf{Android SDK Command-Line Tools}} \\
-        \multicolumn{2}{|c|}{(android\_sdk/cmdline-tools/version/bin/)} \\
-        \hline
-        apkanalyzer & Provides insight into the composition of your APK after the build process completes.\\
-        \hline
-        avdmanager & Allows you to create and manage Android Virtual Devices (AVDs) from the command line. \\
-        \hline
-        lint & A code scanning tool that can help you to identify and correct problems with the structural quality of your code. \\
-        \hline
-        retrace & For applications compiled by R8, retrace decodes an obfuscated stack trace that maps back to your original source code.\\
-        \hline
-        sdkmanager & Allows you to view, install, update, and uninstall packages for the Android SDK.\\
-        \hline
-    \end{tabular}
-
-    \begin{tabular}{ |p{3cm}|p{11cm}|  }
-    \hline
-    \multicolumn{2}{|c|}{\textbf{Android SDK Build Tools}} \\
-    \multicolumn{2}{|c|}{(android\_sdk/build-tools/version/)} \\
-    \hline
-    \multicolumn{2}{|c|}{This package is required to build Android apps. Most of the tools in here are invoked} \\
-    \multicolumn{2}{|c|}{by the build tools and not intended for you.} \\
-    \hline
-    aapt2 & Parses, indexes, and compiles Android resources into a binary format that is optimized for the Android platform and packages the compiled resources into a single output.\\
-    \hline
-    apksigner & Signs APKs and checks whether APK signatures will be verified successfully on all platform versions that a given APK supports.\\
-    \hline
-    zipalign & Optimizes APK files by ensuring that all uncompressed data starts with a particular alignment relative to the start of the file.\\
-    \hline
-\end{tabular}
-
-
-    \begin{tabular}{ |p{3cm}|p{11cm}|  }
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
     \hline
     \multicolumn{2}{|c|}{\textbf{Android SDK Command-Line Tools}} \\
     \multicolumn{2}{|c|}{(android\_sdk/cmdline-tools/version/bin/)} \\
     \hline
-    apkanalyzer & Provides insight into the composition of your APK after the build process completes.\\
+    apkanalyzer & Geeft inzicht in de opbouw van de APK nadat het build proces klaar is.\\
     \hline
-    avdmanager & Allows you to create and manage Android Virtual Devices (AVDs) from the command line. \\
+    avdmanager & Staat het toe om Android Virtual Devices (AVD's) te maken en beheren vanaf de command line.\\
     \hline
-    lint & A code scanning tool that can help you to identify and correct problems with the structural quality of your code. \\
+    lint & Scant de code en helpt bij het identificeren en corrigeren van problemen met de structurele kwaliteit.\\
     \hline
-    retrace & For applications compiled by R8, retrace decodes an obfuscated stack trace that maps back to your original source code.\\
-    \hline
-    sdkmanager & Allows you to view, install, update, and uninstall packages for the Android SDK.\\
+    sdkmanager & Staat het toe om Android SDK packages te installeren, te updaten en te verwijderen.\\
     \hline
 \end{tabular}
 
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Android SDK Build Tools}} \\
+    \multicolumn{2}{|c|}{(android\_sdk/build-tools/version/)} \\
+    \hline
+    \multicolumn{2}{|c|}{Deze package is vereist om Android apps te bouwen. De meeste tools in deze} \\
+    \multicolumn{2}{|c|}{package worden aangeroepen door de build-tools.} \\
+    \hline
+    aapt2 & Parses, indexes en compiles Android resources in een binair formaat dat is geoptimaliseerd voor het Android-platform en verpakt de gecompileerde resources in een enkele uitvoer.\\
+    \hline
+    apksigner & Ondertekend APK's en controleert of de APK handtekeningen met succes zullen worden geverifieerd op alle platform versies die een bepaalde APK ondersteunt.\\
+    \hline
+    zipalign & Optimaliseert APK-bestanden door ervoor te zorgen dat alle niet-gecomprimeerde gegevens beginnen met een bepaalde uitlijning ten opzichte van het begin van het bestand.\\
+    \hline
+\end{tabular}
 
-\newpage
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Android Emulator }} \\
+    \multicolumn{2}{|c|}{(android\_sdk/emulator/)} \\
+    \hline
+    \multicolumn{2}{|c|}{Deze package is vereist om de Android Emulator te gebruiken.} \\
+    \hline
+    emulator & Een op QEMU gebaseerde apparaat emulatie tool die kan gebruikt worden om de applicaties te debuggen en te testen in een echte Android-runtime omgeving.\\
+    \hline
+\end{tabular}
+
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Android SDK Platform Tools}} \\
+    \multicolumn{2}{|c|}{(android\_sdk/build-tools/version)} \\
+    \hline
+    \multicolumn{2}{|c|}{Deze tools worden bijgewerkt voor elke nieuwe versie van het Android-platform om} \\
+    \multicolumn{2}{|c|}{nieuwe functies te ondersteunen (en soms om de tools te verbeteren) en elke update} \\
+    \multicolumn{2}{|c|}{is achterwaarts compatibel met oudere platformversies.} \\
+    \hline
+    adb & Android Debug Bridge (adb) is een veelzijdige tool waarmee de status van een emulatori of Android-apparaat kan beheert worden. Het kan ook gebruikt worden om een ​​APK op een apparaat te installeren.\\
+    \hline
+    logcat & Is een tool die via adb wordt aangeroepen om app- en systeem logs te bekijken.\\
+    \hline
+\end{tabular}
 
 \section{Flutter}
 De Flutter command-line tool is hoe ontwikkelaars (en IDE’s aangestuurd door ontwikkelaars) omgaan met Flutter. 
 
 Voor het kunnen werken met Flutter moet dus eerst de Flutter SDK geïnstalleerd worden. Deze SDK bevat onder andere een aantal commando’s die kunnen uitgevoerd worden in de terminal. Flutter commando’s worden voorafgegaan door het flutter keyword. Zo weet het besturingssysteem dat een commando wordt gebruikt van de flutter tool.
 
-%%pub get & dart commando's
+De dart-tool is een command line interface voor de Dart SDK. De tool is beschikbaar, ongeacht hoe de Dart SDK gedownload werd (expliciete downloadt of alleen de Flutter SDK downloadt). Indien het mogelijk is om de flutter tool te gebruiken is dit het betere alternatief.
 
-Hieronder staat een lijst met de mogelijke flutter commando’s.
+Hieronder staat een lijst met de mogelijke flutter en dart commando’s.
+
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Flutter command-line tool}} \\
+    \multicolumn{2}{|c|}{(android\_sdk/build-tools/version)} \\
+    \hline
+    \multicolumn{2}{|c|}{Deze commando's worden als volgt opgebouwd: flutter <commando> <optie> <parameter> } \\
+    \hline
+    analyze & Analyseert de Dart broncode van het project. Gebruik dit in plaats van dartanalyzer.\\
+    \hline
+    assemble & Verzamel en maak Flutter resources.\\
+    \hline
+    attach & Verbind het toestel met een draaiende applicatie\\
+    \hline
+    build & Flutter build commando's\\
+    \hline
+    channel & Toont een lijst van mogelijke flutter channels, of verander van channel.\\
+    \hline
+    config & Configureer Flutter instellingen. Om een ​​instelling te verwijderen, configureer deze als een lege string.\\
+    \hline
+    create & Maakt een nieuw project aan.\\
+    \hline
+    devices & Maakt een lijst van alle aangesloten apparaten.\\
+    \hline
+    doctor & Toont informatie over de geïnstalleerde tooling.\\
+    \hline
+    downgrade & Downgrade Flutter naar de laatste actieve versie voor de huidige channel.\\
+    \hline
+    drive & Voert Flutter Driver-tests uit voor het huidige project.\\
+    \hline
+    emulators & Lijst, start en maak emulators.\\
+    \hline
+    format & Formateert Flutter broncode. Gebruik dit in plaats van dartfmt.\\
+    \hline
+    gen-l10n & Genereert localizations voor het Flutter-project.\\
+    \hline
+    install & Installeer een Flutter app op een aangesloten apparaat.\\
+    \hline
+    logs & Toon log uitvoer voor draaiende Flutter apps.\\
+    \hline
+    pub & Werkt met packages.\\
+    \hline
+    run & Voert een Flutter applicatie uit\\
+    \hline
+    symbolize & Symboliseer een stacktracering van de door AOT gecompileerde Flutter applicatie.\\
+    \hline
+    test & Voert tests uit in de huidige package.\\
+    \hline
+    upgrade & Upgrade Flutter.\\
+    \hline
+\end{tabular}
+
+\begin{tabular}{ |p{3cm}|p{11cm}|  }
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Dart command-line tools}} \\
+    \multicolumn{2}{|c|}{(bin/dart)} \\
+    \hline
+    \multicolumn{2}{|c|}{Deze commando's worden als volgt opgebouwd: dart <commando> <optie> <parameter> } \\
+    \hline
+    analyze & Analyseert de Dart broncode van het project.\\
+    \hline
+    compile & Compileert Dart naar verschillende formaten.\\
+    \hline
+    create & Maakt een nieuw project\\
+    \hline
+    fix & Past geautomatiseerde oplossingen toe op de Dart broncode.\\
+    \hline
+    format & Formatteert Dart broncode.\\
+    \hline
+    migrate & Ondersteunt migratie naar null-safety.\\
+    \hline
+    pub & Werkt met packages.\\
+    \hline
+    run & Voert een Dart progamma uit\\
+    \hline
+    test & Voert tests uit in de huidige package\\
+    \hline
+    (leeg) & Voert een Dart-programma uit; identiek aan de reeds bestaande Dart VM-opdracht.\\
+    \hline
+\end{tabular}
 
 \section{Conclusie}
+Aangezien Flutter geen toegewijde IDE heeft moeten meer commando's uitgevoerd worden in de terminal. 

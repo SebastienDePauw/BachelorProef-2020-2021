@@ -5,8 +5,65 @@
 
 \chapter{\IfLanguageName{dutch}{Code Complexiteit}{Code Complexity}}
 \label{ch:complexiteit}
-In dit hoofdstuk werd gekeken naar de complexiteit van de geschreven code. Dit schetst namelijk een goed beeld van de toegankelijkheid van de taal. Hier wordt een onderscheid gemaakt tussen de syntax van de taal, de gebruikte built-in functionaliteit en de documentatie hiervan. Code complexiteit gaat in vele gevallen gepaard met het aantal lijnen code. Eerst en vooral is het niet altijd beter om alles in één beknopte lijn code te schrijven. Het is zo dat bij het schrijven van applicaties, vaak samengewerkt wordt met anderen aan dezelfde code. Complexe code is moeilijker om lezen en kan soms verkeerd geïnterpreteerd worden. Het is dus niet verkeerd om soms een extra lijn code te schrijven voor de complexiteit te verminderen. Echter moet hier een gezonde middenweg in gezocht worden aangezien veel lijnen code ook voor een complexe codebase kan zorgen.
+In dit hoofdstuk werd gekeken naar de complexiteit van de geschreven code. Dit schetst een beeld van de toegankelijkheid van de taal. Code complexiteit gaat in vele gevallen gepaard met het aantal lijnen code. Eerst en vooral is het niet altijd beter om alles in één beknopte lijn code te schrijven. Het is zo dat bij het schrijven van applicaties, vaak samengewerkt wordt met anderen aan dezelfde code. Complexe code is moeilijker om lezen en kan soms verkeerd geïnterpreteerd worden. Het is dus niet verkeerd om soms een extra lijn code te schrijven voor de complexiteit te verminderen. Echter moet hier een gezonde middenweg in gezocht worden aangezien veel lijnen code ook voor een complexe codebase kan zorgen.
 
 \section{Opzet}
+Er zijn verschillende manieren om de code complexiteit van een stuk code te bepalen. Veel van deze, hoewel ze een goede weergave van complexiteit opleveren, lenen zich niet voor gemakkelijke meting. Enkele van de meest gebruikte statistieken zijn:
+\begin{itemize}
+    \item Cyclomatic complexity
+    \item Halstead complexity measures
+    \item Essential complexity
+\end{itemize}
+Echter werd in dit onderzoek geen gebruik gemaakt van deze algoritmes. 
+
+Voor dit deel van het onderzoek werd een notificatie lijst gemaakt. De opbouw van de code, het aantal lijnen code, de
+
 \section{Resultaten}
+Als we naar de resultaten als geheel kijken, wint Flutter de meeste categorieën in het ontwikkelingsgebied. Er zijn echter enkele verschillen die interessant zijn om op te letten bij het vergelijken van Flutter met native builds.
+
+\begin{figure}
+    \caption{Android activity code snippet voor het maken van een notificatielijst.}
+    \centering
+\includegraphics[width=15cm]{h8AndroidFragment.png}
+\end{figure}
+
+\begin{figure}
+    \caption{Flutter code snipper voor het maken van een notificatielijst.}
+    \centering
+    \includegraphics[width=15cm]{h8Flutter.png}
+\end{figure}
+
+\textbf{Code size}\\
+Zoals te zien is in figuur 8, had Flutter het minste aantal coderegels en bestanden die nodig waren om de applicatie te maken. Native iOS had de laagste grootte van projectbestanden en app-grootte, maar een aanzienlijk groter aantal coderegels dan de andere builds. De native Android had het meeste aantal bestanden gemaakt en vereiste minder coderegels dan de native iOS.
+
+\textbf{Code complexity}\\
+Voor dit deel v Het werd met name gekozen omdat het de meeste code bevatte die werd geschreven en omdat de andere weergave alleen een afbeelding en een titel bevatte. De code die in deze sectie wordt weergegeven, is slechts een deel van de codebases van de applicatie.
+
+Afbeelding 11 laat zien hoe Flutter het toe staat om de visuele opbouw van een scherm in hetzelfde codeblok te verwerken als de functionele code achter het scherm. In de afbeelding is er een child parent relatie voor de widget elementen. De code laat zien dat er een widget is die is gebouwd om geneste widgets te retourneren. Het kind naar de hoofdcontainers Padding, toont het maken van een ListView Flutter-widget. Deze weergave retourneert een lijstweergave met 20 items en 20 containeritems.
+
+In figuur 12 verklaart de Android Kotlin-toepassingscode het weergavemodel en importeert de benodigde items voor de code. Alles gebeurt in de onCreateView-functie, die de XML-lay-out voor de notificatielijst opblaast en een array creëert met dezelfde strings "Notification" die het als gegevens injecteert in het reeds bestaande ListView XML-doel met de id "products". De native code van Android heeft veel omgevingsspecifieke variabelen waarmee een ontwikkelaar rekening moet houden.
+
+Deze code is relatief kort voor zijn doel en is gemakkelijk gestructureerd voor een beginner in mobiele ontwikkeling. Er zijn taalspecifieke delen van de code, maar verder zou het waarschijnlijk kunnen worden begrepen door iemand die kennis heeft van andere talen.
+
+\textbf{Development time}\\
+Zoals te zien valt in tabel \ref{table:ontwikkelingstijd}, is het meeste tijd naar de ontwikkeling van de native Android app gegaan. De toegankelijkheid van Dart samen met krachtige simpliciteit van Flutter leidde tot een snelle vooruitgang binnen de ontwikkeling van de onderzoeksapplicatie. Android daarentegen verwacht meer boilerplate code met een vaste structuur. De opbouw van een layout is gemakkelijk met de drag en drop functionaliteit, maar het linken van deze views aan code is vele malen moeilijker als Flutter. 
+
+\begin{table}
+    \begin{center}
+        \caption{Ontwikkelingstijd voor elke applicatie}
+        \label{table:ontwikkelingstijd}
+        \begin{tabular}{ |l|l| }
+            \hline
+            & \textbf{Totaal}\\
+            \hline
+            \textbf{Android} & 26 Uur\\ 
+            \hline
+            \textbf{Flutter} & 20 Uur\\ 
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+Bij de ontwikkeling van beide native applicaties kan het gebruik van slepen en neerzetten worden gebruikt voor een snellere ontwikkeling. Dit is handig tot een bepaald punt waarop de verwijderde elementen moeten worden verbonden met code, wat moeilijker was dan het genereren van de lay-out via directe code. Dit maakt het gemakkelijker om te ontwikkelen omdat de lay-out altijd zichtbaar is zonder dat deze hoeft te worden gebouwd. Overeenkomstige ontwikkelingsfunctie in Flutter is de hot reload-functie waarmee u de applicatie kunt bouwen en deze opnieuw kunt laden op basis van nieuwe toegevoegde functies.
+
 \section{Conclusie}

@@ -21,10 +21,10 @@ Binnen asynchroon programmeren komen een aantal termen vaak terug. Zo zijn de vi
 Toegang krijgen tot dezelfde gegevens vanuit meerdere threads, het juiste gedrag en goede prestaties behouden, is de echte uitdaging van \textit{concurrent} programmeren. De beste gegevensstructuur die kan gebruikt worden om veilig gegevens over verschillende threads te delen, zijn wachtrijen. Threads communiceren meestal via wachtrijen en ze kunnen handelen als producent of consument. Een producent is een thread die informatie in de wachtrij plaatst, terwijl de consument degene is die ze leest en gebruikt. Een wachtrij kan gezien worden als een lijst waarin producenten gegevens aan het einde toevoegen, terwijl consumenten ze van het begin afnemen en lezen. Deze logica is wel beter bekend onder de naam FIFO (First In First Out). Threads plaatsen dus gegevens in de wachtrij. Deze gegevens worden ook wel berichten genoemd en zij bevatten de te delen informatie.
 
 \subsection{Android}
-In Android worden de grootste concepten bekeken rond asynchroon programmeren. Dit zijn niet alle opties, alleen die die het meest gebruikt worden. 
+In Android worden de grootste concepten bekeken rond asynchroon programmeren. Dit zijn niet alle opties, alleen de meest gebruikte. Hierbij worden simpele codevoorbeelden toegevoegd om inzicht te verwerven in de concepten.
 
 \subsection{Flutter}
-In Flutter worden 5 concepten bekeken. Eerst en vooral hebben we futures, de manier van asynchroon werken binnen Flutter. Hierbinnen wordt nog een onderscheid gemaakt tussen futures met en zonder callbacks. Vervolgens hebben we de widgets die samenwerken met deze futures namelijk StatefulWidget, StreamBuilder en FutureBuilder. Deze widgets maken het mogelijk om de UI aan te passen wanneer het resultaat van een future of stream. \newpage
+In Flutter worden 5 concepten bekeken. Eerst en vooral hebben we futures, de manier van asynchroon werken binnen Flutter. Hierbinnen wordt nog een onderscheid gemaakt tussen futures met en zonder callbacks. Vervolgens hebben we de widgets die samenwerken met deze futures namelijk StatefulWidget, StreamBuilder en FutureBuilder. Deze widgets maken het mogelijk om de UI aan te passen wanneer het resultaat van een future of stream. Ook hier zijn simpele codevoorbeelden toegevoegd. \newpage
 
 \section{Android}
 \subsection{Callbacks}

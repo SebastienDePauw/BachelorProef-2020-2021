@@ -6,28 +6,36 @@ Het verschil tussen het inladen van data en het opstarten van de app kan gezien 
 
 Een performante app betekent in vele gevallen een snelle app, dus kan een trage opstartsnelheid leiden tot frustratie. Aangezien elke ontwikkelaar mikt op een zo goed mogelijke user experience (UX), is het interessant om ook de opstartsnelheid van een applicatie te onderzoeken. De vraag die hier beantwoord werd was volgende 'Wat is de impact van beide ontwikkelingstechnieken op de opstartsnelheid?'.
 
+
 \subsection{Opzet}
-Om het verschil in opstartsnelheid tussen beide platformen te testen, werd gebruik gemaakt van de Hello World applicaties. Door de kleine omvang van de applicaties, waren de verschillen in tijd beperkt. Ook werd rekening gehouden met het feit dat deze opstart tijden variabel zijn. Daarom werd het onderzoek gevoerd aan de hand van een groot aantal iteraties. Hieruit kon een gemiddelde opstarttijd berekend worden per applicatie, die het mogelijk maakte om beide platformen met elkaar te vergelijken.
+Om het verschil in opstartsnelheid tussen beide platformen te testen, werd gebruik gemaakt van de Hello World applicaties. Door de kleine omvang van de applicaties, waren de verschillen in tijd beperkt. Ook werd rekening gehouden met het feit dat deze opstart tijden variabel zijn. Daarom werd het onderzoek gevoerd aan de hand van een groot aantal iteraties. Hieruit kon een gemiddelde opstarttijd berekend worden per applicatie, die het mogelijk maakte om beide platformen met elkaar te vergelijken. 
 
-Hierbij dient wel vermeld te worden dat beide applicaties vanaf nul gestart werden. Het is namelijk zo dat applicaties uit drie verschillende toestanden gestart kunnen worden. De Engelse termen voor deze drie opstartprocedures zijn volgende: cold start, warm start en hot start.(zie appendix \ref{sec:start-procedures})
+Hierbij dient wel vermeld te worden dat beide applicaties vanaf nul gestart werden. Het is namelijk zo dat applicaties uit drie verschillende toestanden gestart kunnen worden. De Engelse termen voor deze drie opstartprocedures zijn volgende: cold start, warm start en hot start. (zie appendix \ref{sec:start-procedures}) In dit onderzoek werd gebruik gemaakt van de cold start procedure. Deze procedure is degene die de grootste uitdaging vormt in het kader van het minimaliseren van de opstarttijd. 
 
-In dit onderzoek werd gebruik gemaakt van de cold start procedure. Deze procedure is degene die de grootste uitdaging vormt in het kader van het minimaliseren van de opstarttijd.
+In Android 4.4 (API-niveau 19) en hoger bevat logcat een regel uitvoer met de waarde 'Displayed'. Deze waarde vertegenwoordigt de hoeveelheid tijd die is verstreken tussen het starten van het proces en het voltooien van het tekenen van de bijbehorende activiteit op het scherm. Dit werd gebruikt voor het bepalen van de tijd.
 
+In Flutter werd het commando flutter run --trace-startup --profile gebruikt. De trace-uitvoer wordt opgeslagen als een JSON-bestand met de naam start\_up\_info.json onder de build directory van het Flutter-project. De uitvoer geeft de verstreken tijd weer vanaf het opstarten van de app tot deze trace events. Echter toont de uitvoer van dit commando ook de tijd nodig voor Flutter om de app vanaf nul op te starten tot de eerste pixel op het scherm wordt getekend.
 
 \subsection{Resultaten}
-%TODO + diagrammen
-\begin{center}
-    \begin{tabular}{ |c|c|c|c| }
-        \hline
-        & \textbf{Iteraties} & \textbf{Android} & \textbf{Flutter}\\
-        \hline
-        \multirow{3}{6em}{\textbf{Hello world}} & x & sec & sec \\
-        & x & sec & sec \\
-        & x & sec & sec \\
-        \hline
-        \multirow{3}{6em}{\textbf{Onderzoeks- applicatie}} & x & sec & sec \\
-        & x & sec & sec \\
-        & x & sec & sec \\
-        \hline
-    \end{tabular}
-\end{center}
+Zie tabel \ref{table:opstartsnelheid}
+\begin{table}
+    \begin{center}
+        \caption{Opstartsnelheid}
+        \label{table:opstartsnelheid}
+        \begin{tabular}{ | l | l | l |}
+            \hline
+            & \textbf{Android} & \textbf{Flutter}\\
+            \hline
+            \textbf{Hoogst} & 985ms & 848ms\\
+            \hline
+            \textbf{Laagst} & 582ms & 293ms\\
+            \hline
+            \textbf{Mediaan} & 649ms & 416,5ms\\
+            \hline
+            \textbf{Gemiddeld} & 681,31ms & 454,38ms\\
+            \hline
+            \textbf{Standaard afwijking} & 89,6450571ms & 126,5891134ms\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
