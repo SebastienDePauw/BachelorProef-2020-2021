@@ -4,13 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_hoofdstuk4.*
 import com.example.bap_experiment_android.R
 import com.example.bap_experiment_android.ui.hoofdstuk4.viewmodel.Hoofdstuk4ViewModel
 
 
-class Hoofdstuk4Activity : Activity() {
+class Hoofdstuk4Activity : AppCompatActivity() {
 
     private lateinit var viewModel: Hoofdstuk4ViewModel
 
@@ -26,7 +27,7 @@ class Hoofdstuk4Activity : Activity() {
         setContentView(R.layout.activity_hoofdstuk4)
 
         val viewModelFactory = Hoofdstuk4ViewModel.Factory()
-        //viewModel = ViewModelProvider(this, viewModelFactory).get(Hoofdstuk4ViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(Hoofdstuk4ViewModel::class.java)
     }
 
     // region ViewModel observers

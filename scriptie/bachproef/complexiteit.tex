@@ -23,12 +23,14 @@ Als we naar de resultaten als geheel kijken, wint Flutter de meeste categorieën
 
 \begin{figure}
     \caption{Android activity code snippet voor het maken van een notificatielijst.}
+     \label{fig:h8Android}
     \centering
 \includegraphics[width=15cm]{h8AndroidFragment.png}
 \end{figure}
 
 \begin{figure}
     \caption{Flutter code snipper voor het maken van een notificatielijst.}
+         \label{fig:h8Flutter}
     \centering
     \includegraphics[width=15cm]{h8Flutter.png}
 \end{figure}
@@ -39,14 +41,14 @@ Zoals te zien is in figuur 8, had Flutter het minste aantal coderegels en bestan
 \textbf{Code complexity}\\
 Voor dit deel v Het werd met name gekozen omdat het de meeste code bevatte die werd geschreven en omdat de andere weergave alleen een afbeelding en een titel bevatte. De code die in deze sectie wordt weergegeven, is slechts een deel van de codebases van de applicatie.
 
-Afbeelding 11 laat zien hoe Flutter het toe staat om de visuele opbouw van een scherm in hetzelfde codeblok te verwerken als de functionele code achter het scherm. In de afbeelding is er een child parent relatie voor de widget elementen. De code laat zien dat er een widget is die is gebouwd om geneste widgets te retourneren. Het kind naar de hoofdcontainers Padding, toont het maken van een ListView Flutter-widget. Deze weergave retourneert een lijstweergave met 20 items en 20 containeritems.
+Figuur \ref{fig:h8Flutter} laat zien hoe Flutter het toe staat om de visuele opbouw van een scherm in hetzelfde codeblok te verwerken als de functionele code achter het scherm. In de afbeelding is er een child parent relatie voor de widget elementen. De code laat zien dat er een widget is die is gebouwd om geneste widgets te retourneren. Het kind naar de hoofdcontainers Padding, toont het maken van een ListView Flutter-widget. Deze weergave retourneert een lijstweergave met 20 items en 20 containeritems.
 
-In figuur 12 verklaart de Android Kotlin-toepassingscode het weergavemodel en importeert de benodigde items voor de code. Alles gebeurt in de onCreateView-functie, die de XML-lay-out voor de notificatielijst opblaast en een array creëert met dezelfde strings "Notification" die het als gegevens injecteert in het reeds bestaande ListView XML-doel met de id "products". De native code van Android heeft veel omgevingsspecifieke variabelen waarmee een ontwikkelaar rekening moet houden.
+In figuur \ref{fig:h8Android3} verklaart de Android Kotlin-toepassingscode het weergavemodel en importeert de benodigde items voor de code. Alles gebeurt in de onCreateView-functie, die de XML-lay-out voor de notificatielijst opblaast en een array creëert met dezelfde strings "Notification" die het als gegevens injecteert in het reeds bestaande ListView XML-doel met de id "products". De native code van Android heeft veel omgevingsspecifieke variabelen waarmee een ontwikkelaar rekening moet houden.
 
 Deze code is relatief kort voor zijn doel en is gemakkelijk gestructureerd voor een beginner in mobiele ontwikkeling. Er zijn taalspecifieke delen van de code, maar verder zou het waarschijnlijk kunnen worden begrepen door iemand die kennis heeft van andere talen.
 
 \textbf{Development time}\\
-Zoals te zien valt in tabel \ref{table:ontwikkelingstijd}, is het meeste tijd naar de ontwikkeling van de native Android app gegaan. De toegankelijkheid van Dart samen met krachtige simpliciteit van Flutter leidde tot een snelle vooruitgang binnen de ontwikkeling van de onderzoeksapplicatie. Android daarentegen verwacht meer boilerplate code met een vaste structuur. De opbouw van een layout is gemakkelijk met de drag en drop functionaliteit, maar het linken van deze views aan code is vele malen moeilijker als Flutter. 
+Zoals te zien valt in tabel \ref{table:ontwikkelingstijd}, is het meeste tijd naar de ontwikkeling van de native Android app gegaan. De toegankelijkheid van Dart samen met krachtige simpliciteit van Flutter leidde tot een snelle vooruitgang binnen de ontwikkeling van de onderzoeksapplicatie. De hot reload functionaliteit die het toestaat om een applicatie in enkele seconden up te daten op basis van wijzigingen in de codebase is dan ook een goede bijdrage aan het platform. Android daarentegen verwacht meer boilerplate code met een vaste structuur. De opbouw van een layout is gemakkelijk met de drag en drop functionaliteit, maar het linken van deze views aan code is dan weer moeilijker.
 
 \begin{table}
     \begin{center}
@@ -63,7 +65,5 @@ Zoals te zien valt in tabel \ref{table:ontwikkelingstijd}, is het meeste tijd na
         \end{tabular}
     \end{center}
 \end{table}
-
-Bij de ontwikkeling van beide native applicaties kan het gebruik van slepen en neerzetten worden gebruikt voor een snellere ontwikkeling. Dit is handig tot een bepaald punt waarop de verwijderde elementen moeten worden verbonden met code, wat moeilijker was dan het genereren van de lay-out via directe code. Dit maakt het gemakkelijker om te ontwikkelen omdat de lay-out altijd zichtbaar is zonder dat deze hoeft te worden gebouwd. Overeenkomstige ontwikkelingsfunctie in Flutter is de hot reload-functie waarmee u de applicatie kunt bouwen en deze opnieuw kunt laden op basis van nieuwe toegevoegde functies.
 
 \section{Conclusie}
