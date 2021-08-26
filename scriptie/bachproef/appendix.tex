@@ -6,11 +6,11 @@
 \label{ch:appendix}
 
 \section{Hello world template}
-%TODO
 De eerste Flutter app gemaakt in het kader van dit onderzoek was een welbekende en gebruikelijke Hello World applicatie. Een Hello World app klinkt alle ontwikkelaars bekend in de oren. Het is namelijk een standaard template die niet meer doet dan het tonen van een “Hello World” tekst op een scherm. Het is zeer minimaal in aantal lijnen code, wat ergens wel logisch is, en zorgt voor een heel kleine, compacte APK. Om enige vorm van realisme in de ontwikkeling van deze voorbeeld applicaties te integreren, zal er gekozen worden om de builds van deze applicaties via een release schema uit te voeren. Deze manier van builden optimaliseert de code in zijn geheel, zoals de applicatie terug te vinden zou zijn op de Play Store bijvoorbeeld.
 
+\section{ABI}
+
 \section{Opstart procedures van een applicatie}
-\label{sec:start-procedures}
 
 Een cold start houdt in dat de applicatie vanaf nul opgestart wordt. Het systeem heeft namelijk, tot nu, nog niks gedaan om de applicatie zijn proces te starten. Cold starts komen voor wanneer het systeem net opgestart is of dat het systeem de applicatie net zelf afgesloten heeft (bijvoorbeeld omdat het systeem geheugen te kort had). Bij de cold start van een applicatie moet het systeem volgende stappen ondernemen:
 
@@ -27,7 +27,6 @@ Een hot start is een andere vorm hoe de applicatie opgestart kan worden. Deze vo
 Een warm start dan ten slotte, is een combinatie van de cold en hot start. Er zijn verschillende toestanden die als warm start kunnen bekeken worden. Wanneer een gebruiker weg navigeert van de applicatie en vervolgens direct de applicatie opnieuw opstart, kan dit beschouwd worden als een warm start. Het proces kan mogelijks verder blijven lopen, maar de applicatie moet de view opnieuw creëren vanaf nul. Een ander voorbeeld van een warm start is wanneer het systeem de applicatie uit het geheugen verwijdert, maar de gebruiker de applicatie terug opstart. Het proces en de view moeten opnieuw gestart worden, maar het systeem kan enigszins profiteren van de opgeslagen instantiebundel. 
 
 \section{Threads}
-\label{sec:threads}
 De dag van vandaag hebben smartphones meerdere processoren voor het uitvoeren van taken of processen. Deze processoren zijn in staat om verschillende taken gelijktijdig uit te voeren. Dit noemt men \emph{multi-processing}.
 
 Om de processoren efficiënter te gebruiken kan het besturingssysteem een applicatie verplichten om meer dan één thread van uitvoering te creëren binnen een proces. Dit noemt men \emph{multi-threading}. Dit kan vergeleken worden met het lezen van meerdere boeken tegelijkertijd en wisselen tussen elk boek achter een hoofdstuk. In dit scenario is de lezer gelijk aan de processor, alle boeken samen zijn gelijk aan het uit te voeren proces, één boek gelijk aan een thread en het lezen van dat boek gelijk aan het uitvoeren van een thread. Het is echter niet mogelijk om in meerdere boeken tegelijkertijd te lezen.

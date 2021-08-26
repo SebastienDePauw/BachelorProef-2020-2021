@@ -1,15 +1,9 @@
 \section{Het CPU gebruik van de applicatie}
 \label{sec:cpu}
-Een Central Processing Unit of kortweg CPU is het als het ware het brein van een computer. Het is een stuk hardware dat aan de hand van een aantal basisoperaties, programma’s uitvoert. Om deze operaties performant uit te voeren heeft de CPU echter nood aan een vaste, degelijke bron van energie. In het geval van mobiele apparaten, zoals een laptop of een smartphone, is deze energiebron de batterij van het toestel. Vandaag de dag moeten, en zijn, smartphones vrij tot zeer compact. Dit heeft echter ook een nadeel. Door de compactheid van de toestellen, is de plek voor de batterij ook eerder beperkt. Om de capaciteit van de batterij zo goed mogelijk te benutten, moeten de processen die op de toestellen draaien dus eerder performant zijn. Hiermee wordt bedoeld dat ze energiezuinig moeten zijn zonder snelheid in te leveren. 
-
-Een app die veel CPU werk vereist zal dus meer energie verbruiken, de batterij sneller doen leeglopen en kan zorgen voor oververhitting van de batterij. Een probleem dat voorkomt wanneer de app meer resources gebruikt als nodig.
-
-Aangezien het beheer van de batterijduur een dagelijkse ervaring is voor velen, wil men zo weinig mogelijk batterij verspelen aan korte app interacties. Gebruikers die merken dat een app te veel vraagt van de CPU zullen deze app dan ook sneller verwijderen. Daarom was het interessant om te onderzoeken of de onderliggende frameworks hier een aandeel in hebben. 
+Een Central Processing Unit of kortweg CPU is het als het ware het brein van een computer. Het is een stuk hardware dat aan de hand van een aantal basisoperaties, programma’s uitvoert. Om deze operaties performant uit te voeren heeft de CPU echter nood aan een vaste bron van energie. In het geval van mobiele apparaten, zoals een laptop of een smartphone, is deze energiebron de batterij van het toestel. Vandaag de dag zijn smartphones vrij tot zeer compact, maar dit heeft echter ook een nadeel. Door de compactheid van de toestellen is de plek voor de batterij ook eerder beperkt. Om de capaciteit van de batterij zo goed mogelijk te benutten, moeten de processen die op de toestellen draaien dus eerder performant zijn. Hiermee wordt bedoeld dat ze energiezuinig moeten zijn zonder snelheid in te leveren. Een app die veel CPU werk vereist zal dus meer energie verbruiken, de batterij sneller doen leeglopen en kan zorgen voor oververhitting van de batterij. Een probleem dat voorkomt wanneer de app meer resources gebruikt als nodig. Aangezien het beheer van de batterijduur een dagelijkse ervaring is voor velen, wil men zo weinig mogelijk batterij verspelen aan korte app interacties. Gebruikers die merken dat een app te veel vraagt van de CPU, zullen deze app dan ook sneller verwijderen. Daarom was het interessant om te onderzoeken of de onderliggende frameworks hier een aandeel in hebben. 
 
 \subsection{Opzet}
-Voor het onderzoek naar CPU gebruik werden de onderzoeksapplicaties vergeleken. Deze applicaties zijn omvangrijk en bevatten meerdere features die CPU intensieve taken uitvoeren. 
-
-Het CPU gebruik wordt uitgedrukt in procent. Hoe hoger dit getal hoe meer CPU de app in gebruik nam. De gehele app werd doorlopen en het gemiddelde CPU gebruik werd vergeleken. Uitschieters werden ook opgenomen in de resultaten voor het maken van vergelijkingen omtrent CPU intensieve components.
+Voor het onderzoek naar CPU gebruik werden de onderzoeksapplicaties vergeleken. Deze applicaties bevatten een aantal features die CPU intensiever zijn dan de Hello world applicaties. Het CPU gebruik wordt uitgedrukt in procent. Hoe hoger dit getal hoe meer CPU de app in gebruik nam. De gehele app werd doorlopen zodanig dat een gemiddelde, maximum, minimum en standaardafwijking kon vergeleken worden. Het CPU percentage werd elke 0,5 seconden genoteerd om genoeg waarden te accumuleren.
 
 Voor het onderzoek naar CPU gebruik werd voor Android gebruik gemaakt van de Android Profiler. Een krachtige monitoring tool die het mogelijk maakt om live CPU, geheugen, netwerk en batterij resources op te volgen. Meer specifiek werd gekeken naar de CPU Profiler. Voor Flutter werd gebruik gemaakt van de Flutter DevTools. Een uitgebreide tool die in Flutter 2.0 een grote update kende. Hiermee kunnen live zaken zoals logging, geheugen gebruik, CPU gebruik, netwerk requests… worden opgevolgd.
 
@@ -17,25 +11,25 @@ Voor het onderzoek naar CPU gebruik werd voor Android gebruik gemaakt van de And
 Zie tabel \ref{table:cpu}
 \begin{table}
     \begin{center}
-        \caption{Opstartsnelheid}
+        \caption{CPU gebruik van de Android en Flutter Onderzoeksapplicaties. \autocite{DePauw2021}}
         \label{table:cpu}
         \begin{tabular}{ | l | l | l |}
             \hline
             & \textbf{Android} & \textbf{Flutter}\\
             \hline
-            \textbf{Hoogst} & 33.6\% & 35.4\%\\
+            \textbf{Hoogst} & 33,6\% & 35,4\%\\
             \hline
-            \textbf{Laagst} & 1.0\% & 1.0\%\\
+            \textbf{Laagst} & 1,0\% & 1,0\%\\
             \hline
-            \textbf{Gemiddeld} & 12.7\% & 13.2\%\\
+            \textbf{Gemiddeld} & 12,7\% & 13,2\%\\
             \hline
-            \textbf{Standaard afwijking} & 7.5146739\% & 8.1725839\%\\
+            \textbf{Standaard afwijking} & 7,5146739\% & 8,1725839\%\\
             \hline
         \end{tabular}
     \end{center}
 \end{table}
 
 \subsection{Discussie}
-Bij dit onderzoekscriterium werd geen evolutie over tijd toegevoegd omdat het CPU gebruik van de app afhankelijk is van achterliggende features. In dit onderzoek konden twee gelijkaardige apps, gemaakt met verschillende stacks, wel op een relatief eerlijke manier vergeleken worden. Echter wanneer een evolutie over tijd toegevoegd wordt, moeten de cijfers op een correcte manier vergelijkbaar zijn. Op deze manier is alleen de parameter tijd een variabele.
+Bij dit onderzoekscriterium werd geen evolutie over tijd toegevoegd omdat het CPU gebruik van de app afhankelijk is van achterliggende features. In dit onderzoek konden twee gelijkaardige apps, gemaakt met verschillende stacks, wel op een relatief eerlijke manier vergeleken worden. Echter wanneer een evolutie over tijd toegevoegd wordt, moeten de cijfers op een correcte manier vergelijkbaar zijn. Op deze manier is alleen de parameter tijd een variabele maar de apps zijn uniek en werden specifiek ontwikkeld voor dit onderzoek dus is het niet mogelijk om deze te toetsen tegen voorgaand onderzoek.
 
-Het woord 'relatief' dat in vorige paragraaf gebruikt werd slaat op de uitvoering van het onderzoek. De apps werden manueel doorlopen en bevindingen werden elke halve seconde genoteerd. Echter zijn hier te veel variabelen. De tijd gespendeerd op één scherm is elke keer verschillend. De resultaten die hieruit voortkomen zijn in grote mate vergelijkbaar maar werden niet op volledig dezelfde manier bekomen. Voor een correcte vergelijking moest een script gebruikt worden. Dit zou de menselijke error elimineren. 
+In vorige paragraaf werd de term 'relatief eerlijk onderzoek' gebruikt, dit slaat op de uitvoering van het onderzoek. De apps werden manueel doorlopen en bevindingen werden elke halve seconde genoteerd. Echter waren hier te veel variabelen aanwezig. De tijd gespendeerd op één scherm was elke keer verschillend. De resultaten die hieruit voortkomen zijn in grote mate vergelijkbaar maar zijn onderworpen aan menselijke error. Voor een correcte vergelijking was het gebruik van een script de betere optie. 

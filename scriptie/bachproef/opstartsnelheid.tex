@@ -1,26 +1,23 @@
 \section{De opstartsnelheid van de applicatie}
 \label{sec:opstartsnelheid}
-Een andere veel voorkomende reden waarom gebruikers applicaties slecht beoordelen of verwijderen is een trage applicatie. Onderzoek toont aan dat gebruikers verwachten dat een applicatie binnen maximaal drie seconden opstart. Met opstartsnelheid wordt de tijd bedoelt tussen het drukken op het app icoon en het te zien krijgen van een volledige view. Hierbij moet rekening gehouden worden met de in te laden data. Het inladen van data heeft in veel gevallen weinig te maken met app performantie. In veel gevallen zal dit te maken hebben met de aangesproken API. Een onderzoek naar de respons tijd van een API valt echter buiten het bestek van dit onderzoek. 
-
-Het verschil tussen het inladen van data en het opstarten van de app kan gezien worden aan de hand van een laad icoon. Als de app een API aanspreekt voor data zal een laad icoon getoond worden terwijl tijdens de opstart procedure de app in geheugen wordt geladen en dus nog niets getoond kan worden.
+Een andere veel voorkomende reden waarom gebruikers applicaties slecht beoordelen of verwijderen is een trage applicatie. Onderzoek toont aan dat gebruikers verwachten dat een applicatie binnen maximaal drie seconden opstart. Met opstartsnelheid wordt de tijd bedoelt tussen het drukken op het app icoon en het te zien krijgen van een view. Hierbij moet rekening gehouden worden met de in te laden data. Het inladen van data heeft in veel gevallen weinig te maken met app performantie. In veel gevallen zal dit te maken hebben met de aangesproken API. Een onderzoek naar de respons tijd van een API valt echter buiten het bestek van dit onderzoek. Het verschil tussen het inladen van data en het opstarten van de app kan (meestal) gezien worden aan de hand van een laad icoon. Als de app een API aanspreekt voor data zal (in de meeste gevallen) een laad icoon getoond worden terwijl tijdens de opstart procedure de app in geheugen wordt geladen en dus nog niets getoond kan worden.
 
 Een performante app betekent in vele gevallen een snelle app, dus kan een trage opstartsnelheid leiden tot frustratie. Aangezien elke ontwikkelaar mikt op een zo goed mogelijke user experience (UX), is het interessant om ook de opstartsnelheid van een applicatie te onderzoeken. De vraag die hier beantwoord werd was volgende 'Wat is de impact van beide ontwikkelingstechnieken op de opstartsnelheid?'.
 
-
 \subsection{Opzet}
-Om het verschil in opstartsnelheid tussen beide platformen te testen, werd gebruik gemaakt van de Hello World applicaties. Door de kleine omvang van de applicaties, waren de verschillen in tijd beperkt. Ook werd rekening gehouden met het feit dat deze opstart tijden variabel zijn. Daarom werd het onderzoek gevoerd aan de hand van een groot aantal iteraties. Hieruit kon een gemiddelde opstarttijd berekend worden per applicatie, die het mogelijk maakte om beide platformen met elkaar te vergelijken. 
+Om het verschil in opstartsnelheid tussen beide platformen te testen, werd gebruik gemaakt van de Hello world applicaties. Door de kleine omvang van de applicaties, waren de verschillen in tijd beperkt. Ook werd rekening gehouden met het feit dat deze opstart tijden variabel zijn, daarom werd het onderzoek gevoerd aan de hand van een groot aantal iteraties. Hieruit konden minimum, maximum, mediaan, gemiddelde en standaard afwijking van de opstarttijden berekend worden per applicatie, die het mogelijk maakten om beide platformen met elkaar te vergelijken. 
 
-Hierbij dient wel vermeld te worden dat beide applicaties vanaf nul gestart werden. Het is namelijk zo dat applicaties uit drie verschillende toestanden gestart kunnen worden. De Engelse termen voor deze drie opstartprocedures zijn volgende: cold start, warm start en hot start. (zie appendix \ref{sec:start-procedures}) In dit onderzoek werd gebruik gemaakt van de cold start procedure. Deze procedure is degene die de grootste uitdaging vormt in het kader van het minimaliseren van de opstarttijd. 
+Hierbij dient wel vermeld te worden dat beide applicaties vanaf nul gestart werden. Het is namelijk zo dat applicaties uit drie verschillende toestanden gestart kunnen worden. De Engelse termen voor deze drie opstartprocedures zijn volgende: cold start, warm start en hot start (zie hoofdstuk \ref{ch:appendix} Appendix). In dit onderzoek werd gebruik gemaakt van de cold start procedure. Deze procedure is degene die de grootste uitdaging vormt in het kader van het minimaliseren van de opstarttijd.
 
-In Android 4.4 (API-niveau 19) en hoger bevat logcat een regel uitvoer met de waarde 'Displayed'. Deze waarde vertegenwoordigt de hoeveelheid tijd die is verstreken tussen het starten van het proces en het voltooien van het tekenen van de bijbehorende activiteit op het scherm. Dit werd gebruikt voor het bepalen van de tijd.
+In Android 4.4 (API-niveau 19) en hoger bevat logcat een regel uitvoer met de waarde 'Displayed'. Deze waarde vertegenwoordigt de hoeveelheid tijd die is verstreken tussen het starten van het proces en het voltooien van het tekenen van de bijbehorende activiteit op het scherm. Dit werd gebruikt voor het bepalen van de tijd in Android.
 
 In Flutter werd het commando flutter run --trace-startup --profile gebruikt. De trace-uitvoer wordt opgeslagen als een JSON-bestand met de naam start\_up\_info.json onder de build directory van het Flutter-project. De uitvoer geeft de verstreken tijd weer vanaf het opstarten van de app tot deze trace events. Echter toont de uitvoer van dit commando ook de tijd nodig voor Flutter om de app vanaf nul op te starten tot de eerste pixel op het scherm wordt getekend.
 
 \subsection{Resultaten}
-Zie tabel \ref{table:opstartsnelheid}
+Zie tabel \ref{table:opstartsnelheid} voor de resultaten van het onderzoek.
 \begin{table}
     \begin{center}
-        \caption{Opstartsnelheid}
+        \caption{Opstartsnelheden van de Android en Flutter Hello world apps. \autocite{DePauw2021}}
         \label{table:opstartsnelheid}
         \begin{tabular}{ | l | l | l |}
             \hline
@@ -39,3 +36,6 @@ Zie tabel \ref{table:opstartsnelheid}
         \end{tabular}
     \end{center}
 \end{table}
+
+\section{Discussie}
+Uit onderzoek van Bracke \autocite{Bracke2020} bleek dat in 2020 de opstartsnelheid van native Android apps gemiddeld 146,7ms lager was dan Flutter apps. Maar aan de andere kant dat de Flutter apps een stabielere opstarttijd ondervonden. Dit is volledig het tegenovergestelde met wat dit onderzoek aantoont. De resultaten zijn volledig anders wat doet vermoeden dat de omgevingsvariabelen niet hetzelfde zullen geweest zijn. Een andere mogelijkheid is de onderliggende hardware die hier een te grote rol speelde.
