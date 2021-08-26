@@ -7,36 +7,30 @@
 \label{ch:asynchroon}
 Bij het schrijven van code maakt de ontwikkelaar keuzes over de achterliggende uitvoeringsprocessen. Moeten stukken code parallel of sequentieel verlopen met andere stukken code. Deze keuze is vaak onbewust maar wel belangrijk voor de UX van een applicatie.
 
-Het uitvoeren van een stuk code is een proces. Wanneer gekozen wordt om een stuk code synchroon of sequentieel te laten verlopen, wordt gewacht op de uitkomst van dit proces vooraleer een nieuw proces kan gestart worden. Hierbij wordt elk proces afgewerkt en enkel wanneer een bepaald proces afgewerkt is, kan een ander proces gestart worden. 
+Het uitvoeren van een stuk code is een proces. Wanneer gekozen wordt om een stuk code synchroon te laten verlopen, wordt gewacht op de uitkomst van dit proces vooraleer een nieuw proces kan gestart worden. Hierbij wordt elk proces afgewerkt en enkel wanneer een bepaald proces afgewerkt is, kan een ander proces gestart worden. 
 
-Wanneer gekozen wordt om asynchroon of parallel te werken, worden processen niet eerst afgerond voor volgende processen kunnen beginnen. Het tweede proces in de wachtrij hoeft dan niet te wachten tot het eerste proces voltooid is alvorens te kunnen beginnen. Hierbij zijn dus meerdere processen op hetzelfde moment actief. Hier worden verschillende processen afgehandeld op verschillende threads. Een thread kan beschouwd worden als een rijstrook op de autosnelweg, er zijn verschillende threads waarop verschillende processen tegelijkertijd kunnen uitgevoerd worden, net zoals op de verschillende rijstroken meerdere auto’s tegelijkertijd kunnen rijden.
+Wanneer gekozen wordt om asynchroon te werken, hoeft het tweede proces in de wachtrij niet te wachten tot het eerste proces voltooid is alvorens te beginnen. Hierbij zijn dus meerdere processen op hetzelfde moment actief. Hier worden verschillende processen afgehandeld op verschillende threads. (zie hoofdstuk \ref{ch:appendix} Appendix)
 
-In de documentatie van Google over UI-threads en niet-UI-bewerkingen staat: Terwijl een schermupdate plaatsvindt, probeert het systeem om de 16 ms een blok UI code uit te voeren om soepel te renderen met 60 frames per seconde. Om het systeem dit doel te laten bereiken, moet de UI/View-hiërarchie worden bijgewerkt in de main thread. Als de wachtrij van de main thread echter taken bevat die te lang zijn om de update snel genoeg te voltooien, moet de app dit werk naar een andere thread verplaatsen. Als de main thead het uitvoeren van blokken code niet binnen 16 ms kan voltooien, kan de gebruiker haperingen, vertragingen of een gebrek aan UI-respons op invoer waarnemen. Als de main thread gedurende ongeveer vijf seconden blokkeert, geeft het systeem een dialoogvenster Application Not Responding (ANR) weer, zodat de gebruiker de app direct kan sluiten.
-
-Dus voor bepaalde taken zoals het ophalen en persisteren van data wordt vaak gekozen voor asynchrone taken. Op zowel Android als Flutter zijn verschillende manieren aanwezig om taken asynchroon uit te voeren. In dit hoofdstuk worden de meest gebruikte manieren aangehaald.\newpage
+In de documentatie van Google \autocite{Google} over UI-threads en niet-UI-bewerkingen staat: 'Terwijl een schermupdate plaatsvindt, probeert het systeem om de 16 ms een blok UI code uit te voeren om soepel te renderen met 60 frames per seconde. Om het systeem dit doel te laten bereiken, moet de UI/View-hiërarchie worden bijgewerkt in de main thread. Als de wachtrij van de main thread echter taken bevat die te lang zijn om de update snel genoeg te voltooien, moet de app dit werk naar een andere thread verplaatsen. Als de main thead het uitvoeren van blokken code niet binnen 16 ms kan voltooien, kan de gebruiker haperingen, vertragingen of een gebrek aan UI-respons op invoer waarnemen. Als de main thread gedurende ongeveer vijf seconden blokkeert, geeft het systeem een dialoogvenster Application Not Responding (ANR) weer, zodat de gebruiker de app direct kan sluiten.' Dus voor bepaalde taken zoals het ophalen en persisteren van data wordt vaak gekozen voor asynchrone taken. Op zowel Android als Flutter zijn verschillende manieren aanwezig om taken asynchroon uit te voeren. In dit hoofdstuk worden de meest gebruikte manieren aangehaald.
 
 \section{Opzet}
-Binnen asynchroon programmeren komen een aantal termen vaak terug. Zo zijn de vier belangrijkste concurrency, parallellisme, asynchrone taken en threads. Concurrency verwijst naar het beheren van meerdere uitvoeringsthreads, waarbij parallellisme meer specifiek is, meerdere uitvoeringsthreads die tegelijkertijd worden uitgevoerd. Concurrency is de bredere term die parallellisme kan omvatten. Asynchrone methoden zijn niet direct gerelateerd aan de vorige twee concepten, asynchroon wordt gebruikt om de indruk te wekken van gelijktijdige of parallelle taken, maar in feite wordt normaal gesproken een asynchrone methode aanroep gebruikt voor een proces dat werk moet doen buiten de huidige applicatie en de applicatie niet wilt geblokt worden in afwachting van het antwoord. Een thread is de kleinste opeenvolging van geprogrammeerde instructies die onafhankelijk van elkaar kunnen worden beheerd.
-
-Toegang krijgen tot dezelfde gegevens vanuit meerdere threads, het juiste gedrag en goede prestaties behouden, is de echte uitdaging van \textit{concurrent} programmeren. De beste gegevensstructuur die kan gebruikt worden om veilig gegevens over verschillende threads te delen, zijn wachtrijen. Threads communiceren meestal via wachtrijen en ze kunnen handelen als producent of consument. Een producent is een thread die informatie in de wachtrij plaatst, terwijl de consument degene is die ze leest en gebruikt. Een wachtrij kan gezien worden als een lijst waarin producenten gegevens aan het einde toevoegen, terwijl consumenten ze van het begin afnemen en lezen. Deze logica is wel beter bekend onder de naam FIFO (First In First Out). Threads plaatsen dus gegevens in de wachtrij. Deze gegevens worden ook wel berichten genoemd en zij bevatten de te delen informatie.
+Toegang krijgen tot dezelfde gegevens vanuit meerdere threads, het juiste gedrag en goede prestaties behouden, is de echte uitdaging van \textit{concurrent programming}. (zie Hoofdstuk \ref{ch:appendix} Appendix voor meer uitleg) De beste gegevensstructuur die kan gebruikt worden om veilig gegevens over verschillende threads te delen, zijn wachtrijen. Threads communiceren meestal via wachtrijen en kunnen handelen als producent of consument. Een producent is een thread die informatie in de wachtrij plaatst, terwijl de consument degene is die ze leest en gebruikt. Een wachtrij kan gezien worden als een lijst waarin producenten gegevens aan het einde toevoegen, terwijl consumenten ze van het begin afnemen en lezen. Deze logica is beter bekend onder de naam FIFO (First In First Out). Threads plaatsen dus gegevens in de wachtrij. Deze gegevens worden ook wel berichten genoemd en zij bevatten de te delen informatie.
 
 \subsection{Android}
-In Android worden de grootste concepten bekeken rond asynchroon programmeren. Dit zijn niet alle opties, alleen de meest gebruikte. Hierbij worden simpele codevoorbeelden toegevoegd om inzicht te verwerven in de concepten.
+In Android worden de grootste concepten bekeken rond asynchroon programmeren. Dit zijn niet alle opties, alleen de meest gebruikte, te beginnen bij een uitleg over callbacks. Vervolgens wordt gekeken naar AsyncTasks. Daarna worden Runnables, Threads, Handlers  en AsyncTasks met elkaar vergeleken. Vervolgens wordt gekeken naar Kotlin coroutines om uiteindelijk te eindigen met RxJava. Hierbij worden simpele codevoorbeelden toegevoegd om inzicht te verwerven in deze concepten.
 
 \subsection{Flutter}
-In Flutter worden 5 concepten bekeken. Eerst en vooral hebben we futures, de manier van asynchroon werken binnen Flutter. Hierbinnen wordt nog een onderscheid gemaakt tussen futures met en zonder callbacks. Vervolgens hebben we de widgets die samenwerken met deze futures namelijk StatefulWidget, StreamBuilder en FutureBuilder. Deze widgets maken het mogelijk om de UI aan te passen wanneer het resultaat van een future of stream. Ook hier zijn simpele codevoorbeelden toegevoegd. \newpage
+In Flutter worden 5 concepten bekeken. Eerst en vooral zijn er de futures, de manier van asynchroon werken binnen Flutter. Hierbinnen wordt nog een onderscheid gemaakt tussen futures met en zonder callbacks. Vervolgens hebben zijn er de widgets die samenwerken met deze futures namelijk StatefulWidget, StreamBuilder en FutureBuilder. Deze widgets maken het mogelijk om de UI aan te passen wanneer het resultaat van een future of stream. Ook hier zijn simpele codevoorbeelden toegevoegd.
 
 \section{Android}
 \subsection{Callbacks}
-Callbacks zijn een programmeermechanisme. Het zijn functies die als argument aan een andere functie worden doorgegeven, die vervolgens binnen de buitenste functie wordt aangeroepen om een soort routine of actie te voltooien. Ze worden vooral gebruikt in samenwerking met één van de hieronder vermelde libraries. Het is mogelijk om deze te gebruiken zonder library maar dat is toegankelijk voor errors en moeilijk te onderhouden.
+Callbacks zijn een programmeermechanisme. Het zijn functies die als argument aan een andere functie worden doorgegeven, die vervolgens binnen de buitenste functie wordt aangeroepen om een soort routine of actie te voltooien. Ze worden vooral gebruikt in samenwerking met libraries. Het is mogelijk om deze te gebruiken zonder library maar dat is toegankelijk voor errors en moeilijk te onderhouden. 
 
-Sommige libraries bieden de mogelijkheid voor zowel synchrone (blokkerende) of asynchrone (niet-blokkerende) calls. Callbacks voorzien een manier om ze beide te doen, maar elke optie heeft zijn prijs. Als ervoor gekozen wordt om synchrone calls te gebruiken, moet je de threading-problemen zelf oplossen, maar zoals hiervoor vermeld is dit error prone. Als ervoor gekozen wordt om de asynchrone calls te gebruiken, moet niet aan de achtergrond threads gedacht worden, maar moet wel een soort van callback voorzien worden om een melding te krijgen wanneer de call geëindigd is. 
+Ook al wordt get aangeroepen van op de main thread, het zal een andere thread gebruiken om het verzoek uit te voeren. Zodra het resultaat beschikbaar is via het netwerk, wordt de callback aangeroepen op de main thread. Dit is een manier om langlopende taken af te handelen.
 
-Al wordt get aangeroepen van op de main thread, het zal een andere thread gebruiken om het verzoek uit te voeren. Zodra het resultaat beschikbaar is via het netwerk, wordt de callback aangeroepen op de main thread. Dit is een manier om langlopende taken af te handelen, en libraries zoals Retrofit kunnen u helpen netwerkverzoeken te doen zonder de main thread te blokkeren.
+Callbacks hebben echter ook nadelen. In toepassingen op bedrijfsniveau is het vaak het geval dat meerdere functies worden aangeroepen, die op de één of andere manier onderling moeten worden verbonden of gecombineerd, waardoor de resultaten in complexe objecten moeten worden gestoken. In deze gevallen wordt de code buitengewoon moeilijk om te schrijven, te onderhouden en over te redeneren. Omdat het niet mogelijk is om een waarde van een callback terug te geven, moeten callbacks genest worden. Het is vergelijkbaar met het nesten van forEach of map functies. Elke bewerking heeft dan zijn eigen lambda-parameter. Bij het nesten van callbacks of lambda's zijn een groot aantal accolades te zien, die elk een \textit{local scope} vormen. Dit creëert op zijn beurt een structuur die indentatie- of callback hel wordt genoemd.
 
-Callbacks hebben echter ook nadelen. In toepassingen op bedrijfsniveau is het vaak het geval dat er meerdere functies worden aangeroepen, die op de een of andere manier moeten worden verbonden of gecombineerd, waardoor de resultaten in complexere objecten moeten worden weergegeven. In deze gevallen wordt de code buitengewoon moeilijk om te schrijven, te onderhouden en te redeneren. Omdat het niet mogelijk is om een waarde van een callback terug te geven, moeten callbacks genest worden. Het is vergelijkbaar met het nesten van forEach of map functies. Elke bewerking heeft dan zijn eigen lambda-parameter. Bij het nesten van callbacks of lambda's krijgen we een groot aantal accolades, die elk een \textit{local scope} vormen. Dit creëert op zijn beurt een structuur die indentatie- of callbackhel wordt genoemd.
-
-\begin{lstlisting}[language=Kotlin, caption=Android Callback example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Callback voorbeeld]
 api.getSomething().enqueue(object: Callback<?> {
     override fun onResponse(
         call: Call<String>, 
@@ -49,15 +43,13 @@ api.getSomething().enqueue(object: Callback<?> {
 \end{lstlisting}
 
 \subsection{AsyncTasks}
-AsyncTasks werd door Google deprecated gemaakt voor API level 30 en hoger. Deprecated of ‘verouderd’ betekent dat Google aanbeveelt om naar iets anders over te stappen. Het betekent niet dat de klasse snel zal verwijderd worden uit Android. Aangezien AsyncTasks een veel gebruikte optie was, wordt deze opgenomen in het onderzoek. Het extenden van AsyncTask en het toevoegen van uw code in de doInBackground methode is alles wat nodig is om een lange berekening naar een andere thread over te dragen, en met de andere methoden kunt u veel eenvoudige use-cases afhandelen. Het bijhouden van de voortgang, het uitvoeren van een subtaak op de main thread voordat het hoofdwerk begint of nadat het is afgelopen, is net zo eenvoudig. Die eenvoud verklaart waarom zoveel mensen AsyncTasks gebruiken. 
+AsyncTask werd door Google \textit{deprecated} gemaakt voor API level 30 en hoger. Deprecated of ‘verouderd’ betekent dat Google aanbeveelt om een alternatief te zoeken. Het betekent niet dat de klasse snel zal verwijderd worden uit de Android SDK. Aangezien AsyncTasks een veel gebruikte optie was, wordt deze opgenomen in het onderzoek. Het \textit{extenden} van AsyncTask en het toevoegen van code in de doInBackground methode is alles wat nodig is om een lange berekening naar een andere thread over te dragen. Met de andere beschikbare methoden kunnen veel eenvoudige use-cases worden afgehandeld. De eenvoud van AsyncTask verklaart waarom zoveel mensen het gebruiken. 
 
-Er zijn enkele problemen met AsyncTask. De grootste is het gevaar op geheugenlekken. Zo moet de levenscyclus van de activiteit of het fragment in rekening gehouden worden. Daarom is het de verantwoordelijkheid van de programmeur om het AsyncTasks-gedrag af te handelen wanneer de activiteit wordt vernietigd. Dit betekent dat ze niet de beste optie zijn voor langdurige bewerkingen en ook, als de app zich op de achtergrond bevindt en de app wordt beëindigd door Android, wordt uw achtergrondverwerking ook beëindigd.
-
-Als de use-cases vrij eenvoudig zijn en ervoor gezorgd wordt dat er geen enkele verwijzing naar de context of het view-object bewaart wordt(impliciet, expliciet, direct, indirect...), zou dat alles kunnen zijn wat nodig is om blocking tasks naar een achtergrond thread te delegeren. Het is zelfs mogelijk om ze te gebruiken met executors en pools van threads om de zaken een beetje schoner te houden.
+Er zijn enkele problemen met AsyncTask. De grootste is het gevaar op \textit{memory leaks}. Zo moet de levenscyclus van de Activity of het Fragment in rekening gehouden worden. Dit betekent dat AsyncTask niet de beste optie is voor langdurige bewerkingen.
 
 Net als Callbacks werken AsyncTasks beter voor simpele taken. Complexe scenarios met verschillende uitvoeringsthreads en volgorde van bewerkingen, zullen snel de limieten bereiken.
 
-\begin{lstlisting}[language=Kotlin, caption=Android AsyncTask example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android AsyncTask voorbeeld]
 class LongRunningOperation() : AsyncTask<Void, Void, String>() {
     override fun doInBackground(vararg params: Void?): String? {
         // Long running Task
@@ -78,19 +70,18 @@ LongRunningOperation().execute(String);
 \end{lstlisting}
 
 \subsection{Runnables, Threads, Handlers  en AsyncTask}
-
-Een andere manier om taken in de achtergrond uit te voeren is door een Runnable te gebruiken die de code bevat die u op de achtergrond wilt uitvoeren, en die op een nieuwe thread uit te voeren. Als de gebruikersinterface achteraf moet bijgewerkt worden, kan dat niet gebeuren binnen de Runnable, omdat deze op een andere thread dan de UI thread draait. Deze Runnable kan doorgegeven worden aan een Handler of aan een Thread. 
+Een andere manier om taken in de achtergrond uit te voeren is door deze in een Runnable object te steken en die op een nieuwe thread uit te voeren. Als de gebruikersinterface achteraf moet bijgewerkt worden, kan dat niet gebeuren binnen de Runnable, omdat deze op een andere thread dan de UI thread draait. Deze Runnable kan doorgegeven worden aan een Handler of aan een Thread. 
 
 \textbf{Thread}\\
-Als new Thread(runnable).start() gebruikt wordt, maakt deze een nieuwe thread aan voor de taak asynchroon uit te voeren. Een thread bevat een Looper. Wanneer de main thread wordt uitgevoerd, zal de Looper herhalen en de Runnables één voor één uitvoeren. Gebruik Thread dus als er zwaar werk moet gebeuren zoals bijvoorbeeld netwerkcommunicatie. Als er veel thread nodig is, heeft ExecutorService misschien meer de voorkeur. Het is mogelijk om een eigen threadmodel te maken zoals AsyncTask en Handler, maar dit vereist een goede kennis van Java's Multi-Threading implementatie. Het starten van threads om je Runnable tasks uit te voeren, ze laten wachten (wait) en samenkomen (join) is een benadering op een vrij laag niveau. Deze verouderde manier is ook vatbaar voor deadlocks en overzicht bewaren over de threads is ook niet altijd even simpel. Hierbij moet ook rekening gehouden worden met het feit dat testen en debuggen zo goed als onmogelijk zijn. Tegenwoordig bestaan er betere opties op Android.
+Als new Thread(runnable).start() gebruikt wordt, maakt deze een nieuwe thread aan voor de taak asynchroon uit te voeren. Een thread bevat een Looper. Wanneer de main thread wordt uitgevoerd, zal de Looper herhalen en de Runnables één voor één uitvoeren. Gebruik Thread dus als er zwaar werk moet gebeuren zoals bijvoorbeeld netwerkcommunicatie. Het starten van threads om Runnable tasks uit te voeren, ze laten wachten (wait) en samenkomen (join) is een benadering op vrij laag niveau. Deze verouderde manier is ook vatbaar voor deadlocks en het overzicht bewaren over de threads is ook niet altijd simpel. Hierbij moet ook rekening gehouden worden met het feit dat testen en debuggen zo goed als onmogelijk zijn. Tegenwoordig bestaan er betere opties op Android.
 
 \textbf{Handler}\\
 Wanneer new Handler().post(runnable) gebruikt wordt, is het Runnable-object aan de Looper toegevoegd en wordt de code dus later in dezelfde thread uitgevoerd. Handler heeft de voorkeur wanneer UI-objecten uit een andere thread moeten bijgewerkt worden, dan is het noodzakelijk dat deze objecten alleen in de UI Thread kunnen worden bijgewerkt. Ook is het beter voor het uitvoeren van simpele code omdat het lichter en sneller is.
 
 \textbf{AsyncTask}\\
-Hiervoor werd AsyncTask reeds aangehaald. Toch kan het handig zijn om deze in de vergelijking toe te voegen. AsyncTask en Handler zijn geschreven in Java (intern gebruiken ze een Thread), dus alles wat we met Handler of AsyncTask kunnen doen, kunnen we ook bereiken met een Thread. De meest voor de hand liggende reden voor het gebruik van AsyncTask en Handler is de communicatie tussen de caller thread en de worker thread. Natuurlijk kunnen we op andere manieren communiceren tussen twee threads, maar er zijn veel nadelen (en gevaren) vanwege de veiligheid van de thread. Daarom is het best om Handler en AsyncTask te gebruiken. Deze klassen doen het meeste werk. Gebruik AsyncTask over Handler wanneer de caller thread een UI-thread is. Dit is wat Android documentatie zegt: AsyncTask maakt correct en gemakkelijk gebruik van de UI-thread mogelijk. Deze klasse maakt het mogelijk om achtergrondbewerkingen uit te voeren en resultaten op de UI-thread te publiceren zonder threads en/of handlers te hoeven manipuleren. 
+Hiervoor werd AsyncTask reeds aangehaald. Toch kan het handig zijn om deze in de vergelijking toe te voegen. AsyncTask en Handler zijn geschreven in Java (intern gebruiken ze een Thread), dus alles wat met Handler of AsyncTask kan gedaan worden, kan ook bereikt worden met een Thread. Gebruik AsyncTask over Handler wanneer de caller thread een UI-thread is.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Runnable example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Runnable voorbeeld]
 val runnable = Runnable {
     // Long running task
 }
@@ -104,7 +95,7 @@ Thread(runnable).start()
 
 
 \subsection{Kotlin coroutines}
-Kotlin-coroutines introduceren een nieuwe stijl van concurrency die op Android kan worden gebruikt om asynchrone code te vereenvoudigen. Coroutines zijn in versie 1.3 toegevoegd aan Kotlin. Ze zijn gebaseerd op gevestigde concepten uit andere talen. Een coroutine is een instantie van annuleerbare berekening. Het is conceptueel vergelijkbaar met een thread echter bieden Coroutines concurrency, maar geen parallellisme. Een coroutine is niet aan een bepaalde thread gebonden. Het kan de uitvoering ervan in de ene thread opschorten en in een andere thread hervatten. Coroutines kunnen worden gezien als lichte threads.
+Kotlin-coroutines zijn de door Google verkozen manier van asynchroon werken in Android. Ze introduceren een nieuwe stijl van concurrency die kan worden gebruikt om asynchrone code te vereenvoudigen. Coroutines zijn in versie 1.3 toegevoegd aan Kotlin. Ze zijn gebaseerd op gevestigde concepten uit andere talen. Een coroutine is een instantie van annuleerbare berekening. Het is conceptueel vergelijkbaar met een thread echter bieden Coroutines concurrency, maar geen parallellisme. Een coroutine is niet aan een bepaalde thread gebonden. Het kan de uitvoering ervan in de ene thread opschorten en in een andere thread hervatten.
 
 Ze bieden een goede oplossing op twee grote problemen.
 \begin{itemize}
@@ -112,13 +103,11 @@ Ze bieden een goede oplossing op twee grote problemen.
     \item Main-safety: staat toe om elke suspend functie aan te roepen vanop de main thread
 \end{itemize}
 
-Coroutines bouwen verder op gewone functies door het toevoegen van twee nieuwe operaties. Bij de bestaande operaties invoke en return komen suspend en resume bij.
-suspend — pauzeert de uitvoering van de huidige coroutine en slaat daarbij alle lokale variabelen op.
-resume — zet een geschorste coroutine voort vanaf de plaats waar het was onderbroken
+Coroutines bouwen verder op gewone functies door het toevoegen van twee nieuwe operaties. Bij de bestaande operaties invoke en return komen suspend en resume bij.Suspend pauzeert de uitvoering van de huidige coroutine en slaat daarbij alle lokale variabelen op. Resume zet een geschorste coroutine voort vanaf de plaats waar die was onderbroken.
 
 Er zijn verschillende manieren om met coroutines een stream van waarden terug te geven maar daar gaat dit onderzoek niet verder op in.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Coroutine example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Coroutine voorbeeld]
 fun main() = runBlocking {
     longRunningOperation()
 }
@@ -133,15 +122,15 @@ suspend fun longRunningOperation() = coroutineScope {
 
 
 \subsection{Reactive programming (RxJava)}
-In de afgelopen jaren is een andere mogelijkheid in een stroomversnelling gekomen, niet alleen voor Java, maar voor de meeste platforms. Reactive Extensions (ook bekend als Rx of ReactiveX) produceren libraries voor de meest voorkomende talen en impliceren een andere manier van denken om met asynchroon programmeren om te gaan. RxJava, dat net als elk Java-project op Android kan worden gebruikt, bevat een verzameling klassen en operators die u helpen bepaalde besturingsstromen om te keren zonder de controle over uw gegevensstromen en gebeurtenissen te verliezen. 
+In de afgelopen jaren is een andere mogelijkheid in een stroomversnelling gekomen, niet alleen voor Java, maar voor de meeste platformen. Reactive Extensions (ook bekend als Rx of ReactiveX) produceren libraries voor de meest voorkomende talen en impliceren een andere manier van denken om met asynchroon programmeren om te gaan. RxJava, dat net als elk Java-project op Android kan worden gebruikt, bevat een verzameling klassen en operators die helpen bepaalde besturingsstromen om te keren zonder de controle over de gegevensstromen en gebeurtenissen te verliezen. 
 
-Met behulp van de \textit{Observables} en \textit{Subscriptions} van RxJava is het mogelijk om een ​​\textit{Observer} te creëren die de methoden "onNext", "onError" en "onCompleted" overschrijft en te subscriben op een methode die een Observable retourneert. De Observable zendt items terug naar de Observer, waardoor de "onNext"-methode wordt aangeroepen met toegang tot het verzonden item. Als de Observable klaar is met het uitzenden van objecten, wordt "onCompleted" aangeroepen. Als er op enig moment een uitzondering wordt gegenereerd, wordt "onError" aangeroepen met die uitzondering, wat een eenvoudige foutafhandeling mogelijk maakt. De enige opkuis die moet gebeuren is in onDestroy-methode te unsubscriben voor geheugenlekken te voorkomen.
+Met behulp van de \textit{Observables} en \textit{Subscriptions} van RxJava is het mogelijk om een ​​\textit{Observer} te creëren die de methoden "onNext", "onError" en "onCompleted" overschrijft en te subscriben op een methode die een Observable retourneert. De Observable zendt items terug naar de Observer, waardoor de "onNext" methode wordt aangeroepen met toegang tot het verzonden item. Als de Observable klaar is met het uitzenden van objecten, wordt "onCompleted" aangeroepen. Als op enig moment een uitzondering wordt gegenereerd, wordt "onError". De enige opkuis die moet gebeuren is in onDestroy-methode te unsubscriben voor memory leaks te voorkomen.
 
-Het hele concept berust op een combinatie van de klassieke Observer- en Iterator-patronen. Dit lijkt misschien een andere callback-aanpak, maar Rx is eigenlijk veel krachtiger dan dat: de grootste kracht ligt in het feit dat het een gelijkenis toont met functioneel programmeren. Dit blijkt duidelijk uit het gebruik van de meerdere operators die beschikbaar zijn in de RxJava-bibliotheek. Er zijn tientallen, zo niet honderden operators waarmee u uw gegevens kunt transformeren, uw streams kunt combineren of synchroniseren, tijdsbewerkingen kunt afhandelen, van thread kunt wisselen, enz. Met deze enorme toolbox is het koppelen van twee calls net zo eenvoudig als het gebruik van flatmap, het manipuleren van threads wordt gedaan met observeOn of subscribeOn, collecties kunnen worden samengevoegd met een zip en gegevens kunnen worden toegewezen aan meer geschikte types om aan de voorkeur te voldoen. Complexe algoritmen met meerdere asynchrone bewerkingen zijn veel leesbaarder. Als laatste is het mogelijk om met Rx-programmering asynchrone code te schrijven op een testbare manier. Zelfs als de code tijdsbewerkingen met zich meebrengt (vertragingen, time-outs ...), kun je test schedulers gebruiken om tijd te simuleren en te controleren of je code zich in milliseconden correct gedraagt.	
+Het hele concept berust op een combinatie van de klassieke Observer- en Iterator-patronen. Dit lijkt misschien een andere callback-aanpak, maar Rx is eigenlijk veel krachtiger: de grootste kracht ligt in het feit dat het een gelijkenis toont met functioneel programmeren. Dit blijkt duidelijk uit het gebruik van de meerdere operators die beschikbaar zijn in de RxJava-bibliotheek. Er zijn tientallen, zo niet honderden operators waarmee gegevens kunnen getransformeerd worden, streams kunnen gecombineerd worden, tijdsbewerkingen kunnen afgehandeld worden, van thread kan gewisseld worden, enz. Complexe algoritmen met meerdere asynchrone bewerkingen zijn veel leesbaarder. Als laatste is het mogelijk om met Rx-programmering asynchrone code te schrijven op een testbare manier.
 
-Een nadeel dat Reactive programming met zich meebrengt is de stijle leercurve. Het kan een overweldigende taak zijn om de opbouw van een blok asynchrone code aan te passen om het meeste eruit te halen. Indien een eenmalige oplossing gezocht wordt voor een eenvoudig use case, wordt reactive niet aangeraden. Wanneer er vaak asynchrone code moet geschreven worden voor complexe use cases kan het interessant zijn om zich in reactive te verdiepen.
+Een nadeel dat Reactive programming met zich meebrengt is de steile leercurve. Het kan een overweldigende taak zijn om de opbouw van een blok asynchrone code aan te passen om het meeste eruit te halen. Indien een eenmalige oplossing gezocht wordt voor een eenvoudige use case, wordt reactive niet aangeraden. Wanneer vaak asynchrone code moet geschreven worden voor complexe use cases kan het interessant zijn om zich in Rx te verdiepen.
 
-\begin{lstlisting}[language=Kotlin, caption=Android RxJava example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android RxJava voorbeeld]
 val observable = PublishSubject.create<Int>()  
     
 observable
@@ -155,24 +144,24 @@ observable
 \end{lstlisting} 
 
 \section{Flutter}
-Dart is een single threaded taal die gebruikmaakt van event loops om asynchrone taken uit te voeren. Het kan associëren met verschillende codes die in discrete threads worden uitgevoerd. De bouwmethode in Flutter is echter synchroon. Het gebruik van synchrone code in Dart kan vertragingen veroorzaken en de uitvoering van het hele programma blokkeren. Asynchrone programmering pakt dit probleem aan. Bovendien zorgt dit voor een verbeterde uitvoering van de applicatie en een verbeterde reactiesnelheid van de applicatie
+Dart is een single threaded taal die gebruikmaakt van event loops om asynchrone taken uit te voeren. De bouwmethode in Flutter is echter synchroon. Op het moment dat Dart begint, is er één main Isolate(Thread). Het is de originele thread van de toepassing, waarnaar wordt verwezen als de UI-thread. In het geval dat een andere thread moet gemaakt worden, die zijn eigen wachtrij heeft, moet een nieuwe Isolate gemaakt worden. Dit valt echter buiten de scope van het onderzoek.
 
 \textbf{Dart event loop}\\
-Zodra een app geopend wordt, vinden verschillende events plaats in onvoorspelbare volgorde, totdat de app gesloten wordt. Elke keer een event plaatsvindt, komt deze in een wachtrij en wacht deze om verwerkt te worden. De Dart event loop haalt het event bovenaan de wachtrij op, verwerkt deze en activeert een callback totdat alle gebeurtenissen in de wachtrij zijn voltooid.
+Zodra een app geopend wordt, vinden verschillende events plaats in onvoorspelbare volgorde, totdat de app gesloten wordt. Elke keer een event plaatsvindt, komt deze in een wachtrij, waar het event wacht om verwerkt te worden. De Dart event loop haalt het event bovenaan de wachtrij op, verwerkt deze en activeert een callback totdat alle gebeurtenissen in de wachtrij voltooid zijn.
 
 De klassen Future en Stream en de trefwoorden async en wait in Dart zijn gebaseerd op deze eenvoudige event loop, waardoor asynchroon programmeren mogelijk wordt.
 
 \textbf{Futures}\\
-Een future (kleine letter "f") is een instantie van de klasse Future. Een Future in Flutter maakt het mogelijk om de io te beheren zonder zicht te moeten druk maken over threads of deadlocks. Een future vertegenwoordigt het resultaat van een asynchrone bewerking en kan twee statussen hebben: onvoltooid of voltooid.
+Een future (kleine letter "f") is een instantie van de klasse Future. Een Future in Flutter maakt het mogelijk om de io te beheren zonder zicht druk te maken over threads of deadlocks. Een future vertegenwoordigt het resultaat van een asynchrone bewerking en kan twee statussen hebben: onvoltooid of voltooid.
 \begin{itemize}
-\item Onvoltooid: Wanneer een asynchrone functie aangeroepen wordt, retourneert deze een onvoltooide future. Deze future wacht tot de asynchrone bewerking van de functie voltooid is of een fout genereerd.
-\item Voltooid: Als de asynchrone bewerking slaagt, wordt de toekomst voltooid met een waarde. Anders wordt het voltooid met een fout.
+\item Onvoltooid: Wanneer een asynchrone functie aangeroepen wordt, retourneert deze een onvoltooide future. Deze future wacht tot de asynchrone bewerking van de functie voltooid is of een fout genereert.
+\item Voltooid: Als de asynchrone bewerking slaagt, wordt de future voltooid met een waarde, anders wordt het voltooid met een fout.
 \end{itemize}
 
 \textbf{Future met callback}\\
-Een van de meest voorkomende Use Cases voor asynchroon programmeren is het verkrijgen van gegevens via een netwerk, zoals via een REST-service met HTTP. 
+Een veel voorkomende Use Case voor asynchroon programmeren is het verkrijgen van gegevens via een netwerk verzoek. 
 
-\begin{lstlisting}[language=Dart, caption=Flutter callback example]
+\begin{lstlisting}[language=Dart, caption=Simpel Flutter callback voorbeeld, label={lst:FlutterCallback}]
 http.get("https://example.com").then((response) {
     if (response.statusCode == 200) {
         //do something with the response
@@ -182,10 +171,10 @@ http.get("https://example.com").then((response) {
 });
 \end{lstlisting}
 
-Het codevoorbeeld toont het klassieke patroon voor het consumeren van futures. De aanroep naar http.get() retourneert een onvolledige future. Onthoud dat het verkrijgen van resultaten via HTTP tijd kost, en het is ongewenst dat de app niet reageert in deze periode. Daarom wordt de future meteen terug gehaald en wordt verder gegaan met het uitvoeren van de andere regels code. Die andere regels gebruiken de methode then() van de Future-instantie om een callback te registreren die wordt uitgevoerd wanneer het antwoord binnenkomt.
+Codevoorbeeld \ref{lst:FlutterCallback} toont het klassieke callback patroon voor het werken met futures. De aanroep naar http.get() retourneert een onvolledige future. Onthoud dat het verkrijgen van resultaten via HTTP tijd kost en het is ongewenst dat de app niet reageert in deze periode. Daarom wordt de future meteen terug gehaald en wordt verder gegaan met het uitvoeren van de andere regels code. Die andere regels gebruiken de methode then() van de future om een callback te registreren die wordt uitgevoerd wanneer het antwoord binnenkomt.
 
 \textbf{async en await}\\
-Dart biedt een alternatief patroon voor het maken van asynchrone calls, een patroon dat meer op gewone synchrone code lijkt, waardoor het gemakkelijker te lezen en te volgen is. De async/wait-syntaxis regelt veel van de logistiek van futures voor u:
+Dart biedt met de async/wait syntax een alternatief patroon voor het maken van asynchrone calls, één die meer lijkt op gewone synchrone code, waardoor het gemakkelijker te lezen en te volgen valt.
 
 Dart voorziet twee keywords die hierbij kunnen gebruikt worden:
 \begin{itemize}
@@ -195,7 +184,7 @@ Dart voorziet twee keywords die hierbij kunnen gebruikt worden:
 
 Een asynchrone functie wordt synchroon uitgevoerd tot het eerste wait-sleutelwoord. Dit betekent dat binnen een asynchrone functie alle synchrone code vóór het eerste wait-sleutelwoord onmiddellijk wordt uitgevoerd.
 
-\begin{lstlisting}[language=Dart, caption=Flutter async example]
+\begin{lstlisting}[language=Dart, caption=Simpel Flutter async voorbeeld]
 Future <?> longRunningOperation () async { 
     //Long running task
 }
@@ -209,12 +198,12 @@ void otherFunction() async {
 }
 \end{lstlisting}
 
-Widgets opbouwen die gebruik maken van futures is waar de moeilijkheid ligt in Flutter. Dit kan aan de hand van één van volgende manieren.
+Widgets opbouwen die gebruik maken van futures is waar de 'moeilijkheid' ligt in Flutter. Dit kan aan de hand van één van volgende manieren.
 
 \textbf{StatefullWidget}\\
-Dit is een eenvoudige manier die best gebruikt voor simpele Use Cases. Wanneer de asynchrone data binnenkomt, kan een rebuild getriggerd worden aan de hand van setState(). 
+Dit is een eenvoudige manier die best alleen gebruikt wordt voor simpele Use Cases. Wanneer de asynchrone data binnenkomt, kan een rebuild getriggerd worden aan de hand van setState(). 
 
-\begin{lstlisting}[language=Dart, caption=Flutter StatefulWidget example]
+\begin{lstlisting}[language=Dart, caption=Simpel Flutter StatefulWidget voorbeeld]
 class _MyFutureWidgetState extends State<MyFutureWidget> {
     String? value;
     
@@ -247,9 +236,9 @@ Future<?> fetchFuture() async {
 \end{lstlisting}
 
 \textbf{FutureBuilder}\\
-FutureBuilder biedt een mooiere, betere manier aan om met futures in Flutter om te gaan. FutureBuilder maakt het mogelijk widgets te bouwen wanneer deze te maken hebben met een future. Met deze widget is het mogelijk om de huidige status van de future op te vragen. Zo is het mogelijk om verschillende widgets te tonen wanneer de data wordt geladen en wanneer deze beschikbaar is. Zoals de naam zegt, bestaat deze widget uit twee grote delen, een future en een builder. De builder heeft een context en snapshot. Het snapshot is een onveranderlijke weergave van de meest recente interactie met een asynchrone berekening. Het heeft meerdere eigenschappen. Wanneer een asynchrone berekening plaatsvindt, is het handig om de status van de huidige verbinding te kennen, wat mogelijk is via snapshot.connectionState. 
+FutureBuilder biedt een mooiere, betere manier aan om met futures in om te gaan. FutureBuilder maakt het mogelijk widgets te bouwen wanneer deze moeten wachten op een future. Met deze widget is het mogelijk om de huidige status van de future op te vragen. Zo is het mogelijk om verschillende widgets te tonen wanneer de data wordt geladen en wanneer deze beschikbaar is. Zoals de naam zegt, bestaat deze widget uit twee grote delen, een future en een builder die een context en snapshot verwacht. Het snapshot is een beeld van de meest recente interactie met de asynchrone berekening. Wanneer een asynchrone berekening plaatsvindt, is het handig om de status te kennen, wat mogelijk is via snapshot.connectionState. 
 
-De connectionState heeft vier gebruikelijke stromen:
+De connectionState heeft vier gebruikelijke statussen:
 \begin{itemize}
 \item none: initiële gegevens (wanneer ingesteld)
 \item waiting: de asynchrone bewerking is begonnen. De gegevens zijn meestal null 
@@ -257,9 +246,9 @@ De connectionState heeft vier gebruikelijke stromen:
 \item done: gegevens zijn niet-null
 \end{itemize}
 
-snapshot.data retourneert de nieuwste gegevens en snapshot.error retourneert het nieuwste error object. snapshot.hasData en snapshot.hasError zijn twee handige getters die controleren of er een fout of data is ontvangen.
+snapshot.data retourneert de nieuwste gegevens en snapshot.error retourneert het nieuwste error object. snapshot.hasData en snapshot.hasError zijn twee handige getters die controleren of een fout of data is ontvangen.
 
-\begin{lstlisting}[language=Dart, caption=Flutter FutureBuilder example]
+\begin{lstlisting}[language=Dart, caption=Simpel Flutter FutureBuilder voorbeeld]
 FutureBuilder(
     future: functionThatReturnsFuture(),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -273,7 +262,7 @@ FutureBuilder(
 \end{lstlisting}
 
 \textbf{StreamBuilder}\\
-StreamBuilder en FutureBuilder zijn bijna identieke concepten. StreamBuilder levert echter periodiek data, dus moet er vaker naar geluisterd worden dan dat het geval is bij FutureBuilder, waar één keer luisteren. De StreamBuilder-widget subscribes en unsubscribes automatisch op een stream. Wanneer een widget wordt gedisposed, moet men zich geen zorgen maken over het unsubscriben, en het is net bij dit dat een geheugenlek zou kunnen onstaan. StreamBuilder zorgt er dus met andere woorden voor dat geheugenlekker quasi niet kunnen voorkomen, wat een groot voordeel is.
+StreamBuilder en FutureBuilder zijn bijna identieke concepten. StreamBuilder levert echter periodiek data, dus moet vaker geluisterd worden. De StreamBuilder-widget subscribes en unsubscribes automatisch op een stream. Wanneer een widget wordt gedisposed, moet men zich geen zorgen maken over het unsubscriben. StreamBuilder zorgt er dus met andere woorden voor dat memory leaks quasi niet kunnen voorkomen.
 
 \begin{lstlisting}[language=Dart, caption=Flutter Stream example]
 StreamBuilder(
@@ -291,4 +280,4 @@ StreamBuilder(
 \end{lstlisting}
 
 \section{Conclusion}
-Het is duidelijk dat Android, het meer ontwikkelde platform, ook meer opties aanbiedt. Dit maakt het platform toegankelijker voor programmeurs met verschillende achtergronden. Zij voelen zich sneller thuis in de gekende concepten. Aan de andere kant, als men nieuw is in het vak kan het aantal opties voor asynchroon werk nogal overweldigend over komen. Hoewel er meerdere manieren zijn om hetzelfde te bereiken . Flutter biedt één overzichtelijke manier om asynchroon programmeren aan te pakken. Het is duidelijk en gemakkelijk om aan te leren. De integratie van futures en streams met widgets is duidelijk gedocumenteerd.
+Het is duidelijk dat Android, het meer ontwikkelde platform, ook meer opties aanbiedt. Dit maakt het platform toegankelijker voor programmeurs met verschillende achtergronden. Zij voelen zich sneller thuis in de gekende concepten. Aan de andere kant, als men nieuw is in het vak kan het aantal opties voor asynchroon werk nogal overweldigend over komen. Hoewel er meerdere manieren zijn om hetzelfde te bereiken kan het moeilijk zijn om de beste of meest correcte optie te kiezen. Flutter biedt één overzichtelijke manier van asynchroon programmeren aan. Het is duidelijk, gemakkelijk en snel aan te leren. De integratie van futures en streams met widgets is duidelijk gedocumenteerd en vraagt niet veel werk. Desondanks is het wel mogelijk om complexe asynchrone taken uit te voeren. Echter blijken futures beter voor simpele taken. Complexe scenarios zullen snel de limieten bereiken.

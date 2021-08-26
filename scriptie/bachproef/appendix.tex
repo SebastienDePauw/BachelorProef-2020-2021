@@ -6,12 +6,42 @@
 \label{ch:appendix}
 
 \section{Hello world template}
-De eerste Flutter app gemaakt in het kader van dit onderzoek was een welbekende en gebruikelijke Hello World applicatie. Een Hello World app klinkt alle ontwikkelaars bekend in de oren. Het is namelijk een standaard template die niet meer doet dan het tonen van een “Hello World” tekst op een scherm. Het is zeer minimaal in aantal lijnen code, wat ergens wel logisch is, en zorgt voor een heel kleine, compacte APK. Om enige vorm van realisme in de ontwikkeling van deze voorbeeld applicaties te integreren, zal er gekozen worden om de builds van deze applicaties via een release schema uit te voeren. Deze manier van builden optimaliseert de code in zijn geheel, zoals de applicatie terug te vinden zou zijn op de Play Store bijvoorbeeld.
+De eerste Flutter app gemaakt in het kader van dit onderzoek was een welbekende en gebruikelijke Hello world applicatie. Een Hello world app klinkt alle ontwikkelaars bekend in de oren. Het is namelijk een standaard template die niet meer doet dan het tonen van een “Hello World” tekst op een scherm. Het is zeer minimaal in aantal lijnen code, wat ergens wel logisch is, en zorgt voor een heel kleine, compacte APK. 
 
 \section{ABI}
+Verschillende Android apparaten gebruiken verschillende CPU's, die op hun beurt verschillende instructiesets ondersteunen. Elke combinatie van CPU en instructieset heeft zijn eigen Application Binary Interface (ABI). In tabel \ref{table:abi} kan een lijst worden gevonden met de Android ondersteunde ABIs
+
+\begin{table}
+    \begin{center}
+    \caption{Ondersteunde Android ABI's}
+    \label{table:abi}
+    \begin{tabular}{ |p{5cm}|p{5cm}|  }
+        \hline
+        \textbf{ABI} & \textbf{Ondersteunde instructieset} \\
+        \hline
+        \multirow{3}{5cm}{armeabi-v7a} & armeabi\\
+        & Thumb-2\\
+        & VFPv3-D16\\
+        \hline
+        arm64-v8apile & AArch64\\
+        \hline
+        \multirow{4}{5cm}{x86} & x86 (IA-32)\\
+        & MMX\\
+        & SSE/2/3\\
+        & SSSE3\\
+        \hline
+        \multirow{5}{5cm}{x86\_64} & x86-64\\
+        & MMX\\
+        & SSE/2/3\\
+        & SSSE3\\
+        & SSE4.1, 4.2\\
+        & POPCNT\\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \section{Opstart procedures van een applicatie}
-
 Een cold start houdt in dat de applicatie vanaf nul opgestart wordt. Het systeem heeft namelijk, tot nu, nog niks gedaan om de applicatie zijn proces te starten. Cold starts komen voor wanneer het systeem net opgestart is of dat het systeem de applicatie net zelf afgesloten heeft (bijvoorbeeld omdat het systeem geheugen te kort had). Bij de cold start van een applicatie moet het systeem volgende stappen ondernemen:
 
 \begin{enumerate}
@@ -31,6 +61,9 @@ De dag van vandaag hebben smartphones meerdere processoren voor het uitvoeren va
 
 Om de processoren efficiënter te gebruiken kan het besturingssysteem een applicatie verplichten om meer dan één thread van uitvoering te creëren binnen een proces. Dit noemt men \emph{multi-threading}. Dit kan vergeleken worden met het lezen van meerdere boeken tegelijkertijd en wisselen tussen elk boek achter een hoofdstuk. In dit scenario is de lezer gelijk aan de processor, alle boeken samen zijn gelijk aan het uit te voeren proces, één boek gelijk aan een thread en het lezen van dat boek gelijk aan het uitvoeren van een thread. Het is echter niet mogelijk om in meerdere boeken tegelijkertijd te lezen.
 
-Voor het beheren van deze threads is veel overhead nodig. Zo is er nood aan een \emph{Schedular}. Deze kijkt onder andere naar prioriteit van alle threads maar houdt ook rekening met het uitvoeren en finaliseren van al deze threads. Vervolgens is er de \emph{Dispatcher}, deze houdt zich bezig met het aanmaken van threads. In het voorbeeld kan dit vergeleken worden met een persoon die de boeken die gelezen dienen te worden bezorgd en een context aanbiedt waarin dit moet gebeuren. De context kan vergeleken worden met een speciale lees kamer. Sommige contexts zijn beter voor UI taken, andere beter voor I/O taken. 
+Voor het beheren van deze threads is veel overhead nodig. Zo is er nood aan een \emph{Schedular}. Deze kijkt onder andere naar prioriteit van alle threads maar houdt ook rekening met het uitvoeren en finaliseren van al deze threads. Vervolgens is er de \emph{Dispatcher}, deze houdt zich bezig met het aanmaken van threads. In het voorbeeld kan dit vergeleken worden met een persoon die de boeken die gelezen dienen te worden, bezorgd en een context aanbiedt waarin dit moet gebeuren. De context kan vergeleken worden met een speciale lees kamer. Sommige contexts zijn beter voor UI taken, andere beter voor I/O taken. 
 
 Ook is interessant om weten dat gebruikers applicaties meestal een \emph{main thread} hebben. Deze wordt uitgevoerd in de voorgrond en kan andere threads dispatchen in de achtergrond.
+
+\section{Asynchroon vs concurrency vs parallellisme vs threads}
+Binnen asynchroon programmeren komen een aantal termen vaak terug. Zo zijn de vier belangrijkste concurrency, parallellisme, asynchrone taken en threads. Concurrency verwijst naar het beheren van meerdere uitvoeringsthreads, waarbij parallellisme meer specifiek is, meerdere uitvoeringsthreads die tegelijkertijd worden uitgevoerd. Concurrency is de bredere term die parallellisme kan omvatten. Asynchrone methoden zijn niet direct gerelateerd aan de vorige twee concepten, asynchroon wordt gebruikt om de indruk te wekken van gelijktijdige of parallelle taken, maar in feite wordt normaal gesproken een asynchrone methode aanroep gebruikt voor een proces dat werk moet doen buiten de huidige applicatie en de applicatie niet wilt geblokt worden in afwachting van het antwoord. Een thread is de kleinste opeenvolging van geprogrammeerde instructies die onafhankelijk van elkaar kunnen worden beheerd.
