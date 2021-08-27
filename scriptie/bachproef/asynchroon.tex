@@ -42,7 +42,7 @@ api.getSomething().enqueue(object: Callback<?> {
 })
 \end{lstlisting}
 
-\subsection{AsyncTasks}
+\subsection{AsyncTask}
 AsyncTask werd door Google \textit{deprecated} gemaakt voor API level 30 en hoger. Deprecated of ‘verouderd’ betekent dat Google aanbeveelt om een alternatief te zoeken. Het betekent niet dat de klasse snel zal verwijderd worden uit de Android SDK. Aangezien AsyncTasks een veel gebruikte optie was, wordt deze opgenomen in het onderzoek. Het \textit{extenden} van AsyncTask en het toevoegen van code in de doInBackground methode is alles wat nodig is om een lange berekening naar een andere thread over te dragen. Met de andere beschikbare methoden kunnen veel eenvoudige use-cases worden afgehandeld. De eenvoud van AsyncTask verklaart waarom zoveel mensen het gebruiken. 
 
 Er zijn enkele problemen met AsyncTask. De grootste is het gevaar op \textit{memory leaks}. Zo moet de levenscyclus van de Activity of het Fragment in rekening gehouden worden. Dit betekent dat AsyncTask niet de beste optie is voor langdurige bewerkingen.
@@ -151,14 +151,14 @@ Zodra een app geopend wordt, vinden verschillende events plaats in onvoorspelbar
 
 De klassen Future en Stream en de trefwoorden async en wait in Dart zijn gebaseerd op deze eenvoudige event loop, waardoor asynchroon programmeren mogelijk wordt.
 
-\textbf{Futures}\\
+\subsection{Future}\\
 Een future (kleine letter "f") is een instantie van de klasse Future. Een Future in Flutter maakt het mogelijk om de io te beheren zonder zicht druk te maken over threads of deadlocks. Een future vertegenwoordigt het resultaat van een asynchrone bewerking en kan twee statussen hebben: onvoltooid of voltooid.
 \begin{itemize}
 \item Onvoltooid: Wanneer een asynchrone functie aangeroepen wordt, retourneert deze een onvoltooide future. Deze future wacht tot de asynchrone bewerking van de functie voltooid is of een fout genereert.
 \item Voltooid: Als de asynchrone bewerking slaagt, wordt de future voltooid met een waarde, anders wordt het voltooid met een fout.
 \end{itemize}
 
-\textbf{Future met callback}\\
+\subsection{Future met callback}\\
 Een veel voorkomende Use Case voor asynchroon programmeren is het verkrijgen van gegevens via een netwerk verzoek. 
 
 \begin{lstlisting}[language=Dart, caption=Simpel Flutter callback voorbeeld, label={lst:FlutterCallback}]
@@ -173,7 +173,7 @@ http.get("https://example.com").then((response) {
 
 Codevoorbeeld \ref{lst:FlutterCallback} toont het klassieke callback patroon voor het werken met futures. De aanroep naar http.get() retourneert een onvolledige future. Onthoud dat het verkrijgen van resultaten via HTTP tijd kost en het is ongewenst dat de app niet reageert in deze periode. Daarom wordt de future meteen terug gehaald en wordt verder gegaan met het uitvoeren van de andere regels code. Die andere regels gebruiken de methode then() van de future om een callback te registreren die wordt uitgevoerd wanneer het antwoord binnenkomt.
 
-\textbf{async en await}\\
+\subsection{async en await}\\
 Dart biedt met de async/wait syntax een alternatief patroon voor het maken van asynchrone calls, één die meer lijkt op gewone synchrone code, waardoor het gemakkelijker te lezen en te volgen valt.
 
 Dart voorziet twee keywords die hierbij kunnen gebruikt worden:
@@ -200,7 +200,7 @@ void otherFunction() async {
 
 Widgets opbouwen die gebruik maken van futures is waar de 'moeilijkheid' ligt in Flutter. Dit kan aan de hand van één van volgende manieren.
 
-\textbf{StatefullWidget}\\
+\subsection{StatefullWidget}\\
 Dit is een eenvoudige manier die best alleen gebruikt wordt voor simpele Use Cases. Wanneer de asynchrone data binnenkomt, kan een rebuild getriggerd worden aan de hand van setState(). 
 
 \begin{lstlisting}[language=Dart, caption=Simpel Flutter StatefulWidget voorbeeld]
@@ -235,7 +235,7 @@ Future<?> fetchFuture() async {
 }
 \end{lstlisting}
 
-\textbf{FutureBuilder}\\
+\subsection{FutureBuilder}\\
 FutureBuilder biedt een mooiere, betere manier aan om met futures in om te gaan. FutureBuilder maakt het mogelijk widgets te bouwen wanneer deze moeten wachten op een future. Met deze widget is het mogelijk om de huidige status van de future op te vragen. Zo is het mogelijk om verschillende widgets te tonen wanneer de data wordt geladen en wanneer deze beschikbaar is. Zoals de naam zegt, bestaat deze widget uit twee grote delen, een future en een builder die een context en snapshot verwacht. Het snapshot is een beeld van de meest recente interactie met de asynchrone berekening. Wanneer een asynchrone berekening plaatsvindt, is het handig om de status te kennen, wat mogelijk is via snapshot.connectionState. 
 
 De connectionState heeft vier gebruikelijke statussen:
@@ -261,7 +261,7 @@ FutureBuilder(
 ),
 \end{lstlisting}
 
-\textbf{StreamBuilder}\\
+\subsection{StreamBuilder}\\
 StreamBuilder en FutureBuilder zijn bijna identieke concepten. StreamBuilder levert echter periodiek data, dus moet vaker geluisterd worden. De StreamBuilder-widget subscribes en unsubscribes automatisch op een stream. Wanneer een widget wordt gedisposed, moet men zich geen zorgen maken over het unsubscriben. StreamBuilder zorgt er dus met andere woorden voor dat memory leaks quasi niet kunnen voorkomen.
 
 \begin{lstlisting}[language=Dart, caption=Flutter Stream example]
