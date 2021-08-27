@@ -3,28 +3,24 @@
 %%=============================================================================
 
 
-\chapter{\IfLanguageName{dutch}{Gebruik van online API’s}{Usage of online API’s}}
+\chapter{\IfLanguageName{dutch}{Netwerkverzoeken}{Network calls}}
 \label{ch:api}
-Het developer vakjargon bevat een aantal veel voorkomende termen, één van deze is API. Een Application Programming Interface, of dus kortweg API, is software die het toelaat om verschillende applicaties of applicatielagen met elkaar te laten communiceren. Een van de primaire use cases waarvoor een API gebruikt wordt in de mobiele applicatie wereld, is die om de zogenaamde API calls uit te voeren. Het doel van deze API calls zijn om vanuit de mobiele applicatie, de API aan te spreken om data op te halen die vervolgens verwerkt en getoond kan worden. Een API zorgt er in dit geval voor dat een mobiele applicatie in connectie staat met de cloud. Naast het ophalen van data kan er vaak ook nieuwe data naar de API gestuurd worden, of kan bestaande data aangepast worden.
-
-Wanneer een app gebruik wilt maken van data die niet door de eindgebruiker is ingegeven moet een netwerk connectie tot stand worden gebracht. Daarom is het voor elke nieuwe app ontwikkelaar belangrijk om op de hoogte te zijn van de werking hiervan.
+Wanneer een app gebruik wilt maken van niet lokale data moet een netwerk connectie tot stand brengen. Daarom is het voor elke nieuwe app ontwikkelaar belangrijk om op de hoogte te zijn van de werking hiervan.
 
 \section{Opzet}
-Voor dit deel van het onderzoek werd gebruik gemaakt van een online API en de al dan niet ingebouwde platform specifieke functionaliteiten voor het aanspreken van deze services. In de onderzoeksapplicatie werden verschillende API calls gedaan die later in dit hoofdstuk worden beschreven.
+Voor dit deel van het onderzoek werd onder andere gebruik gemaakt van een online API en de al dan niet ingebouwde platform specifieke functionaliteiten voor het aanspreken van de services. Het onderzoek werd gevoerd gebruik makend van simpele, gratis, goed gedocumenteerde API's. In de onderzoeksapplicatie werden verschillende API calls gedaan die later in dit hoofdstuk worden beschreven.
 
-Voor dit deel van het onderzoek werden simpele, gratis, goed gedocumenteerde API's aangesproken.
+Wanneer een Android app een netwerk verzoek wilt uitvoeren moet deze app eerst permissie hebben gekregen om het internet te gebruiken. Wegens Android privacy redenen kan de gebruiker dit dus uitzetten. Deze permissie dient toegevoegd te worden in het manifest.
 
-Tijdens het uitvoeren van dit experiment, werd gebruik gemaakt van zogenaamde data klassen. Deze klassen worden onder andere gebruikt om de verschillende objecten op te bouwen die terugkomen van de API. 
+Hierbij worden simpele codevoorbeelden toegevoegd om inzicht te verwerven in deze concepten.
 
 \section{Android}
-De meeste netwerk geconnecteerde apps maken gebruik van HTTP om data te versturen en te ontvangen over het internet. Android voorziet hiervoor twee clients: HttpURLConnection en Apache HTTP Client. Daarbuiten kunnen ook een aantal goed ontwikkelde frameworks gebruikt worden. Enkele van de libraries die hiervoor in Android makkelijk te gebruiken zijn, zijn OKHttp, Volley, Retrofit, Picasso, Fresco.
+De meeste apps die in connectie staan met het netwerk maken gebruik van HTTP om data te versturen en te ontvangen over het internet. Android voorziet hiervoor twee clients: HttpURLConnection en Apache HTTP Client. Daarbuiten kunnen ook een aantal goed ontwikkelde frameworks gebruikt worden. Enkele van de libraries die hiervoor in Android makkelijk te gebruiken zijn, zijn OKHttp, Volley, Retrofit, Picasso, Fresco.
 
 \textbf{Google’s HTTP clients:}\\
-In de begin jaren van Android waren juist twee HTTP Clients beschikbaar. Echter waren beide niet goed geïntegreerd in het platform. HttpUrlConnection had last van enkele bugs terwijl Apache Clients niet meer werd geüpdatet. Terwijl Google ervoor koos om Apache-based AndroidHttpClient later deprecated te maken besloten ze om de bugs in HttpURLConnection wel op te lossen.
+In de begin jaren van Android waren juist twee HTTP Clients beschikbaar. Beide waren niet goed geïntegreerd in het platform. HttpUrlConnection had last van enkele bugs terwijl Apache Clients niet meer werd geüpdatet. Terwijl Google ervoor koos om Apache-based AndroidHttpClient later deprecated te maken besloten ze om de bugs in HttpURLConnection wel op te lossen. Binnen Android is dit een vlugge gemakkelijke manier om een netwerk request uit te voeren. Echter wordt deze al snel ingewikkeld als deze verder uitbreidt.
 
-Binnen Android is dit een vlugge gemakkelijke manier om een netwerk request uit te voeren. Echter wordt deze al snel ingewikkeld als deze verder uitbreidt.
-
-\begin{lstlisting}[language=Kotlin, caption=Android HttpUrlCpnnection example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android HttpUrlCpnnection voorbeeld]
 val url = URL("http://www.android.com/")
 val urlConnection: HttpURLConnection 
     = url.openConnection() as HttpURLConnection
@@ -38,9 +34,9 @@ try {
 \end{lstlisting}
 
 \textbf{OKHttp:}\\
-Google besloot uiteindelijk om de goed ondersteunde OKHttp library op te nemen in Android. Hierdoor konden ze, zoals hiervoor vermeld, de Apache library deprecated maken. Ondertussen heeft de OKHttp library al een heleboel extra features die netwerken zoveel gemakkelijker maken. Zo voorziet de library een goede oplossing voor asynchrone requests die sinds Android 3.0 op een aparte thread moeten worden uitgevoerd. Om vergelijkbare logica met HttpUrlConnection te implementeren, zou een veel omvangrijkere implementatie moeten worden bedacht om AsyncTask-wrapper of afzonderlijke threads te gebruiken. Het wordt nog ingewikkelder als u functies zoals ‘cancelation’ en ‘connection pooling’ moet ondersteunen.
+Google besloot uiteindelijk om de goed ondersteunde OKHttp library op te nemen in Android. Hierdoor konden ze, zoals hiervoor vermeld, de Apache library deprecated maken. Ondertussen heeft de OKHttp library al een heleboel extra features die netwerken gemakkelijker maken. Zo voorziet de library een goede oplossing voor asynchrone requests die sinds Android 3.0 op een aparte thread moeten worden uitgevoerd. Om vergelijkbare logica met HttpUrlConnection te implementeren, zou een veel omvangrijkere implementatie moeten worden bedacht om AsyncTask-wrapper of afzonderlijke threads te gebruiken.
 
-\begin{lstlisting}[language=Kotlin, caption=Android OKHttp example]
+\begin{lstlisting}[language=Kotlin, caption=Sipmel Android OKHttp voorbeeld]
 val client = OkHttpClient()
 val url = URL("http://www.android.com/")
 
@@ -58,9 +54,9 @@ fun run() {
 \end{lstlisting}
 
 \textbf{Volley:}\\
-Na het zien van de snelle toename in populariteit van OKHttp, besloot Google om Volley te lanceren. Alles in Volley is voortgebouwd op HttpUrlConnection. Ondanks de late release van de library, heeft deze zijn voor- en nadelen. Zo voorziet volley automatische planning van netwerkverzoeken, meerdere gelijktijdige netwerkverbindingen, ondersteuning voor prioritering van verzoeken… maar maakt de library bijvoorbeeld gebruik van een hardcoded networking thread pool size.
+Na het zien van de snelle toename in populariteit van OKHttp, besloot Google om Volley te lanceren. Alles in Volley is voortgebouwd op HttpUrlConnection. Ondanks de late release van de library, heeft deze zijn voor- en nadelen. Zo voorziet volley een paar handige opties zoals automatische planning van netwerkverzoeken, meerdere gelijktijdige netwerkverbindingen, ondersteuning voor prioritering van verzoeken… maar maakt de library bijvoorbeeld gebruik van een hardcoded networking thread pool size.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Volley example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Volley voorbeeld]
 val queue = Volley.newRequestQueue(this)
 val url = "http://www.android.com/"
 
@@ -76,11 +72,10 @@ Response.ErrorListener {
 queue.add(stringRequest)
 \end{lstlisting}
 
-\textbf{Retrofit (square):}
-\\
-Retrofit is een speciale HTTP-client voor Android en Java. De type-safe client maakt verbinding met een REST-webservice door de API te vertalen naar Java-interfaces. Deze krachtige bibliotheek maakt het gemakkelijk om JSON- of XML-gegevens te gebruiken, parsed in Plain Old Java Objects. De open-source Retrofit heeft zijn basis bovenop enkele andere krachtige bibliotheken en tools. Het maakt gebruik van OKHttp om netwerkverzoeken af te handelen.
+\textbf{Retrofit:}\\
+Retrofit is een speciale HTTP-client voor Android en Java. De type-safe client maakt verbinding met een REST-webservice door de API te vertalen naar Java-interfaces. Deze krachtige library maakt het gemakkelijk om JSON- of XML-gegevens te gebruiken, omgezet in Plain Old Java Objects. De open-source Retrofit library heeft zijn basis bovenop enkele andere krachtige bibliotheken en tools gebouwd. Het maakt gebruik van OKHttp om netwerkverzoeken af te handelen.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Retrofit example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Retrofit voorbeeld]
 data class SomeData(var property: String)
     
 interface ApiInterface {
@@ -112,19 +107,22 @@ apiInterface.enqueue( object : Callback<List<SomeData>>{
 })
 \end{lstlisting}
 
-\textbf{Picasso (square):}\\
+\textbf{Moshi:}\\
+Moshi is een moderne JSON-bibliotheek voor Android en Java. Het maakt het gemakkelijk om JSON in Java-objecten om te zetten en het kan even gemakkelijk Java-objecten serialiseren naar JSON. Moshi heeft ingebouwde ondersteuning voor het lezen en schrijven van de belangrijkste gegevenstypen van Java: int, float, char... maar ook Arrays, Collections, Lists, Sets, Maps, Strings en Enums.
+
+\textbf{Picasso:}\\
 Picasso is specifiek voor afbeeldingen, met een sterke HTTP downloading en caching library. Zowel Picasso als Retrofit kunnen worden geconfigureerd om OkHttpClient als de standaard HTTP-client te gebruiken.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Picasso example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Picasso voorbeeld]
 val imageUri = "https://...jpg"
 val imageView = findViewById<ImageView>(R.id.imageId)
 Picasso.get().load(imageUri).into(imageView)
 \end{lstlisting}
 
-\textbf{Glide (bumptech):}\\
-Glide is een snel en efficiënt open source-framework voor mediabeheer en het laden van afbeeldingen voor Android dat mediadecodering, geheugen- en schijfcaching en resourcepooling verpakt in een eenvoudige en gebruiksvriendelijke interface. Deze library is vergelijkbaar met Picasso, maar voorziet  een aantal extra features zoals GIF animaties, thumbnail generatie en still videos. Glide gebruikt standaard een aangepaste op HttpUrlConnection gebaseerde stack, maar bevat in plaats daarvan ook utility libraries die kunnen worden verbonden met het Volley of OkHttp.
+\textbf{Glide:}\\
+Glide is een snel en efficiënt open source-framework voor mediabeheer en het laden van afbeeldingen. Deze library is vergelijkbaar met Picasso, maar voorziet een aantal extra features zoals GIF animaties en thumbnail generatie. Glide gebruikt standaard een aangepaste, op HttpUrlConnection gebaseerde stack, maar bevat in plaats daarvan ook utility libraries die kunnen worden verbonden met het Volley of OkHttp.
 
-\begin{lstlisting}[language=Kotlin, caption=Android Glide example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Android Glide voorbeeld]
 val url = "https://...jpg"
 Glide.with(itemView) 
 .load(url)
@@ -135,35 +133,19 @@ Glide.with(itemView)
 .into(itemView.ivPhoto)
 \end{lstlisting}
 
-\textbf{Fresco (facebook):}
-\\
-Fresco is een krachtig systeem voor het weergeven van afbeeldingen in Android-applicaties. Fresco zorgt voor het laden en weergeven van afbeeldingen. Het laadt afbeeldingen van het netwerk, lokale opslag of lokale bronnen en geeft een tijdelijke aanduiding weer totdat de afbeelding is aangekomen. Het heeft twee cacheniveaus; een in het geheugen en een andere in de interne opslag. In Android 4.x en lager plaatst Fresco afbeeldingen in een speciale regio van Android-geheugen. Hierdoor kan uw toepassing sneller werken - en veel minder vaak last hebben van de gevreesde OutOfMemoryError.
-
-\begin{lstlisting}[language=Kotlin, caption=Android Glide example]
-Fresco.initialize(this)
-
-val imageView = findViewById<SimpleDraweeView>(R.id.posterImage);
-Uri uri = Uri.parse("https://...jpg");
-imageView.setImageURI(uri);
-\end{lstlisting}
-
-\textbf{Moshi(square):}\\
-Moshi is een moderne JSON-bibliotheek voor Android en Java. Het maakt het gemakkelijk om JSON in Java-objecten om te zetten en het kan even gemakkelijk Java-objecten serialiseren naar JSON. Moshi heeft ingebouwde ondersteuning voor het lezen en schrijven van de belangrijkste gegevenstypen van Java: int, float, char... maar ook Arrays, Collections, Lists, Sets, Maps, Strings en Enums. Het ondersteunt uw modelklassen door ze veld voor veld uit te schrijven.
-
-
 \section{Flutter}
 Voor Flutter wordt vooral gebruik gemaakt van de HTTP Package library.
 
 \textbf{http}\\
-Deze package, uitgebracht door dart, bevat een reeks functies en klassen op hoog niveau die het gemakkelijk maken om HTTP-bronnen te gebruiken. Het is multi-platform en ondersteunt mobiel, desktop en de browser.
-\begin{lstlisting}[language=Dart, caption=Flutter http example]
+Deze package, uitgebracht door dart, bevat een reeks functies en klassen op hoog niveau die het gemakkelijk maken om HTTP-bronnen te gebruiken.
+\begin{lstlisting}[language=Dart, caption=Simpel Flutter http voorbeeld]
 import 'package:http/http.dart' as http;
 var result = await http.get(Uri.parse('https://flutterdevs.com'));
 \end{lstlisting}
 
 \textbf{dio}\\
 Een krachtige Http-client voor Dart, die ondersteuning biedt voor interceptors, algemene configuratie, FormData, annulering van aanvragen, downloaden van bestanden, time-out enz.
-\begin{lstlisting}[language=Kotlin, caption=Flutter dio example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Flutter dio voorbeeld]
 import 'package:dio/dio.dart';
 void getHttp() async {
     try {
@@ -177,7 +159,7 @@ void getHttp() async {
 
 \textbf{cached\_network\_image}\\
 Een Flutter library om afbeeldingen van het internet weer te geven en in de cachemap te bewaren. De CachedNetworkImage kan direct of via de ImageProvider worden gebruikt. Het bevat momenteel geen caching. Dit is een library die niet werd uitgebracht door Flutter of Dart maar is zeer populair onder de community en wordt goed onderhouden.
-\begin{lstlisting}[language=Kotlin, caption=Flutter http example]
+\begin{lstlisting}[language=Kotlin, caption=Simpel Flutter http voorbeeld]
 CachedNetworkImage(
 imageUrl: "http://via.placeholder.com/350x150",
 placeholder: (context, url) => CircularProgressIndicator(),
@@ -188,4 +170,6 @@ Image(image: CachedNetworkImageProvider(url))
 \end{lstlisting}
 
 \section{Conclusie}
-Zoals in vorige hoofdstukken ook het geval was is ook hier Android veel rijker aan keuzes. Natuurlijk is het 
+Zoals in vorige hoofdstuk \ref{ch:asynchroon} ook het geval was, is ook hier Android veel rijker aan keuzes. 
+De tijd gespendeerd aan de uitwerking van elk van deze \right) 
+ geconcludeerd worden dat de libraries voor API calls minder gebruiksvriendelijk zijn. Flutter daarentegen biedt een simpele, overzichtelijke, goed gedocumenteerde manier voor het uitvoeren van API calls.
