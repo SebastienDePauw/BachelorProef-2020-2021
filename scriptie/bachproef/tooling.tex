@@ -4,18 +4,10 @@
 
 \chapter{\IfLanguageName{dutch}{Tooling}{Tooling}}
 \label{ch:tooling}
-Een besturingssysteem is een interface tussen de gebruiker en de hardwarecomponenten. Het voert verschillende taken uit. Een besturingssysteem biedt de gebruiker een Graphical User Interface (GUI) of Command Line Interface (CLI) aan om taken uit te voeren. Sommige besturingssystemen bieden alleen een CLI of GUI aan, terwijl andere zowel GUI als CLI aanbieden. Een GUI bestaat uit bedieningselementen of widgets om met de computer te communiceren. Aan de andere kant moet de gebruiker bij gebruik van de CLI opdrachten invoeren om de taken uit te voeren. Over het algemeen is GUI gebruiksvriendelijker, maar de uitvoeringssnelheid is hoger in CLI.
-
-Een CLI opdracht wordt dus uitgevoerd aan de hand van een commando. 
-
-Nu is het mogelijk om een aantal extra commando’s te installeren die deel uitmaken van een overkoepelende tool. 
-
-Dit hoofdstuk onderzoek de verschillende commando’s van de Flutter tool en vergelijkt deze met de verschillende Android tools en hun gelijkende commando’s. \newpage
+Een besturingssysteem is een interface tussen de gebruiker en de hardwarecomponenten. Het voert verschillende taken uit. Een besturingssysteem biedt de gebruiker een Graphical User Interface (GUI) of Command Line Interface (CLI) aan om taken uit te voeren. Sommige besturingssystemen bieden alleen een CLI of GUI aan, terwijl andere zowel GUI als CLI aanbieden. Een GUI bestaat uit bedieningselementen of widgets om met de computer te communiceren. Aan de andere kant moet de gebruiker bij gebruik van de CLI opdrachten invoeren om de taken uit te voeren. Over het algemeen is GUI gebruiksvriendelijker, maar de uitvoeringssnelheid is hoger in CLI. Een CLI opdracht wordt dus uitgevoerd aan de hand van een commando. Nu is het mogelijk om een aantal extra commando’s te installeren die deel uitmaken van een overkoepelende tool maar dit valt buiten de scope van dit onderzoek. Dit hoofdstuk onderzoekt de verschillende commando’s van de Flutter tool en vergelijkt deze met de verschillende Android tools en hun gelijkende commando’s.
 
 \section{Opzet}
 Een Software Development Kit (SDK) is een verzameling softwareontwikkelingstools in één installeerbaar pakket. Ze vergemakkelijken het maken van applicaties door een compiler, debugger en misschien een softwareframework te bevatten. Ze zijn normaal gesproken specifiek voor een combinatie van hardwareplatform en besturingssysteem. Een SDK voorziet een set tools, bibliotheken, relevante documentatie, codevoorbeelden, processen en/of handleidingen waarmee ontwikkelaars softwaretoepassingen op een specifiek platform kunnen maken. 
-
-
 
 \section{Android}
 De Android SDK bestaat uit meerdere tools die nodig zijn voor app-ontwikkeling. De tools kunnen geinstalleerd en bijgewerkt worden met SDK Manager van Android Studio of de command line tool ‘sdkmanager’. Alle tools worden gedownload naar de Android SDK-map. Aangezien de aard van het onderzoek een vergelijkende studie is werden hier enkel de commando’s aangehaald met een Flutter tegengestelde. Het aanhalen van alle commando’s voor elke tool zou te veel en niet interessant zijn.
@@ -78,11 +70,7 @@ De Android SDK bestaat uit meerdere tools die nodig zijn voor app-ontwikkeling. 
 \end{tabular}
 
 \section{Flutter}
-De Flutter command-line tool is hoe ontwikkelaars (en IDE’s aangestuurd door ontwikkelaars) omgaan met Flutter. 
-
-Voor het kunnen werken met Flutter moet dus eerst de Flutter SDK geïnstalleerd worden. Deze SDK bevat onder andere een aantal commando’s die kunnen uitgevoerd worden in de terminal. Flutter commando’s worden voorafgegaan door het flutter keyword. Zo weet het besturingssysteem dat een commando wordt gebruikt van de flutter tool.
-
-De dart-tool is een command line interface voor de Dart SDK. De tool is beschikbaar, ongeacht hoe de Dart SDK gedownload werd (expliciete downloadt of alleen de Flutter SDK downloadt). Indien het mogelijk is om de flutter tool te gebruiken is dit het betere alternatief.
+De Flutter command-line tool is hoe ontwikkelaars (en IDE’s aangestuurd door ontwikkelaars) omgaan met Flutter. Voor het kunnen werken met Flutter moet dus eerst de Flutter SDK geïnstalleerd worden. Deze SDK bevat onder andere een aantal commando’s die kunnen uitgevoerd worden in de terminal. Flutter commando’s worden voorafgegaan door het flutter keyword. Zo weet het besturingssysteem dat een commando wordt gebruikt van de flutter tool. De dart-tool is een command line interface voor de Dart SDK. De tool is beschikbaar, ongeacht hoe de Dart SDK gedownload werd (expliciete downloadt of alleen de Flutter SDK downloadt). Indien het mogelijk is om de flutter tool te gebruiken is dit het betere alternatief.
 
 Hieronder staat een lijst met de mogelijke flutter en dart commando’s.
 
@@ -167,4 +155,4 @@ Hieronder staat een lijst met de mogelijke flutter en dart commando’s.
 \end{tabular}
 
 \section{Conclusie}
-Aangezien Flutter geen toegewijde IDE heeft moeten meer commando's uitgevoerd worden in de terminal. 
+Zowel in Flutter als Android kan het meeste vanop de command line gebeuren. Echter omgekeerd is dat niet het geval. Aangezien Flutter geen toegewijde IDE heeft moeten sommige commando's uitgevoerd worden in de terminal. Terwijl Android via de IDE de meeste commando's kan uitvoeren. De Flutter IDE commando's zijn eerder beperkt.

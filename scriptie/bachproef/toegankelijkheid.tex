@@ -1,0 +1,62 @@
+%%=============================================================================
+%% Complexiteit
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Toegankelijkheid van de frameworks}{Accessibility of the frameworks}}
+\label{ch:toegankelijkheid}
+In dit hoofdstuk werd gekeken naar de toegankelijkheid van de frameworks voor nieuwe ontwikkelaars. 
+
+\section{Opzet}
+Hierbij werd gefocust op drie sub-criteria. Als eerste waren het aantal geschreven lijnen code van belang. Daarna werd gekeken naar de complexiteit van de code en als laatste werd de ontwikkelingstijd van de features bekeken en vergeleken.
+
+Er zijn verschillende manieren om de code complexiteit van een stuk code te bepalen. Veel van deze, hoewel ze een goede weergave van complexiteit opleveren, lenen zich niet voor gemakkelijke meting. Enkele van de meest gebruikte statistieken zijn:
+\begin{itemize}
+    \item Cyclomatic complexity
+    \item Halstead complexity measures
+    \item Essential complexity
+\end{itemize}
+
+Voor dit deel van het onderzoek werd geen gebruik gemaakt van deze algoritmes, daarvoor waren de onderzoeksapplicaties te klein. Dit zou leiden insignificante verschillen in de resultaten. In plaats daarvan werd een notificatie lijst gemaakt.
+
+\section{Resultaten}
+\begin{figure}
+    \caption{Android Activity code snippet voor het maken van een notificatielijst}
+     \label{fig:h8Android}
+    \centering
+\includegraphics[width=15cm]{h8AndroidFragment.png}
+\end{figure}
+
+\begin{figure}
+    \caption{Flutter code snipper voor het maken van een notificatielijst}
+         \label{fig:h8Flutter}
+    \centering
+    \includegraphics[width=15cm]{h8Flutter.png}
+\end{figure}
+
+\textbf{Lijnen code}\\
+De Flutter notificatielijst bedroeg één bestand met daarin 33 lijnen code terwijl de Android notificatielijst drie bestanden nodig had. Het eerste was de Activity, deze bevatte 25 lijnen code. Vervolgens was een list\_item view nodig, deze bevatte 7 lijnen code. Als laatste was er nog de list view die 10 lijnen bevatte.
+
+\textbf{Code complexiteit}\\
+Figuur \ref{fig:h8Flutter} laat zien dat de Flutter layout en de functionele code in hetzelfde codeblok worden geschreven. Volgens de Flutter slogan 'alles is een Widget' werd een hiërarchische structuur van Widgets opgebouwd. Hierbij werd elke child Widget genest zodat de diepste widget 8 niveaus lager zat als de buitenste Scaffold Widget. Deze Scaffold bevindt zich in de build Widget die beschrijft hoe de UI moet worden opgebouwd. Android daarentegen verdeeld de layout en functionele logica in verschillende bestanden. Zo werd in de Activity alle functionele code geschreven, terwijl het lijst xml bestand gebruikt werd voor de opbouw van de lijst layout en het lijst\_item xml bestand gebruikt werd voor de opbouw van de lijst item layout. In Android wordt de Activity klasse aangesproken bij het navigeren. Deze is dan verantwoordelijk voor het \textit{inflaten} van de layouts en het linken van de viewmodel met de Activity. Dit alles gebeurd in de onCreate functie. Zie figuur \ref{fig:h8Android3}. Voor beide platformen beschikken over duidelijk documentatie.
+
+\textbf{ontwikkelingstijd}\\
+Zoals te zien valt in tabel \ref{table:ontwikkelingstijd}, is het meeste tijd naar de ontwikkeling van de native Android app gegaan. De toegankelijkheid van Dart samen met krachtige simpliciteit van Flutter leidde tot een snelle vooruitgang binnen de ontwikkeling van de onderzoeksapplicatie. De hot reload functionaliteit die het toelaat om een applicatie in enkele seconden up te daten op basis van wijzigingen in de codebase is dan ook een goede bijdrage aan het platform. Android daarentegen verwacht meer boilerplate code met een vaste structuur. De opbouw van een layout is gemakkelijk met de drag en drop functionaliteit, maar het linken van deze views aan code is dan weer moeilijker.
+
+\begin{table}
+    \begin{center}
+        \caption{Ontwikkelingstijd voor elke applicatie}
+        \label{table:ontwikkelingstijd}
+        \begin{tabular}{ |l|l| }
+            \hline
+            & \textbf{Totaal}\\
+            \hline
+            \textbf{Android} & 37 minuten\\ 
+            \hline
+            \textbf{Flutter} & 42 minuten\\ 
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\section{Conclusie}
+In conclusie neemt Flutter de bovenhand. Voor nieuwe ontwikkelaars kan de verdeling van functionaliteit een hinderblok vormen. De verschillende bestanden in Android elk met hun eigen doel kan voor verwarring zorgen. In dit onderzoek werd daarbij ook geen gebruik gemaakt van de ViewModel voor een correcte MVVM structuur. Daarom is Flutter in dit geval een toegankelijkere optie. Op vlak van code complexiteit kunnen ze als evenwaardig aanschouwt worden. Wanneer het aankwam op ontwikkelingstijd van de applicatie neemt Flutter opnieuw de bovenhand. De onderzoeker had geen voorkennis in Flutter en was in staat dezelfde Android layout na te maken. De verschillen in ontwikkeltijd zijn klein als in rekening wordt gehouden dat de onderzoeker een degelijke Android voorkennis had maar dus geen Flutter voorkennis. Hieruit kan geconstateerd worden dat Flutter toegankelijk is voor nieuwe ontwikkelaars, zeker in vergelijking met Android dat een steilere leercurve heeft.

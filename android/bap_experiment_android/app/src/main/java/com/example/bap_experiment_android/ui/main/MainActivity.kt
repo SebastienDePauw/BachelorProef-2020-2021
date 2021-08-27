@@ -4,14 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.bap_experiment_android.R
-import com.example.bap_experiment_android.ui.hoofdstuk1.activity.Hoofdstuk1Activity
-import com.example.bap_experiment_android.ui.hoofdstuk2.activity.Hoofdstuk2Activity
-import com.example.bap_experiment_android.ui.hoofdstuk3.activity.Hoofdstuk3Activity
 import com.example.bap_experiment_android.ui.hoofdstuk4.activity.Hoofdstuk4Activity
 import com.example.bap_experiment_android.ui.hoofdstuk5.activity.Hoofdstuk5Activity
 import com.example.bap_experiment_android.ui.hoofdstuk6.activity.Hoofdstuk6Activity
 import com.example.bap_experiment_android.ui.hoofdstuk7.activity.Hoofdstuk7Activity
-import com.example.bap_experiment_android.ui.hoofdstuk8.activity.Hoofdstuk8Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
@@ -28,15 +24,6 @@ class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
 
     override fun cardClickListener(cardData: CardData, view: View) {
         when(cardData.cardEnum){
-            CardEnum.HOOFDSTUK1 -> {
-                startActivity(Hoofdstuk1Activity.getIntent(this))
-            }
-            CardEnum.HOOFDSTUK2 -> {
-                startActivity(Hoofdstuk2Activity.getIntent(this))
-            }
-            CardEnum.HOOFDSTUK3 -> {
-                startActivity(Hoofdstuk3Activity.getIntent(this))
-            }
             CardEnum.HOOFDSTUK4 -> {
                 startActivity(Hoofdstuk4Activity.getIntent(this))
             }
@@ -48,9 +35,6 @@ class MainActivity : AppCompatActivity(), MainAdapter.CardListener {
             }
             CardEnum.HOOFDSTUK7 -> {
                 startActivity(Hoofdstuk7Activity.getIntent(this))
-            }
-            CardEnum.HOOFDSTUK8 -> {
-                startActivity(Hoofdstuk8Activity.getIntent(this))
             }
         }
     }
