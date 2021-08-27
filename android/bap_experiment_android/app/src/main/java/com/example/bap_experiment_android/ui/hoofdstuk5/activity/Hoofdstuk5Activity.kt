@@ -27,12 +27,21 @@ import java.io.InputStreamReader
 import android.os.AsyncTask
 import android.util.Log
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.gson.annotations.SerializedName
 import okhttp3.Call
 import okhttp3.Callback
 import org.json.JSONException
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.BufferedReader
 import java.lang.Exception
 import java.net.MalformedURLException
+import retrofit2.http.GET
+import android.os.StrictMode
+
+
+
+
+
 
 
 class Hoofdstuk5Activity : AppCompatActivity() {
@@ -59,6 +68,9 @@ class Hoofdstuk5Activity : AppCompatActivity() {
         button13.setOnClickListener { startRetro() }
         button14.setOnClickListener { startPic() }
         button15.setOnClickListener { startGl() }
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
     }
 
     fun startGl(){
@@ -73,7 +85,7 @@ class Hoofdstuk5Activity : AppCompatActivity() {
         val url: URL
         var urlConnection: HttpURLConnection? = null
         try {
-            url = URL("http://www.android.com/")
+            url = URL("https://publicobject.com/helloworld.txt")
             urlConnection = url
                 .openConnection() as HttpURLConnection
             val `in` = urlConnection!!.inputStream
@@ -94,7 +106,7 @@ class Hoofdstuk5Activity : AppCompatActivity() {
     fun startOKHTTP(){
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://publicobject.com/helloworld.txt")
+            .url("https://publicobject.com/helloworld.txt")
             .build()
 
         with(client) {
@@ -112,43 +124,54 @@ class Hoofdstuk5Activity : AppCompatActivity() {
                             Log.i("test", "${name} + ${value}")
                         }
 
-                        Log.i("test", "${response.body.toString()}")
+                        Log.i("test", response.body.toString())
                     }
                 }
             })
         }
-
     }
 
     fun startPic(){
         val imageUri = "https://source.unsplash.com/random?sig=0"
         Picasso.get().load(imageUri).into(imageView)
     }
-    fun startRetro(){
 
-    }
     fun startVolley(){
         val requestQueue = Volley.newRequestQueue(this)
-        val url = "https://api.myjson.com/bins/xbspb"
-        val request = JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, Response.Listener {
+        val url = "https://jsonplaceholder.typicode.com/users"
+        val request = JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, {
                 response ->try {
-            val jsonArray = response.getJSONArray("employees")
+            val jsonArray = response.getJSONArray("users")
             for (i in 0 until jsonArray.length()) {
-                val employee = jsonArray.getJSONObject(i)
-                val firstName = employee.getString("firstname")
-                val age = employee.getInt("age")
-                val mail = employee.getString("mail")
+                val user = jsonArray.getJSONObject(i)
+                val firstName = user.getString("name")
+                val age = user.getInt("username")
+                val mail = user.getString("email")
                 Log.i("test","$firstName, $age, $mail\n\n")
             }
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-        }, Response.ErrorListener { error -> error.printStackTrace() })
+        }, { error -> error.printStackTrace() })
         requestQueue?.add(request)
     }
 
+    fun startRetro(){
+        val retrofit= Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com/").addConverterFactory(GsonConverterFactory.create()).build()
+        val api = retrofit.create(api::class.java)
+        val call: retrofit2.Call<List<User>> = api.get()
+        Log.i("test", call.execute().message())
+    }
 
-    data class User (val name: String)
+    data class User(
+        @SerializedName("name")
+        val name: String
+    )
+
+    public interface api{
+        @GET("users")
+        fun get(): retrofit2.Call<List<User>>
+    }
 }
 
 
