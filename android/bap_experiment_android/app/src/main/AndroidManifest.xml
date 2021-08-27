@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bap_experiment_android">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,10 +22,6 @@
         </activity>
 
         <activity
-            android:name=".ui.hoofdstuk3.activity.Hoofdstuk3Activity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".ui.hoofdstuk4.activity.Hoofdstuk4Activity"
             android:screenOrientation="portrait" />
 
@@ -34,12 +32,9 @@
         <activity
             android:name=".ui.hoofdstuk6.activity.Hoofdstuk6Activity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.hoofdstuk7.activity.Hoofdstuk7Activity"
-            android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.hoofdstuk8.activity.Hoofdstuk8Activity"
+            android:name=".ui.hoofdstuk7.activity.Hoofdstuk7Activity"
             android:screenOrientation="portrait" />
 
     </application>
